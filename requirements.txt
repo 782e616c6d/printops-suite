@@ -1,0 +1,6 @@
+customtkinter 
+pillow
+requests 
+ping3
+rarfile
+pywin32
