@@ -1,0 +1,85 @@
+{
+  "HP LaserJet P1102": {
+    "driver_name": "HP LaserJet Professional P1102",
+    "driver_file": "HP_P1102/hp1102.inf",
+    "driver_url": "https://exemplo.com/drivers/hp_p1102.zip",
+    "instances": [
+      {"name": "HP P1102 - Sala 101", "ip": "192.168.0.24"},
+      {"name": "HP P1102 - Sala 102", "ip": "8.8.8.8"}
+    ]
+  },
+  "Brother HL-1212W": {
+    "driver_name": "Brother HL-1210 series",
+    "driver_file": "Brother_1212W/brh1210.inf",
+    "driver_url": "https://download.brother.com/welcome/dlf103331/genp5e-64-por-109.EXE",
+    "instances": [
+      {"name": "Brother 1212W - Financeiro", "ip": "192.168.1.12"},
+      {"name": "Brother 1212W - RH", "ip": "192.168.1.13"}
+    ]
+  },
+  "Epson L3150": {
+    "driver_name": "EPSON L3150 Series",
+    "driver_file": "Epson_L3150/epson_l3150.inf",
+    "driver_url": "https://exemplo.com/drivers/epson_l3150.zip",
+    "instances": [
+      {"name": "Epson L3150 - Almoxarifado", "ip": "192.168.1.14"},
+      {"name": "Epson L3150 - Compras", "ip": "192.168.1.15"}
+    ]
+  },
+  "Canon G3111": {
+    "driver_name": "Canon G3110 Series",
+    "driver_file": "Canon_G3111/canon_g3111.inf",
+    "driver_url": "https://exemplo.com/drivers/canon_g3111.rar",
+    "instances": [
+      {"name": "Canon G3111 - Atendimento", "ip": "192.168.1.16"}
+    ]
+  },
+  "Samsung M2020": {
+    "driver_name": "Samsung M2020 Series",
+    "driver_file": "Samsung_M2020/samsung_m2020.inf",
+    "driver_url": "https://exemplo.com/drivers/samsung_m2020.zip",
+    "instances": [
+      {"name": "Samsung M2020 - TI", "ip": "192.168.1.17"}
+    ]
+  },
+  "Lexmark B2236dw": {
+    "driver_name": "Lexmark B2236dw",
+    "driver_file": "Lexmark_B2236/lexmark_b2236.inf",
+    "driver_url": "https://exemplo.com/drivers/lexmark_b2236.zip",
+    "instances": [
+      {"name": "Lexmark B2236 - Gerência", "ip": "192.168.1.18"}
+    ]
+  },
+  "Kyocera FS-1040": {
+    "driver_name": "Kyocera FS-1040",
+    "driver_file": "Kyocera_1040/kyocera_1040.inf",
+    "driver_url": "https://exemplo.com/drivers/kyocera_1040.zip",
+    "instances": [
+      {"name": "Kyocera 1040 - Suporte", "ip": "192.168.1.19"}
+    ]
+  },
+  "Ricoh SP 310": {
+    "driver_name": "RICOH SP 310DN",
+    "driver_file": "Ricoh_310/ricoh_310.inf",
+    "driver_url": "https://exemplo.com/drivers/ricoh_310.zip",
+    "instances": [
+      {"name": "Ricoh 310 - Projetos", "ip": "192.168.1.20"}
+    ]
+  },
+  "Xerox Phaser 3020": {
+    "driver_name": "Xerox Phaser 3020",
+    "driver_file": "Xerox_3020/xerox_3020.inf",
+    "driver_url": "https://exemplo.com/drivers/xerox_3020.exe",
+    "instances": [
+      {"name": "Xerox 3020 - Recepção", "ip": "192.168.1.21"}
+    ]
+  },
+  "Dell E310dw": {
+    "driver_name": "Dell E310dw",
+    "driver_file": "Dell_E310/dell_e310.inf",
+    "driver_url": "https://exemplo.com/drivers/dell_e310.zip",
+    "instances": [
+      {"name": "Dell E310 - Jurídico", "ip": "192.168.1.22"}
+    ]
+  }
+}
