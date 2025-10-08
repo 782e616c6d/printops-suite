@@ -1,3 +1,4 @@
+Copiar pastas: https://github.com/782e616c6d/Scriptorium/tree/main/Printer/Printer%20App
 Baixar e instalar drivers.
 Converter UI para Flet.
 Criar pacote MSI.
