@@ -1,0 +1,7 @@
+Baixar e instalar drivers.
+Converter UI para Flet.
+Criar pacote MSI.
+
+Opção para remover, renomear, alterar configuração das instaladas.
+Alterar nome das instaladas que possuirem um ip igual ao presente na lista de instalação, a fim de evitar possiveis conflitos ou instalações duplicadas de impressoras.
+Notificar caso impressora já esteja instalada, exibir opçoes para alterar configurações, remover, ou não realizar ações.
