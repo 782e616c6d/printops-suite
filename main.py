@@ -1326,6 +1326,7 @@ class PrinterManagerApp(QMainWindow):
         self.cfg_font = QComboBox()
         self.cfg_font_size = QSpinBox()
         self.cfg_font_size.setButtonSymbols(QSpinBox.ButtonSymbols.NoButtons)
+        self.cfg_font_size.setRange(8, 72)
 
         for c in [
             self.cmb_status,
@@ -2171,6 +2172,31 @@ class PrinterManagerApp(QMainWindow):
             },
             self.config.get("app_icon_val", "mdi6.flash"),
         )
+
+        self.cfg_font.blockSignals(True)
+        self.cfg_font.clear()
+        font_families = QFontDatabase.families()
+        if not font_families:
+            font_families = ["Segoe UI", "Arial", "Verdana", "Sans Serif", "Tahoma"]
+        self.cfg_font.addItems(font_families)
+
+        pref_font = self.config.get("font_family", "Segoe UI")
+        if pref_font in font_families:
+            self.cfg_font.setCurrentText(pref_font)
+        elif font_families:
+            self.cfg_font.setCurrentIndex(0)
+        self.cfg_font.blockSignals(False)
+
+        try:
+            fs = int(self.config.get("font_size", 10))
+        except:
+            fs = 10
+        if fs < 8:
+            fs = 10
+        self.cfg_font_size.blockSignals(True)
+        self.cfg_font_size.setRange(8, 72)
+        self.cfg_font_size.setValue(fs)
+        self.cfg_font_size.blockSignals(False)
 
         self.lbl_cfg_app.setText(tr("cfg_appearance"))
         self.lbl_cfg_bh.setText(tr("cfg_behavior"))
