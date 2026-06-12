@@ -1,6 +1,3 @@
-customtkinter 
-pillow
-requests 
-ping3
-rarfile
-pywin32
+PyQt6==6.7.0
+pywin32==306
+qtawesome==1.3.1
