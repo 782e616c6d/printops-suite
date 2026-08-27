@@ -212,6 +212,48 @@ TRANSLATIONS = {
         "conn_network": "Rede",
         "conn_local": "Local",
         "msg_verifying": "A verificar...",
+        "guide_welcome_title": "Bem-vindo ao Printer App",
+        "guide_welcome_text": "<b>1. Sincronizar:</b> Utilize o botão sincronizar para varrer a rede e máquina local.<br><b>2. Instalação:</b> Selecione as impressoras desejadas na tabela e clique em 'Instalar'.<br><b>3. Contexto:</b> Clique com o botão direito nas impressoras para ver opções avançadas.<br><b>4. Configurações:</b> Adicione ou remova servidores de impressão para gerir matriz e filiais.<br>",
+        "sysinfo_os": "Sistema Operacional:",
+        "sysinfo_pc_name": "Nome do Computador:",
+        "sysinfo_user": "Usuário Atual:",
+        "sysinfo_ip": "Endereço IP (Local):",
+        "sysinfo_ram": "Memória RAM:",
+        "ram_free": "livre",
+        "sys_unknown": "Desconhecido",
+        "about_version": "Versão:",
+        "about_desc": "Aplicativo profissional para gestão centralizada de impressoras locais e de rede. Construído com PyQt6 e win32print para oferecer máximo desempenho e integração nativa.",
+        "about_modules": "Módulos utilizados:",
+        "about_repo": "Repositório GitHub",
+        "about_docs": "Documentação",
+        "about_web": "Website Oficial",
+        "about_check_updates": "Verificar Atualizações",
+        "about_up_to_date": "Você já possui a versão mais recente.",
+        "task_sync": "Sincronização",
+        "task_settings": "Configurações",
+        "task_conn_test": "Teste de Conexão",
+        "task_install": "Instalação",
+        "task_print_test": "Teste de Impressão",
+        "task_purge_queues": "Limpar Filas",
+        "task_purge_queue": "Limpar Fila",
+        "task_remove": "Remoção",
+        "task_remove_single": "Remover",
+        "task_repair_spooler": "Reparar Spooler",
+        "task_export_csv": "Exportar CSV",
+        "task_test": "Teste",
+        "target_all": "Todos",
+        "target_sys": "Sistema",
+        "target_dev_data": "Dados de Dispositivos",
+        "target_devices": "Dispositivos",
+        "msg_testing": "Testando...",
+        "msg_loading_drivers": "A carregar drivers...",
+        "msg_conn_failed": "{host} inacessível",
+        "msg_conn_success": "{host} conectado ({count} dispositivos)",
+        "msg_guide_no_rem": "O manual padrão não pode ser removido.",
+        "msg_pdf_not_found": "O arquivo PDF não foi encontrado.",
+        "msg_icon_copied": "Ícone personalizado copiado e aplicado com sucesso.",
+        "msg_install_partial": "Instalação concluída com ressalvas.\n\nSucesso:\n{successes}\n\nFalhas:\n{errors}",
+        "msg_install_fail": "Falha ao instalar as impressoras:\n\n{errors}",
     },
     "en": {
         "app_title": "Printer App",
@@ -353,6 +395,48 @@ TRANSLATIONS = {
         "conn_network": "Network",
         "conn_local": "Local",
         "msg_verifying": "Verifying...",
+        "guide_welcome_title": "Welcome to Printer App",
+        "guide_welcome_text": "<b>1. Sync:</b> Use the sync button to scan network and local machine.<br><b>2. Install:</b> Select the desired printers in the table and click 'Install'.<br><b>3. Context Menu:</b> Right-click on printers for advanced options.<br><b>4. Settings:</b> Add or remove print servers to manage headquarters and branches.<br>",
+        "sysinfo_os": "Operating System:",
+        "sysinfo_pc_name": "Computer Name:",
+        "sysinfo_user": "Current User:",
+        "sysinfo_ip": "IP Address (Local):",
+        "sysinfo_ram": "RAM Memory:",
+        "ram_free": "free",
+        "sys_unknown": "Unknown",
+        "about_version": "Version:",
+        "about_desc": "Professional application for centralized management of local and network printers. Built with PyQt6 and win32print to offer maximum performance and native integration.",
+        "about_modules": "Modules used:",
+        "about_repo": "GitHub Repository",
+        "about_docs": "Documentation",
+        "about_web": "Official Website",
+        "about_check_updates": "Check for Updates",
+        "about_up_to_date": "You already have the latest version.",
+        "task_sync": "Synchronization",
+        "task_settings": "Settings",
+        "task_conn_test": "Connection Test",
+        "task_install": "Installation",
+        "task_print_test": "Print Test",
+        "task_purge_queues": "Purge Queues",
+        "task_purge_queue": "Purge Queue",
+        "task_remove": "Removal",
+        "task_remove_single": "Remove",
+        "task_repair_spooler": "Repair Spooler",
+        "task_export_csv": "Export CSV",
+        "task_test": "Test",
+        "target_all": "All",
+        "target_sys": "System",
+        "target_dev_data": "Device Data",
+        "target_devices": "Devices",
+        "msg_testing": "Testing...",
+        "msg_loading_drivers": "Loading drivers...",
+        "msg_conn_failed": "{host} unreachable",
+        "msg_conn_success": "{host} connected ({count} devices)",
+        "msg_guide_no_rem": "The default manual cannot be removed.",
+        "msg_pdf_not_found": "The PDF file was not found.",
+        "msg_icon_copied": "Custom icon copied and applied successfully.",
+        "msg_install_partial": "Installation completed with warnings.\n\nSuccess:\n{successes}\n\nFailures:\n{errors}",
+        "msg_install_fail": "Failed to install printers:\n\n{errors}",
     },
     "es": {
         "app_title": "Printer App",
@@ -494,6 +578,48 @@ TRANSLATIONS = {
         "conn_network": "Red",
         "conn_local": "Local",
         "msg_verifying": "Verificando...",
+        "guide_welcome_title": "Bienvenido a Printer App",
+        "guide_welcome_text": "<b>1. Sincronizar:</b> Utilice el botón de sincronización para escanear la red y máquina local.<br><b>2. Instalar:</b> Seleccione las impresoras deseadas en la tabla y haga clic en 'Instalar'.<br><b>3. Contexto:</b> Haga clic derecho en las impresoras para ver opciones avanzadas.<br><b>4. Configuración:</b> Añada o elimine servidores de impresión para gestionar sede y sucursales.<br>",
+        "sysinfo_os": "Sistema Operativo:",
+        "sysinfo_pc_name": "Nombre del Equipo:",
+        "sysinfo_user": "Usuario Actual:",
+        "sysinfo_ip": "Dirección IP (Local):",
+        "sysinfo_ram": "Memoria RAM:",
+        "ram_free": "libre",
+        "sys_unknown": "Desconocido",
+        "about_version": "Versión:",
+        "about_desc": "Aplicación profesional para la gestión centralizada de impresoras locales y de red. Construido con PyQt6 y win32print para ofrecer el máximo rendimiento e integración nativa.",
+        "about_modules": "Módulos utilizados:",
+        "about_repo": "Repositorio GitHub",
+        "about_docs": "Documentación",
+        "about_web": "Sitio Web Oficial",
+        "about_check_updates": "Buscar Actualizaciones",
+        "about_up_to_date": "Ya tienes la versión más reciente.",
+        "task_sync": "Sincronización",
+        "task_settings": "Configuraciones",
+        "task_conn_test": "Prueba de Conexión",
+        "task_install": "Instalación",
+        "task_print_test": "Prueba de Impresión",
+        "task_purge_queues": "Limpiar Colas",
+        "task_purge_queue": "Limpiar Cola",
+        "task_remove": "Remoción",
+        "task_remove_single": "Remover",
+        "task_repair_spooler": "Reparar Spooler",
+        "task_export_csv": "Exportar CSV",
+        "task_test": "Prueba",
+        "target_all": "Todos",
+        "target_sys": "Sistema",
+        "target_dev_data": "Datos de Dispositivos",
+        "target_devices": "Dispositivos",
+        "msg_testing": "Probando...",
+        "msg_loading_drivers": "Cargando controladores...",
+        "msg_conn_failed": "{host} inaccesible",
+        "msg_conn_success": "{host} conectado ({count} dispositivos)",
+        "msg_guide_no_rem": "El manual predeterminado no se puede quitar.",
+        "msg_pdf_not_found": "El archivo PDF no fue encontrado.",
+        "msg_icon_copied": "Icono personalizado copiado y aplicado con éxito.",
+        "msg_install_partial": "Instalación completada con advertencias.\n\nÉxito:\n{successes}\n\nFallos:\n{errors}",
+        "msg_install_fail": "Fallo al instalar las impresoras:\n\n{errors}",
     },
 }
 
@@ -593,9 +719,9 @@ def get_ram_info():
         ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(stat))
         total_ram = stat.ullTotalPhys / (1024**3)
         avail_ram = stat.ullAvailPhys / (1024**3)
-        return f"{total_ram:.1f} GB ({avail_ram:.1f} GB livre)"
+        return f"{total_ram:.1f} GB ({avail_ram:.1f} GB {tr('ram_free')})"
     except:
-        return "Desconhecido"
+        return tr("sys_unknown")
 
 
 class TaskLogger:
@@ -1856,35 +1982,30 @@ class PrinterManagerApp(QMainWindow):
         layout.setContentsMargins(40, 0, 40, 0)
         layout.addWidget(self.create_page_header("title_sysinfo", "sub_sysinfo"))
 
-        info_layout = QFormLayout()
-        info_layout.setSpacing(20)
-        try:
-            os_info = f"{platform.system()} {platform.release()} ({platform.architecture()[0]})"
-        except:
-            os_info = "Desconhecido"
-        try:
-            pc_name = platform.node()
-        except:
-            pc_name = "Desconhecido"
-        try:
-            current_user = os.getlogin()
-        except:
-            current_user = "Desconhecido"
-        try:
-            ip_addr = socket.gethostbyname(socket.gethostname())
-        except:
-            ip_addr = "Desconhecido"
-
-        info_layout.addRow(QLabel("<b>Sistema Operacional:</b>"), QLabel(os_info))
-        info_layout.addRow(QLabel("<b>Nome do Computador:</b>"), QLabel(pc_name))
-        info_layout.addRow(QLabel("<b>Usuário Atual:</b>"), QLabel(current_user))
-        info_layout.addRow(QLabel("<b>Endereço IP (Local):</b>"), QLabel(ip_addr))
-        info_layout.addRow(QLabel("<b>Memória RAM:</b>"), QLabel(get_ram_info()))
+        self.info_layout = QFormLayout()
+        self.info_layout.setSpacing(20)
+        
+        self.lbl_key_os = QLabel()
+        self.lbl_val_os = QLabel()
+        self.lbl_key_pc_name = QLabel()
+        self.lbl_val_pc_name = QLabel()
+        self.lbl_key_user = QLabel()
+        self.lbl_val_user = QLabel()
+        self.lbl_key_ip = QLabel()
+        self.lbl_val_ip = QLabel()
+        self.lbl_key_ram = QLabel()
+        self.lbl_val_ram = QLabel()
+        
+        self.info_layout.addRow(self.lbl_key_os, self.lbl_val_os)
+        self.info_layout.addRow(self.lbl_key_pc_name, self.lbl_val_pc_name)
+        self.info_layout.addRow(self.lbl_key_user, self.lbl_val_user)
+        self.info_layout.addRow(self.lbl_key_ip, self.lbl_val_ip)
+        self.info_layout.addRow(self.lbl_key_ram, self.lbl_val_ram)
 
         container = QFrame()
         container.setProperty("class", "ActionCard")
         container.setStyleSheet("QFrame.ActionCard { padding: 30px; height: auto; }")
-        container.setLayout(info_layout)
+        container.setLayout(self.info_layout)
         layout.addWidget(container)
         layout.addStretch()
         self.stacked.addWidget(page)
@@ -2061,48 +2182,46 @@ class PrinterManagerApp(QMainWindow):
         )
         titles_vbox = QVBoxLayout()
         self.lbl_about_title = QLabel()
+        self.lbl_about_version = QLabel()
         titles_vbox.addWidget(self.lbl_about_title)
-        titles_vbox.addWidget(QLabel("Versão: 2.1.0 • WinUI Edition Pro"))
+        titles_vbox.addWidget(self.lbl_about_version)
         h_header.addWidget(icon_lbl)
         h_header.addSpacing(15)
         h_header.addLayout(titles_vbox)
         h_header.addStretch()
 
-        desc = QLabel(
-            "Aplicativo profissional para gestão centralizada de impressoras locais e de rede. "
-            "Construído com PyQt6 e win32print para oferecer máximo desempenho e integração nativa."
-        )
-        desc.setWordWrap(True)
-        link_style = f"color: {self.config.get('primary_color', '#60CDFF')}; text-decoration: none; font-weight: bold;"
-        links_layout = QHBoxLayout()
-        for txt in ["Repositório GitHub", "Documentação", "Website Oficial"]:
-            l = QLabel(
-                f'<a href="https://github.com/" style="{link_style}"><span style="text-decoration: underline;">{txt}</span></a>'
-            )
+        self.lbl_about_desc = QLabel()
+        self.lbl_about_desc.setWordWrap(True)
+        
+        self.links_layout = QHBoxLayout()
+        self.lbl_about_repo = QLabel()
+        self.lbl_about_docs = QLabel()
+        self.lbl_about_web = QLabel()
+        for l in [self.lbl_about_repo, self.lbl_about_docs, self.lbl_about_web]:
             l.setOpenExternalLinks(True)
-            links_layout.addWidget(l)
-            links_layout.addSpacing(20)
-        links_layout.addStretch()
+            self.links_layout.addWidget(l)
+            self.links_layout.addSpacing(20)
+        self.links_layout.addStretch()
 
-        btn_update = QPushButton("Verificar Atualizações")
-        btn_update.setProperty("class", "StandardBtn")
-        btn_update.clicked.connect(
+        self.btn_about_update = QPushButton()
+        self.btn_about_update.setProperty("class", "StandardBtn")
+        self.btn_about_update.clicked.connect(
             lambda: QMessageBox.information(
-                self, "Atualizações", "Você já possui a versão mais recente."
+                self, tr("about_check_updates"), tr("about_up_to_date")
             )
         )
+        
+        self.lbl_about_modules = QLabel()
 
         v_layout.addLayout(h_header)
         v_layout.addSpacing(10)
-        v_layout.addWidget(desc)
+        v_layout.addWidget(self.lbl_about_desc)
         v_layout.addSpacing(10)
-        v_layout.addWidget(
-            QLabel("<b>Módulos utilizados:</b> PyQt6, pywin32, qtawesome, ctypes.")
-        )
+        v_layout.addWidget(self.lbl_about_modules)
         v_layout.addSpacing(20)
-        v_layout.addLayout(links_layout)
+        v_layout.addLayout(self.links_layout)
         v_layout.addSpacing(20)
-        v_layout.addWidget(btn_update, alignment=Qt.AlignmentFlag.AlignLeft)
+        v_layout.addWidget(self.btn_about_update, alignment=Qt.AlignmentFlag.AlignLeft)
 
         layout.addWidget(container)
         layout.addStretch()
@@ -2336,7 +2455,51 @@ class PrinterManagerApp(QMainWindow):
         self.btn_rp_csv.setText(f"  {tr('btn_export_csv')}")
         self.chk_rp_install_machine.setText(tr("chk_per_machine"))
 
+        # System Info Updates
+        try:
+            os_info = f"{platform.system()} {platform.release()} ({platform.architecture()[0]})"
+        except:
+            os_info = tr("sys_unknown")
+        try:
+            pc_name = platform.node()
+        except:
+            pc_name = tr("sys_unknown")
+        try:
+            current_user = os.getlogin()
+        except:
+            current_user = tr("sys_unknown")
+        try:
+            ip_addr = socket.gethostbyname(socket.gethostname())
+        except:
+            ip_addr = tr("sys_unknown")
+            
+        self.lbl_key_os.setText(f"<b>{tr('sysinfo_os')}</b>")
+        self.lbl_val_os.setText(os_info)
+        self.lbl_key_pc_name.setText(f"<b>{tr('sysinfo_pc_name')}</b>")
+        self.lbl_val_pc_name.setText(pc_name)
+        self.lbl_key_user.setText(f"<b>{tr('sysinfo_user')}</b>")
+        self.lbl_val_user.setText(current_user)
+        self.lbl_key_ip.setText(f"<b>{tr('sysinfo_ip')}</b>")
+        self.lbl_val_ip.setText(ip_addr)
+        self.lbl_key_ram.setText(f"<b>{tr('sysinfo_ram')}</b>")
+        self.lbl_val_ram.setText(get_ram_info())
+        
+        # About Updates
         self.lbl_about_title.setText(f"<b>{tr('app_title')}</b>")
+        self.lbl_about_version.setText(f"{tr('about_version')} 2.1.0 • WinUI Edition Pro")
+        self.lbl_about_desc.setText(tr("about_desc"))
+        self.lbl_about_modules.setText(f"<b>{tr('about_modules')}</b> PyQt6, pywin32, qtawesome, ctypes.")
+        
+        link_style = f"color: {self.config.get('primary_color', '#60CDFF')}; text-decoration: none; font-weight: bold;"
+        def format_link(text):
+            return f'<a href="https://github.com/" style="{link_style}"><span style="text-decoration: underline;">{text}</span></a>'
+            
+        self.lbl_about_repo.setText(format_link(tr("about_repo")))
+        self.lbl_about_docs.setText(format_link(tr("about_docs")))
+        self.lbl_about_web.setText(format_link(tr("about_web")))
+        
+        self.btn_about_update.setText(tr("about_check_updates"))
+
         self.update_status(tr("msg_ready"))
 
         self.update_global_right_panel()
@@ -2480,9 +2643,9 @@ class PrinterManagerApp(QMainWindow):
         )
         if self.workers_completed >= self.workers_total:
             TaskLogger.log(
-                "Sincronização",
+                tr("task_sync"),
                 "status_ok",
-                "Todos",
+                tr("target_all"),
                 end_time=datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
             )
             self.populate_disp_tree()
@@ -2652,10 +2815,10 @@ class PrinterManagerApp(QMainWindow):
                                 p["status_code"],
                             ]
                         )
-                TaskLogger.log("Exportar CSV", "status_ok", "Dados de Dispositivos")
+                TaskLogger.log(tr("task_export_csv"), "status_ok", tr("target_dev_data"))
                 QMessageBox.information(self, tr("msg_success"), tr("msg_success"))
             except Exception as e:
-                TaskLogger.log("Exportar CSV", "status_err", str(e))
+                TaskLogger.log(tr("task_export_csv"), "status_err", str(e))
 
     def export_logs_csv(self):
         if not TaskLogger.logs:
@@ -2691,7 +2854,7 @@ class PrinterManagerApp(QMainWindow):
         added_names = set()
         for p in self.all_printers_data:
             if p["server"] == "Local" or not p["is_network"]:
-                t_conn = "Rede" if p["is_network"] else "Local"
+                t_conn = tr("conn_network") if p["is_network"] else tr("conn_local")
                 if self.current_inst_filter:
                     ftype = self.current_inst_filter["type"]
                     fval = self.current_inst_filter["val"]
@@ -2750,7 +2913,7 @@ class PrinterManagerApp(QMainWindow):
         self.table_drivers.setSortingEnabled(False)
         self.table_drivers.setRowCount(0)
         self.show_progress(True)
-        self.update_status("Carregando drivers...")
+        self.update_status(tr("msg_loading_drivers"))
         self.driver_worker = DriverWorker()
         self.driver_worker.signals.result.connect(self.on_drivers_fetched)
         self.threadpool.start(self.driver_worker)
@@ -2848,7 +3011,7 @@ class PrinterManagerApp(QMainWindow):
         path = item.data(Qt.ItemDataRole.UserRole)
         
         if path == "DEFAULT_GUIDE":
-            QMessageBox.warning(self, tr("msg_warning"), "O manual padrão não pode ser removido.")
+            QMessageBox.warning(self, tr("msg_warning"), tr("msg_guide_no_rem"))
             return
             
         pdfs = self.config.get("custom_pdfs", [])
@@ -2869,12 +3032,8 @@ class PrinterManagerApp(QMainWindow):
         path = item.data(Qt.ItemDataRole.UserRole)
         if path == "DEFAULT_GUIDE":
             msg = QMessageBox(self)
-            msg.setWindowTitle(tr("default_guide_name"))
-            msg.setText("<b>Bem-vindo ao Printer App</b><br><br>"
-                        "<b>1. Sincronizar:</b> Utilize o botão sincronizar para varrer a rede e máquina local.<br>"
-                        "<b>2. Instalação:</b> Selecione as impressoras desejadas na tabela e clique em 'Instalar'.<br>"
-                        "<b>3. Contexto:</b> Clique com o botão direito nas impressoras para ver opções avançadas.<br>"
-                        "<b>4. Configurações:</b> Adicione ou remova servidores de impressão para gerir matriz e filiais.<br>")
+            msg.setWindowTitle(tr("guide_welcome_title"))
+            msg.setText(tr("guide_welcome_text"))
             msg.setIcon(QMessageBox.Icon.Information)
             msg.exec()
             return
@@ -2882,7 +3041,7 @@ class PrinterManagerApp(QMainWindow):
         if os.path.exists(path):
             QDesktopServices.openUrl(QUrl.fromLocalFile(path))
         else:
-            QMessageBox.warning(self, tr("msg_error"), "O arquivo PDF não foi encontrado.")
+            QMessageBox.warning(self, tr("msg_error"), tr("msg_pdf_not_found"))
             self.remove_custom_pdf() # Remove arquivo orfão da lista
 
     def refresh_settings_servers_table(self):
@@ -2958,9 +3117,9 @@ class PrinterManagerApp(QMainWindow):
                 self.refresh_settings_servers_table()
 
     def test_single_server(self, host):
-        self.update_status(f"Testando {host}...")
+        self.update_status(f"{tr('msg_testing')} {host}")
         self.show_progress(True)
-        self.update_progress(0, 1, f"Testando {host}...")
+        self.update_progress(0, 1, f"{tr('msg_testing')} {host}")
         servers_temp = [s for s in self.config.get("servers", []) if s["name"] == host]
         if not servers_temp:
             return
@@ -2979,13 +3138,13 @@ class PrinterManagerApp(QMainWindow):
         self.config["servers"] = servers
         self.refresh_settings_servers_table()
         if "Offline" in server_obj.get("status", "") or err:
-            self.update_status(f"{host} inacessível")
-            TaskLogger.log("Teste de Conexão", "status_err", host)
+            self.update_status(tr("msg_conn_failed").format(host=host))
+            TaskLogger.log(tr("task_conn_test"), "status_err", host)
         else:
             self.update_status(
-                f"{host} conectado ({len(printers)} dispositivos)"
+                tr("msg_conn_success").format(host=host, count=len(printers))
             )
-            TaskLogger.log("Teste de Conexão", "status_ok", host)
+            TaskLogger.log(tr("task_conn_test"), "status_ok", host)
 
     def save_settings(self):
         self.config["theme"] = self.cfg_theme.currentData()
@@ -3006,7 +3165,7 @@ class PrinterManagerApp(QMainWindow):
             else self.config["language"]
         )
         ConfigManager.save(self.config)
-        TaskLogger.log("Configurações", "status_ok", "Sistema")
+        TaskLogger.log(tr("task_settings"), "status_ok", tr("target_sys"))
         self.update_timer_settings()
         self.apply_fluent_theme()
         self.retranslate_ui()
@@ -3080,17 +3239,17 @@ class PrinterManagerApp(QMainWindow):
 
         if successes:
             TaskLogger.log(
-                "Instalação",
+                tr("task_install"),
                 "status_ok",
-                f"{len(successes)} Dispositivos",
+                f"{len(successes)} {tr('target_devices')}",
                 start_time=start_time,
                 end_time=datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
             )
         if errors:
             TaskLogger.log(
-                "Instalação",
+                tr("task_install"),
                 "status_err",
-                f"{len(errors)} Dispositivos",
+                f"{len(errors)} {tr('target_devices')}",
                 start_time=start_time,
                 end_time=datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
             )
@@ -3105,16 +3264,13 @@ class PrinterManagerApp(QMainWindow):
             QMessageBox.warning(
                 self,
                 tr("msg_error"),
-                "Falha ao instalar as impressoras:\n\n" + "\n".join(errors),
+                tr("msg_install_fail").format(errors="\n".join(errors)),
             )
         elif successes and errors:
             QMessageBox.warning(
                 self,
                 tr("msg_warning"),
-                "Instalação concluída com ressalvas.\n\nSucesso:\n"
-                + "\n".join(successes)
-                + "\n\nFalhas:\n"
-                + "\n".join(errors),
+                tr("msg_install_partial").format(successes="\n".join(successes), errors="\n".join(errors)),
             )
 
         self.refresh_all_data()
@@ -3141,7 +3297,7 @@ class PrinterManagerApp(QMainWindow):
                     pass
                 count += 1
         if count > 0:
-            TaskLogger.log("Teste de Impressão", "status_ok", f"{count} Dispositivos")
+            TaskLogger.log(tr("task_print_test"), "status_ok", f"{count} {tr('target_devices')}")
             msg = tr("msg_test_batch_success").replace("{count}", str(count))
             QMessageBox.information(self, tr("msg_success"), msg)
 
@@ -3161,7 +3317,7 @@ class PrinterManagerApp(QMainWindow):
                 self.purge_printer_silent(raw_name)
                 count += 1
         if count > 0:
-            TaskLogger.log("Limpar Filas", "status_ok", f"{count} Dispositivos")
+            TaskLogger.log(tr("task_purge_queues"), "status_ok", f"{count} {tr('target_devices')}")
             msg = tr("msg_purge_batch_success").replace("{count}", str(count))
             QMessageBox.information(self, tr("msg_success"), msg)
             self.refresh_all_data()
@@ -3199,9 +3355,9 @@ class PrinterManagerApp(QMainWindow):
                 
         if count > 0:
             TaskLogger.log(
-                "Remoção",
+                tr("task_remove"),
                 "status_ok",
-                f"{count} Dispositivos",
+                f"{count} {tr('target_devices')}",
                 start_time=start_time,
                 end_time=datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
             )
@@ -3236,7 +3392,7 @@ class PrinterManagerApp(QMainWindow):
                 end_time=datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
             )
             QMessageBox.information(
-                self, tr("msg_success"), f"{printer_name} reinstalada com sucesso!"
+                self, tr("msg_success"), tr("msg_success")
             )
             self.refresh_all_data()
         except Exception as e:
@@ -3271,7 +3427,7 @@ class PrinterManagerApp(QMainWindow):
                 QMessageBox.information(
                     self,
                     tr("msg_success"),
-                    "Ícone personalizado copiado e aplicado com sucesso.",
+                    tr("msg_icon_copied"),
                 )
             except Exception as e:
                 QMessageBox.warning(self, tr("msg_error"), f"Erro ao copiar ícone: {e}")
@@ -3380,7 +3536,7 @@ class PrinterManagerApp(QMainWindow):
                     shell=True,
                 )
             except Exception as e:
-                TaskLogger.log("Propriedades", "status_err", str(e))
+                TaskLogger.log(tr("ctx_props"), "status_err", str(e))
 
     def print_test_page_single(self, printer_name):
         start_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
@@ -3389,7 +3545,7 @@ class PrinterManagerApp(QMainWindow):
                 f'rundll32 printui.dll,PrintUIEntry /k /n "{printer_name}"', shell=True
             )
             TaskLogger.log(
-                "Teste",
+                tr("task_test"),
                 "status_ok",
                 printer_name,
                 start_time=start_time,
@@ -3397,7 +3553,7 @@ class PrinterManagerApp(QMainWindow):
             )
         except Exception as e:
             TaskLogger.log(
-                "Teste",
+                tr("task_test"),
                 "status_err",
                 printer_name,
                 start_time=start_time,
@@ -3412,14 +3568,14 @@ class PrinterManagerApp(QMainWindow):
             win32print.SetPrinter(handle, 0, None, win32print.PRINTER_CONTROL_PURGE)
             win32print.ClosePrinter(handle)
             TaskLogger.log(
-                "Limpar Fila", "status_ok", printer_name, start_time=start_time
+                tr("task_purge_queue"), "status_ok", printer_name, start_time=start_time
             )
             QMessageBox.information(
-                self, tr("msg_success"), f"Fila de '{printer_name}' limpa."
+                self, tr("msg_success"), tr("msg_success")
             )
         except Exception as e:
             TaskLogger.log(
-                "Limpar Fila", "status_err", printer_name, start_time=start_time
+                tr("task_purge_queue"), "status_err", printer_name, start_time=start_time
             )
             QMessageBox.warning(self, tr("msg_error"), f"Erro: {e}")
 
@@ -3440,12 +3596,12 @@ class PrinterManagerApp(QMainWindow):
             try:
                 win32print.AddPrinterConnection(text)
                 TaskLogger.log(
-                    "Instalação", "status_ok", text, start_time=start_time
+                    tr("task_install"), "status_ok", text, start_time=start_time
                 )
                 self.refresh_all_data()
             except Exception as e:
                 TaskLogger.log(
-                    "Instalação", "status_err", text, start_time=start_time
+                    tr("task_install"), "status_err", text, start_time=start_time
                 )
 
     def remove_printer_single(self, printer_name):
@@ -3460,7 +3616,7 @@ class PrinterManagerApp(QMainWindow):
             try:
                 win32print.DeletePrinterConnection(printer_name)
                 TaskLogger.log(
-                    "Remover", "status_ok", printer_name, start_time=start_time
+                    tr("task_remove_single"), "status_ok", printer_name, start_time=start_time
                 )
                 self.refresh_all_data()
             except Exception as e:
@@ -3470,7 +3626,7 @@ class PrinterManagerApp(QMainWindow):
                     win32print.DeletePrinter(handle)
                     win32print.ClosePrinter(handle)
                     TaskLogger.log(
-                        "Remover",
+                        tr("task_remove_single"),
                         "status_ok",
                         printer_name,
                         start_time=start_time,
@@ -3478,7 +3634,7 @@ class PrinterManagerApp(QMainWindow):
                     self.refresh_all_data()
                 except Exception as e2:
                     TaskLogger.log(
-                        "Remover",
+                        tr("task_remove_single"),
                         "status_err",
                         printer_name,
                         start_time=start_time,
@@ -3503,7 +3659,7 @@ class PrinterManagerApp(QMainWindow):
         if reply == QMessageBox.StandardButton.Yes:
             start_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
             TaskLogger.log(
-                "Reparar Spooler", "status_run", "Sistema", start_time=start_time
+                tr("task_repair_spooler"), "status_run", tr("target_sys"), start_time=start_time
             )
             cmds = [
                 "net stop spooler",
@@ -3517,14 +3673,13 @@ class PrinterManagerApp(QMainWindow):
                     creationflags=subprocess.CREATE_NO_WINDOW,
                 )
                 TaskLogger.log(
-                    "Reparar Spooler", "status_ok", "Sistema", start_time=start_time
+                    tr("task_repair_spooler"), "status_ok", tr("target_sys"), start_time=start_time
                 )
                 self.refresh_all_data()
             except Exception as e:
                 TaskLogger.log(
-                    "Reparar Spooler", "status_err", "Sistema", start_time=start_time
+                    tr("task_repair_spooler"), "status_err", tr("target_sys"), start_time=start_time
                 )
-
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
