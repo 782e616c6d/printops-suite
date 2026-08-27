@@ -212,8 +212,8 @@ TRANSLATIONS = {
         "conn_network": "Rede",
         "conn_local": "Local",
         "msg_verifying": "A verificar...",
-        "guide_welcome_title": "Bem-vindo ao Printer App",
-        "guide_welcome_text": "<b>1. Sincronizar:</b> Utilize o botão sincronizar para varrer a rede e máquina local.<br><b>2. Instalação:</b> Selecione as impressoras desejadas na tabela e clique em 'Instalar'.<br><b>3. Contexto:</b> Clique com o botão direito nas impressoras para ver opções avançadas.<br><b>4. Configurações:</b> Adicione ou remova servidores de impressão para gerir matriz e filiais.<br>",
+        "guide_welcome_title": "Guia de Abas do Printer App",
+        "guide_welcome_text": "<b>1. Dispositivos de Rede:</b> Gerencie impressoras corporativas e mapeadas.<br><b>2. Dispositivos Instalados:</b> Impressoras conectadas diretamente na sua máquina.<br><b>3. Drivers do Sistema:</b> Visualize os pacotes de drivers instalados.<br><b>4. Logs e Tarefas:</b> Acompanhe o histórico de ações e erros.<br><b>5. Info. do Sistema:</b> Verifique dados de rede, IP e hardware.<br><b>6. Guias e Manuais:</b> Central de documentações e manuais.",
         "sysinfo_os": "Sistema Operacional:",
         "sysinfo_pc_name": "Nome do Computador:",
         "sysinfo_user": "Usuário Atual:",
@@ -254,6 +254,11 @@ TRANSLATIONS = {
         "msg_icon_copied": "Ícone personalizado copiado e aplicado com sucesso.",
         "msg_install_partial": "Instalação concluída com ressalvas.\n\nSucesso:\n{successes}\n\nFalhas:\n{errors}",
         "msg_install_fail": "Falha ao instalar as impressoras:\n\n{errors}",
+        "msg_processing": "Processando {completed}/{total}",
+        "msg_no_data_export": "Sem dados para exportar.",
+        "msg_queue_purged_single": "Fila de '{printer}' limpa.",
+        "msg_reinstall_success": "{printer} reinstalada com sucesso!",
+        "msg_remove_single_confirm": "Deseja remover a conexão selecionada?",
     },
     "en": {
         "app_title": "Printer App",
@@ -395,8 +400,8 @@ TRANSLATIONS = {
         "conn_network": "Network",
         "conn_local": "Local",
         "msg_verifying": "Verifying...",
-        "guide_welcome_title": "Welcome to Printer App",
-        "guide_welcome_text": "<b>1. Sync:</b> Use the sync button to scan network and local machine.<br><b>2. Install:</b> Select the desired printers in the table and click 'Install'.<br><b>3. Context Menu:</b> Right-click on printers for advanced options.<br><b>4. Settings:</b> Add or remove print servers to manage headquarters and branches.<br>",
+        "guide_welcome_title": "Printer App Tabs Guide",
+        "guide_welcome_text": "<b>1. Network Devices:</b> Manage mapped and corporate printers.<br><b>2. Installed Devices:</b> Printers physically connected to your machine.<br><b>3. System Drivers:</b> View installed driver packages.<br><b>4. Logs & Tasks:</b> Track the history of actions and errors.<br><b>5. System Info:</b> Check network, IP, and hardware data.<br><b>6. Guides & Manuals:</b> Documentation and manual center.",
         "sysinfo_os": "Operating System:",
         "sysinfo_pc_name": "Computer Name:",
         "sysinfo_user": "Current User:",
@@ -437,6 +442,11 @@ TRANSLATIONS = {
         "msg_icon_copied": "Custom icon copied and applied successfully.",
         "msg_install_partial": "Installation completed with warnings.\n\nSuccess:\n{successes}\n\nFailures:\n{errors}",
         "msg_install_fail": "Failed to install printers:\n\n{errors}",
+        "msg_processing": "Processing {completed}/{total}",
+        "msg_no_data_export": "No data to export.",
+        "msg_queue_purged_single": "Queue for '{printer}' purged.",
+        "msg_reinstall_success": "{printer} reinstalled successfully!",
+        "msg_remove_single_confirm": "Do you want to remove the selected connection?",
     },
     "es": {
         "app_title": "Printer App",
@@ -578,8 +588,8 @@ TRANSLATIONS = {
         "conn_network": "Red",
         "conn_local": "Local",
         "msg_verifying": "Verificando...",
-        "guide_welcome_title": "Bienvenido a Printer App",
-        "guide_welcome_text": "<b>1. Sincronizar:</b> Utilice el botón de sincronización para escanear la red y máquina local.<br><b>2. Instalar:</b> Seleccione las impresoras deseadas en la tabla y haga clic en 'Instalar'.<br><b>3. Contexto:</b> Haga clic derecho en las impresoras para ver opciones avanzadas.<br><b>4. Configuración:</b> Añada o elimine servidores de impresión para gestionar sede y sucursales.<br>",
+        "guide_welcome_title": "Guía de Pestañas de Printer App",
+        "guide_welcome_text": "<b>1. Dispositivos de Red:</b> Gestiona impresoras mapeadas y corporativas.<br><b>2. Dispositivos Instalados:</b> Impresoras conectadas directamente a su máquina.<br><b>3. Controladores:</b> Visualice los paquetes de controladores instalados.<br><b>4. Registros y Tareas:</b> Siga el historial de acciones y errores.<br><b>5. Info. del Sistema:</b> Verifique datos de red, IP y hardware.<br><b>6. Guías y Manuales:</b> Centro de documentación y manuales.",
         "sysinfo_os": "Sistema Operativo:",
         "sysinfo_pc_name": "Nombre del Equipo:",
         "sysinfo_user": "Usuario Actual:",
@@ -620,6 +630,11 @@ TRANSLATIONS = {
         "msg_icon_copied": "Icono personalizado copiado y aplicado con éxito.",
         "msg_install_partial": "Instalación completada con advertencias.\n\nÉxito:\n{successes}\n\nFallos:\n{errors}",
         "msg_install_fail": "Fallo al instalar las impresoras:\n\n{errors}",
+        "msg_processing": "Procesando {completed}/{total}",
+        "msg_no_data_export": "No hay datos para exportar.",
+        "msg_queue_purged_single": "Cola de '{printer}' limpia.",
+        "msg_reinstall_success": "¡{printer} reinstalada con éxito!",
+        "msg_remove_single_confirm": "¿Desea quitar la conexión seleccionada?",
     },
 }
 
@@ -643,44 +658,46 @@ def tr(key):
 
 
 def get_manufacturer(driver_name):
-    if not driver_name or driver_name == "Desconhecido":
-        return "Desconhecido"
+    if not driver_name or driver_name == "Desconhecido" or driver_name == tr("sys_unknown"):
+        return tr("sys_unknown")
+
     name_upper = driver_name.upper()
-    if "XEROX" in name_upper:
-        return "Xerox"
-    if "MICROSOFT" in name_upper or "SEND TO MICROSOFT" in name_upper:
-        return "Microsoft"
-    if "HP " in name_upper or "DESIGNJET" in name_upper or "LASERJET" in name_upper:
-        return "HP"
-    if "BROTHER" in name_upper:
-        return "Brother"
-    if "RICOH" in name_upper:
-        return "Ricoh"
-    if "KONICA" in name_upper:
-        return "KONICA MINOLTA"
-    if "KYOCERA" in name_upper:
-        return "Kyocera"
-    if "EPSON" in name_upper:
-        return "Epson"
-    if "ZDESIGNER" in name_upper:
-        return "ZDesigner"
-    if "TSC " in name_upper:
-        return "TSC"
-    if "LEXMARK" in name_upper:
-        return "Lexmark"
-    if "CANON" in name_upper:
-        return "Canon"
-    if "SAMSUNG" in name_upper:
-        return "Samsung"
-    if "NITRO" in name_upper:
-        return "Nitro"
-    if "ONENOTE" in name_upper:
-        return "Microsoft"
+
+    # Mapeamento avançado para identificação de fabricantes
+    manufacturer_map = {
+        "Kyocera": ["KYOCERA", "KX ", "KX(", "KX DRIVER", "FS-", "ECOSYS", "TASKALFA", " CS "],
+        "Fuji Xerox": ["FUJI XEROX", "FX ", "APEOSPORT", "DOCUPRINT"],
+        "Konica Minolta": ["KONICA", "BIZHUB", "MINOLTA", "ACCURIOPRINT", "C308", "C368", "C258"],
+        "Ricoh": ["RICOH", "AFICIO", "IM C", "MP C"],
+        "Xerox": ["XEROX", "PHASER", "VERSALINK", "ALTALINK", "WORKCENTRE"],
+        "HP": ["HP ", "HEWLETT-PACKARD", "DESKJET", "LASERJET", "OFFICEJET", "DESIGNJET", "HP UNIVERSAL"],
+        "Brother": ["BROTHER", "HL-", "MFC-", "DCP-"],
+        "Epson": ["EPSON", "STYLUS", "ECOTANK", "WORKFORCE"],
+        "Canon": ["CANON", "PIXMA", "IMAGECLASS", "IMAGERUNNER", "IMAGEPROGRAF"],
+        "Lexmark": ["LEXMARK", "OPTRA"],
+        "Samsung": ["SAMSUNG", "XPRESS", "PROXPRESS", "MULTIXPRESS"],
+        "Zebra": ["ZEBRA", "ZDESIGNER", "ZPL", "EPL"],
+        "Microsoft": ["MICROSOFT", "ONENOTE", "XPS", "PDF", "FAX", "SEND TO"],
+        "TSC": ["TSC "],
+        "Nitro": ["NITRO"],
+        "Foxit": ["FOXIT"],
+        "Adobe": ["ADOBE"]
+    }
+
+    for manufacturer, keywords in manufacturer_map.items():
+        if any(keyword in name_upper for keyword in keywords):
+            return manufacturer
 
     parts = str(driver_name).split()
     if parts:
+        first_word = parts[0].upper()
+        if first_word == "KX":
+            return "Kyocera"
+        if first_word == "FX":
+            return "Fuji Xerox"
         return parts[0]
-    return "Desconhecido"
+        
+    return tr("sys_unknown")
 
 
 # ================= UTILS E GESTÃO =================
@@ -2639,7 +2656,7 @@ class PrinterManagerApp(QMainWindow):
         self.update_progress(
             self.workers_completed,
             self.workers_total,
-            f"Processando {self.workers_completed}/{self.workers_total}",
+            tr("msg_processing").format(completed=self.workers_completed, total=self.workers_total),
         )
         if self.workers_completed >= self.workers_total:
             TaskLogger.log(
@@ -2721,15 +2738,21 @@ class PrinterManagerApp(QMainWindow):
                 continue
             status_lbl, st_type = self.create_status_badge(p["status_code"])
 
+            # Aplicação dos filtros do ComboBox (Status e Server)
+            if f_status and f_status != "all" and f_status != st_type:
+                continue
+            if f_server and f_server != "all" and p["server"] != f_server:
+                continue
+
             if self.current_disp_filter:
                 ftype = self.current_disp_filter["type"]
                 fval = self.current_disp_filter["val"]
                 if ftype == "status":
-                    if fval == "Online" and st_type != "ok":
+                    if fval == tr("filter_online") and st_type != "ok":
                         continue
-                    if fval == "Offline" and st_type != "off":
+                    if fval == tr("filter_offline") and st_type != "off":
                         continue
-                    if fval == "Atenção" and st_type != "warn":
+                    if fval == tr("filter_warn") and st_type != "warn":
                         continue
                 elif ftype == "server" and p["server"] != fval:
                     continue
@@ -2787,7 +2810,7 @@ class PrinterManagerApp(QMainWindow):
 
     def export_csv(self):
         if not self.all_printers_data:
-            QMessageBox.warning(self, tr("msg_error"), "Sem dados para exportar.")
+            QMessageBox.warning(self, tr("msg_error"), tr("msg_no_data_export"))
             return
         path, _ = QFileDialog.getSaveFileName(
             self, tr("card_export"), "", "CSV Files (*.csv)"
@@ -3033,6 +3056,7 @@ class PrinterManagerApp(QMainWindow):
         if path == "DEFAULT_GUIDE":
             msg = QMessageBox(self)
             msg.setWindowTitle(tr("guide_welcome_title"))
+            msg.setTextFormat(Qt.TextFormat.RichText)
             msg.setText(tr("guide_welcome_text"))
             msg.setIcon(QMessageBox.Icon.Information)
             msg.exec()
@@ -3571,7 +3595,7 @@ class PrinterManagerApp(QMainWindow):
                 tr("task_purge_queue"), "status_ok", printer_name, start_time=start_time
             )
             QMessageBox.information(
-                self, tr("msg_success"), tr("msg_success")
+                self, tr("msg_success"), tr("msg_queue_purged_single").format(printer=printer_name)
             )
         except Exception as e:
             TaskLogger.log(
@@ -3608,18 +3632,28 @@ class PrinterManagerApp(QMainWindow):
         reply = QMessageBox.question(
             self,
             tr("msg_warning"),
-            tr("msg_remove_batch_confirm").replace("{count}", "esta"),
+            tr("msg_remove_single_confirm"),
             QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
         )
         if reply == QMessageBox.StandardButton.Yes:
             start_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-            try:
-                win32print.DeletePrinterConnection(printer_name)
-                TaskLogger.log(
-                    tr("task_remove_single"), "status_ok", printer_name, start_time=start_time
-                )
-                self.refresh_all_data()
-            except Exception as e:
+    def reinstall_printer(self, printer_name):
+        start_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+        try:
+            win32print.DeletePrinterConnection(printer_name)
+            win32print.AddPrinterConnection(printer_name)
+            TaskLogger.log(
+                tr("ctx_reinstall"),
+                "status_ok",
+                printer_name,
+                start_time=start_time,
+                end_time=datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+            )
+            QMessageBox.information(
+                self, tr("msg_success"), tr("msg_reinstall_success").format(printer=printer_name)
+            )
+            self.refresh_all_data()
+        except Exception as e:
                 try:
                     defaults = {"DesiredAccess": win32print.PRINTER_ALL_ACCESS}
                     handle = win32print.OpenPrinter(printer_name, defaults)
