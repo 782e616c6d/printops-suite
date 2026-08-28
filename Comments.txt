@@ -1,1 +1,0 @@
-Criar .msi com o printer_app_config.json e printer_app.exe, além defotos e outros componentes necessários para o app funcionar.
