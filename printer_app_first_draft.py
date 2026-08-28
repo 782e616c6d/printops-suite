@@ -6,6 +6,7 @@ import winreg
 import csv
 import socket
 import platform
+import pywintypes
 import ctypes
 import shutil
 from datetime import datetime
