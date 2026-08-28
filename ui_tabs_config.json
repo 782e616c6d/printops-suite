@@ -1,0 +1,10 @@
+{
+    "nav_devices": "visible",
+    "nav_local": "visible",
+    "nav_drivers": "visible",
+    "nav_tasks": "visible",
+    "nav_sysinfo": "visible",
+    "nav_guides": "visible",
+    "nav_settings": "visible",
+    "nav_about": "visible"
+}
