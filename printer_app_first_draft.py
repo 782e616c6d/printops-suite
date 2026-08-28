@@ -372,7 +372,7 @@ TRANSLATIONS = {
         "btn_batch_purge": "Purge Queues",
         "btn_batch_remove": "Uninstall",
         "btn_web_interface": "Web Interface",
-        "btn_properties": "Details & Properties",
+        "btn_properties": "Details and Properties",
         "btn_export_csv": "Export to CSV",
         "btn_add_pdf": "Attach PDF",
         "btn_open_pdf": "Open Selected",
