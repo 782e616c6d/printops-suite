@@ -666,7 +666,7 @@ def get_manufacturer(driver_name):
     # Mapeamento avançado e exaustivo para identificação de fabricantes
     manufacturer_map = {
         "Kyocera": ["KYOCERA", "KX ", "KX(", "KX DRIVER", "FS-", "ECOSYS", "TASKALFA", " CS "],
-        "FujiFilm / Fuji Xerox": ["FUJI XEROX", "FUJIFILM", "FX ", "APEOSPORT", "DOCUPRINT"],
+        "FujiFilm / Fuji Xerox": ["FUJI XEROX", "FUJIFILM", "FF", "FX ", "APEOSPORT", "DOCUPRINT"],
         "Konica Minolta": ["KONICA", "BIZHUB", "MINOLTA", "ACCURIOPRINT", "C308", "C368", "C258", "MAGICOLOR", "PAGEPRO"],
         "Ricoh": ["RICOH", "AFICIO", "IM C", "MP C", "LANIER", "SAVIN", "GESTETNER", " MP "],
         "Xerox": ["XEROX", "PHASER", "VERSALINK", "ALTALINK", "WORKCENTRE", "DOCUCENTRE", "B210", "B225", "B230"],
