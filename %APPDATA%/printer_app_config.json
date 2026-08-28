@@ -1,0 +1,11 @@
+{
+    "theme": "theme_system",
+    "primary_color": "#60CDFF",
+    "font_family": "Segoe UI",
+    "font_size": 10,
+    "language": "lang_sys",
+    "auto_refresh": 0,
+    "app_icon_type": "custom",
+    "app_icon_val": "C:\\Users\\AppData\\Roaming\\PrinterApp\\icons\\Logo_Default.png",
+    "custom_pdfs": []
+}
