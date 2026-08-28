@@ -663,20 +663,30 @@ def get_manufacturer(driver_name):
 
     name_upper = driver_name.upper()
 
-    # Mapeamento avançado para identificação de fabricantes
+    # Mapeamento avançado e exaustivo para identificação de fabricantes
     manufacturer_map = {
         "Kyocera": ["KYOCERA", "KX ", "KX(", "KX DRIVER", "FS-", "ECOSYS", "TASKALFA", " CS "],
-        "Fuji Xerox": ["FUJI XEROX", "FX ", "APEOSPORT", "DOCUPRINT"],
-        "Konica Minolta": ["KONICA", "BIZHUB", "MINOLTA", "ACCURIOPRINT", "C308", "C368", "C258"],
-        "Ricoh": ["RICOH", "AFICIO", "IM C", "MP C"],
-        "Xerox": ["XEROX", "PHASER", "VERSALINK", "ALTALINK", "WORKCENTRE"],
-        "HP": ["HP ", "HEWLETT-PACKARD", "DESKJET", "LASERJET", "OFFICEJET", "DESIGNJET", "HP UNIVERSAL"],
-        "Brother": ["BROTHER", "HL-", "MFC-", "DCP-"],
-        "Epson": ["EPSON", "STYLUS", "ECOTANK", "WORKFORCE"],
-        "Canon": ["CANON", "PIXMA", "IMAGECLASS", "IMAGERUNNER", "IMAGEPROGRAF"],
-        "Lexmark": ["LEXMARK", "OPTRA"],
-        "Samsung": ["SAMSUNG", "XPRESS", "PROXPRESS", "MULTIXPRESS"],
-        "Zebra": ["ZEBRA", "ZDESIGNER", "ZPL", "EPL"],
+        "FujiFilm / Fuji Xerox": ["FUJI XEROX", "FUJIFILM", "FX ", "APEOSPORT", "DOCUPRINT"],
+        "Konica Minolta": ["KONICA", "BIZHUB", "MINOLTA", "ACCURIOPRINT", "C308", "C368", "C258", "MAGICOLOR", "PAGEPRO"],
+        "Ricoh": ["RICOH", "AFICIO", "IM C", "MP C", "LANIER", "SAVIN", "GESTETNER", " MP "],
+        "Xerox": ["XEROX", "PHASER", "VERSALINK", "ALTALINK", "WORKCENTRE", "DOCUCENTRE", "B210", "B225", "B230"],
+        "HP": ["HP ", "HEWLETT-PACKARD", "HEWLETT PACKARD", "DESKJET", "LASERJET", "OFFICEJET", "DESIGNJET", "PAGEWIDE", "HP UNIVERSAL"],
+        "Brother": ["BROTHER", "HL-", "MFC-", "DCP-", "QL-", "PT-"],
+        "Epson": ["EPSON", "STYLUS", "ECOTANK", "WORKFORCE", "TM-", "SURECOLOR", "L1", "L3", "L4", "L5", "L8"],
+        "Canon": ["CANON", "PIXMA", "IMAGECLASS", "IMAGERUNNER", "IMAGEPROGRAF", "LBP", "MAXIFY", "MF ", "IR "],
+        "Lexmark": ["LEXMARK", "OPTRA", " CS", " CX", " MS", " MX"],
+        "Samsung": ["SAMSUNG", "XPRESS", "PROXPRESS", "MULTIXPRESS", "ML-", "SCX-", "CLP-", "CLX-"],
+        "Zebra": ["ZEBRA", "ZDESIGNER", "ZPL", "EPL", "GK420", "ZT230", "GX420"],
+        "Toshiba": ["TOSHIBA", "E-STUDIO", "ESTUDIO"],
+        "Sharp": ["SHARP", "MX-", "AR-", "AL-"],
+        "Oki": ["OKI", "OKIDATA", "MICROLINE", "C-SERIES", "B-SERIES"],
+        "Panasonic": ["PANASONIC", "KX-P", "KX-MB", "DP-"],
+        "Dell": ["DELL"],
+        "Pantum": ["PANTUM", "P2500", "M6500", "P2000", "M6000"],
+        "Dymo": ["DYMO", "LABELWRITER", "LABELMANAGER"],
+        "Star Micronics": ["STAR ", "TSP", "STAR MICRONICS"],
+        "Sato": ["SATO", "CG4", "CL4NX"],
+        "Datamax": ["DATAMAX", "O-NEIL"],
         "Microsoft": ["MICROSOFT", "ONENOTE", "XPS", "PDF", "FAX", "SEND TO"],
         "TSC": ["TSC "],
         "Nitro": ["NITRO"],
@@ -688,13 +698,14 @@ def get_manufacturer(driver_name):
         if any(keyword in name_upper for keyword in keywords):
             return manufacturer
 
+    # Fallback se não encontrar no dicionário
     parts = str(driver_name).split()
     if parts:
         first_word = parts[0].upper()
         if first_word == "KX":
             return "Kyocera"
         if first_word == "FX":
-            return "Fuji Xerox"
+            return "FujiFilm / Fuji Xerox"
         return parts[0]
         
     return tr("sys_unknown")
@@ -2668,8 +2679,10 @@ class PrinterManagerApp(QMainWindow):
             self.populate_disp_tree()
             self.populate_inst_tree()
             self.filter_table_view()
-            if self.stacked.currentIndex() == 1:
+            if self.stacked.currentIndex() == 2: # Old index was 1 for local
                 self.refresh_local_only()
+            elif self.stacked.currentIndex() == 0:
+                self.refresh_dashboard()
             self.update_progress(
                 self.workers_total, self.workers_total, tr("msg_ready")
             )
