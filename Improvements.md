@@ -13,6 +13,7 @@ Expansão das capacidades de descoberta de dispositivos (Discovery), permitindo 
 *   **Assincronicidade:** Implementação do scanner em *Background Threads* (QThreadPool) com barra de progresso real, garantindo que a interface não congele durante varreduras em ranges amplos.
 
 *   **Permitir refresh automático de scan, esta aba deve ser separada das impressoras mapeadas por servidor, já que podem haver redundância e talvez incompatibilidade.
+*   ** Aproveitar ao máximo esta funcionalidade para implementar e agregar o máximo de informações disponíveis possíveis sobre as impressoras.
 
 ## 🏗️ 2. Modularização da Arquitetura (Micro-Frontends / Módulos)
 Refatoração do código monolítico atual (onde todas as telas residem no arquivo principal) para uma arquitetura baseada em componentes acoplados via injeção de dependências ou *Signals/Slots* dinâmicos.
