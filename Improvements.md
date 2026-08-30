@@ -12,6 +12,8 @@ Expansão das capacidades de descoberta de dispositivos (Discovery), permitindo 
 *   **Consulta Direta (Single IP/Hostname):** Ferramenta de *ping/query* profundo para um IP individual, trazendo modelo, fabricante, MAC Address e status de suprimentos.
 *   **Assincronicidade:** Implementação do scanner em *Background Threads* (QThreadPool) com barra de progresso real, garantindo que a interface não congele durante varreduras em ranges amplos.
 
+*   **Permitir refresh automático de scan, esta aba deve ser separada das impressoras mapeadas por servidor, já que podem haver redundância e talvez incompatibilidade.
+
 ## 🏗️ 2. Modularização da Arquitetura (Micro-Frontends / Módulos)
 Refatoração do código monolítico atual (onde todas as telas residem no arquivo principal) para uma arquitetura baseada em componentes acoplados via injeção de dependências ou *Signals/Slots* dinâmicos.
 
