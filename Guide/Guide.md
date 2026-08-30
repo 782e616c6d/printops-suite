@@ -1,14 +1,39 @@
-About the .\Icons folder:
+# 🖥️ Application Directory and Configuration Guide
 
-The Icons folder exists in two locations: in the same directory as the application’s executable file, and within %APPDATA%. It is responsible for storing the icon(s) for the main application.
-The folder located in %APPDATA% is a backup copy of the original directory.
+---
 
-About the .\Documents folder:
+## 📁 Directory Structure
 
-The Documents folder is used to store user guides and other materials relevant to the application; items added to it can only be modified, removed, or added by OS administrators.
+### 🎨 The `.\Icons` Folder
 
-Regarding the “servers.json” configuration file:
 
+*Figure 1: Visual representation of the application's icon asset storage.*
+
+The `Icons` directory is responsible for storing application iconography and exists in two distinct locations:
+
+* **Application Directory:** Located in the same directory as the application’s executable file.
+* **APPDATA Directory:** Located within `%APPDATA%` acting as a backup copy of the original directory.
+
+---
+
+### 📄 The `.\Documents` Folder
+
+
+*Figure 2: Storage path for user guides and administrative resources.*
+
+Used to store user guides and other application-relevant materials.
+
+> **Administrative Notice:** Items added to this folder can only be modified, removed, or added by OS administrators.
+
+---
+
+## ⚙️ Configuration Files
+
+### 🖥️ `servers.json`
+
+Defines the server endpoints and status settings for the application infrastructure.
+
+```json
 [
     {
         "name": "Local",
@@ -26,8 +51,17 @@ Regarding the “servers.json” configuration file:
     }
 ]
 
-Regarding the “ui_tabs_config.json” configuration file:
+```
 
+*Figure 3: Sample schema for server definitions.*
+
+---
+
+### 🎛️ `ui_tabs_config.json`
+
+Controls the visibility and interactivity of the application's navigation tabs.
+
+```json
 {
     "nav_devices": "visible",
     "nav_local": "visible",
@@ -39,4 +73,14 @@ Regarding the “ui_tabs_config.json” configuration file:
     "nav_about": "visible"
 }
 
-Valid options for each key: “visible” (Visible and clickable), ‘disabled’ (Visible but disabled), or “hidden” (Completely hidden).
+```
+
+*Figure 4: User interface tab configuration settings.*
+
+#### **Valid Options for Key Values**
+
+| Option | Description |
+| --- | --- |
+| `"visible"` | Tab is visible and fully clickable. |
+| `"disabled"` | Tab is visible but disabled. |
+| `"hidden"` | Tab is completely hidden from the user interface. |
