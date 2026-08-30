@@ -72,7 +72,7 @@ except ImportError as e:
 # ================= SISTEMA DE IDIOMAS (i18n) =================
 TRANSLATIONS = {
     "pt": {
-        "app_title": "Printer App",
+        "app_title": "PrintOps",
         "nav_devices": "Dispositivos de Rede",
         "nav_local": "Dispositivos Instalados",
         "nav_drivers": "Drivers do Sistema",
@@ -203,7 +203,7 @@ TRANSLATIONS = {
         "ref_60s": "A cada 1 min",
         "ref_300s": "A cada 5 min",
         "default_guide_name": "⭐ Manual de Utilização da Aplicação",
-        "default_guide_desc": "Orientações padrão de uso do Printer App (Não removível)",
+        "default_guide_desc": "Orientações padrão de uso do PrintOps (Não removível)",
         "batch_actions": "Ações em lote",
         "filter_online": "Online",
         "filter_offline": "Offline",
@@ -211,7 +211,7 @@ TRANSLATIONS = {
         "conn_network": "Rede",
         "conn_local": "Local",
         "msg_verifying": "A verificar...",
-        "guide_welcome_title": "Guia de Abas do Printer App",
+        "guide_welcome_title": "Guia de Abas do PrintOps",
         "guide_welcome_text": "<b>1. Dispositivos de Rede:</b> Gerencie impressoras corporativas e mapeadas.<br><b>2. Dispositivos Instalados:</b> Impressoras conectadas diretamente na sua máquina.<br><b>3. Drivers do Sistema:</b> Visualize os pacotes de drivers instalados.<br><b>4. Logs e Tarefas:</b> Acompanhe o histórico de ações e erros.<br><b>5. Info. do Sistema:</b> Verifique dados de rede, IP e hardware.<br><b>6. Guias e Manuais:</b> Central de documentações e manuais.",
         "search_ph_devices": "Buscar dispositivos de rede...",
         "search_ph_local": "Buscar impressoras instaladas...",
@@ -291,7 +291,7 @@ TRANSLATIONS = {
         "msg_status_error": "Erro ao obter status."
     },
     "en": {
-        "app_title": "Printer App",
+        "app_title": "PrintOps",
         "nav_devices": "Network Devices",
         "nav_local": "Installed Devices",
         "nav_drivers": "System Drivers",
@@ -422,7 +422,7 @@ TRANSLATIONS = {
         "ref_60s": "Every 1 min",
         "ref_300s": "Every 5 min",
         "default_guide_name": "⭐ Application User Manual",
-        "default_guide_desc": "Standard usage guidelines for Printer App (Non-removable)",
+        "default_guide_desc": "Standard usage guidelines for PrintOps (Non-removable)",
         "batch_actions": "Batch Actions",
         "filter_online": "Online",
         "filter_offline": "Offline",
@@ -430,7 +430,7 @@ TRANSLATIONS = {
         "conn_network": "Network",
         "conn_local": "Local",
         "msg_verifying": "Verifying...",
-        "guide_welcome_title": "Printer App Tabs Guide",
+        "guide_welcome_title": "PrintOps Tabs Guide",
         "guide_welcome_text": "<b>1. Network Devices:</b> Manage mapped and corporate printers.<br><b>2. Installed Devices:</b> Printers physically connected to your machine.<br><b>3. System Drivers:</b> View installed driver packages.<br><b>4. Logs & Tasks:</b> Track the history of actions and errors.<br><b>5. System Info:</b> Check network, IP, and hardware data.<br><b>6. Guides & Manuals:</b> Documentation and manual center.",
         "search_ph_devices": "Search network devices...",
         "search_ph_local": "Search installed printers...",
@@ -510,7 +510,7 @@ TRANSLATIONS = {
         "msg_status_error": "Error getting status."
     },
     "es": {
-        "app_title": "Printer App",
+        "app_title": "PrintOps",
         "nav_devices": "Dispositivos de Red",
         "nav_local": "Dispositivos Instalados",
         "nav_drivers": "Controladores",
@@ -641,7 +641,7 @@ TRANSLATIONS = {
         "ref_60s": "Cada 1 min",
         "ref_300s": "Cada 5 min",
         "default_guide_name": "⭐ Manual de Usuario de la App",
-        "default_guide_desc": "Guías de uso estándar para Printer App (No removible)",
+        "default_guide_desc": "Guías de uso estándar para PrintOps (No removible)",
         "batch_actions": "Acciones en lote",
         "filter_online": "En línea",
         "filter_offline": "Desconectado",
@@ -649,7 +649,7 @@ TRANSLATIONS = {
         "conn_network": "Red",
         "conn_local": "Local",
         "msg_verifying": "Verificando...",
-        "guide_welcome_title": "Guía de Pestañas de Printer App",
+        "guide_welcome_title": "Guía de Pestañas de PrintOps",
         "guide_welcome_text": "<b>1. Dispositivos de Red:</b> Gestiona impresoras mapeadas y corporativas.<br><b>2. Dispositivos Instalados:</b> Impresoras conectadas directamente a su máquina.<br><b>3. Controladores:</b> Visualice los paquetes de controladores instalados.<br><b>4. Registros y Tareas:</b> Siga el historial de acciones y errores.<br><b>5. Info. del Sistema:</b> Verifique datos de red, IP y hardware.<br><b>6. Guías y Manuales:</b> Centro de documentación y manuales.",
         "search_ph_devices": "Buscar dispositivos de red...",
         "search_ph_local": "Buscar impresoras instaladas...",
@@ -729,7 +729,7 @@ TRANSLATIONS = {
         "msg_status_error": "Error al obtener estado."
     },
     "fr": {
-        "app_title": "Printer App",
+        "app_title": "PrintOps",
         "nav_devices": "Périphériques Réseau",
         "nav_local": "Périphériques Installés",
         "nav_drivers": "Pilotes du Système",
