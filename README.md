@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://img.icons8.com/color/120/000000/print.png" alt="Printer App Logo">
   <h1>🖨️ Printer App</h1>
-  <p><em>A professional Python and PyQt6 solution for centralized management of local and network printers in Windows environments.</em></p>
+  <p><em>Python solution for centralized management of local and network printers in Windows environments.</em></p>
   
   [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
   [![PyQt6](https://img.shields.io/badge/GUI-PyQt6-brightgreen.svg?style=flat-square&logo=qt)](https://riverbankcomputing.com/software/pyqt/)
