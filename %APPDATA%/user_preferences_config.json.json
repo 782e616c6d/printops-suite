@@ -2,7 +2,7 @@
     "theme": "theme_system",
     "primary_color": "#60CDFF",
     "font_family": "Segoe UI",
-    "font_size": 10,
+    "font_size": 9,
     "language": "lang_sys",
     "auto_refresh": 0,
     "app_icon_type": "custom",
