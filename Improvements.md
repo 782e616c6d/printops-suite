@@ -7,7 +7,7 @@ Separar e criar novos arquivos de configuração ex: ".json" e etc, a medida do 
 Adicionar método de verificação de modelos de impressora semelhante ao app BR Admin da Brother para a aba de impressoras detectadas via print servers, além de métricas como nível/níveis de tinta. Alterar o nome desta aba para um mais apropriado como "Impressoras em Servidor" por exemplo, já que no item 1 a seguir seria mais adequadopossuir o nome de "Network Printers".
 
 ## 📡 1. Escaneamento Avançado de Rede (Network IP Scanner)
-Expansão das capacidades de descoberta de dispositivos (Discovery), permitindo mapear impressoras físicas não listadas no Spooler local ou no Servidor de Impressão, utilizando protocolos como SNMP (v1/v2c/v3) e portas RAW (9100).
+Expansão das capacidades de descoberta de dispositivos (Discovery), permitindo mapear impressoras físicas não listadas no Spooler local ou no Servidor de Impressão, utilizando protocolos como SNMP (v1/v2c/v3) e portas RAW (9100). As impressoras detectadas nesta aba devem ficar salvas até o usuário remover, mas com atualizações periódicas pré-definidas de seus status. Criação de recurso de filtros inteligentes e personalizados pelo usuário.
 
 *   **Varredura na Rede Atual:** Detecção automática da sub-rede do host local (ex: `192.168.0.0/24`) utilizando *multicast* ou varredura ARP para identificar hardware de impressão.
 *   **Varredura por Faixa Específica (Custom Range):** Capacidade de input de notação CIDR ou faixa inicial/final de IPs para vasculhar impressoras em VLANs específicas de outras filiais ou andares.
