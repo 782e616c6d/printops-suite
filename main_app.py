@@ -1286,7 +1286,7 @@ class TaskLogger:
 
 class ConfigManager:
     """ User preferences stored in AppData (Editable by any user) """
-    FILE_NAME = "printer_app_config.json"
+    FILE_NAME = "user_preferences_config.json"
 
     @classmethod
     def get_config_path(cls):
@@ -1298,7 +1298,7 @@ class ConfigManager:
             "theme": "theme_system",
             "primary_color": "#60CDFF",
             "font_family": "Segoe UI",
-            "font_size": 10,
+            "font_size": 9,
             "language": "lang_sys",
             "auto_refresh": 0,
             "app_icon_val": "mdi6.flash",
