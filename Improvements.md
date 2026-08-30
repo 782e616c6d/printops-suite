@@ -4,6 +4,8 @@ Este documento mapeia as próximas evoluções arquiteturais e funcionais do sis
 
 Separar e criar novos arquivos de configuração ex: ".json" e etc, a medida do necessário, armazenando em uma subpasta chamada Configuration no mesmo local do app. Para as que o usuário tem poder de edição armazenar no %APPDATA% (Verificar se esta é a abordagem ideal para arquivos de configuração que o usuário possa editar, mas por enquanto vamos seguir com esta).
 
+Adicionar método de verificação de modelos de impressora semelhante ao app BR Admin da Brother para a aba de impressoras detectadas via print servers, além de métricas como nível/níveis de tinta.
+
 ## 📡 1. Escaneamento Avançado de Rede (Network IP Scanner)
 Expansão das capacidades de descoberta de dispositivos (Discovery), permitindo mapear impressoras físicas não listadas no Spooler local ou no Servidor de Impressão, utilizando protocolos como SNMP (v1/v2c/v3) e portas RAW (9100).
 
