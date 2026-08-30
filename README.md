@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="https://img.icons8.com/color/120/000000/print.png" alt="Printer App Logo">
-  <h1>🖨️ Printer App</h1>
+  <img src="https://img.icons8.com/color/120/000000/print.png" alt="PrintOps Suite Logo">
+  <h1>🖨️ PrintOps Suite</h1>
   <p><em>Python solution for centralized management of local and network printers in Windows environments.</em></p>
   
   [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
@@ -24,7 +24,7 @@
 
 ## 🚀 Overview
 
-The **Printer App** is an advanced utility designed for system administrators and IT professionals who need to manage, monitor, and perform maintenance on physical and virtual printers. 
+The **PrintOps Suite** is an advanced utility designed for system administrators and IT professionals who need to manage, monitor, and perform maintenance on physical and virtual printers. 
 
 Leveraging the `win32print` library alongside a fluid `PyQt6`-based interface, the application offers native integration with the Windows _Spooler_, supporting everything from batch driver installation to forcibly clearing corrupted print queues.
 
