@@ -2,6 +2,8 @@
 
 Este documento mapeia as próximas evoluções arquiteturais e funcionais do sistema, visando escalar a aplicação para ambientes de infraestrutura de TI mais complexos e facilitar a manutenção do código-fonte.
 
+Separar e criar novos arquivos de configuração ex: ".json" e etc, a medida do necessário, armazenando em uma subpasta chamada Configuration no mesmo local do app. Para as que o usuário tem poder de edição armazenar no %APPDATA% (Verificar se esta é a abordagem ideal para arquivos de configuração que o usuário possa editar, mas por enquanto vamos seguir com esta).
+
 ## 📡 1. Escaneamento Avançado de Rede (Network IP Scanner)
 Expansão das capacidades de descoberta de dispositivos (Discovery), permitindo mapear impressoras físicas não listadas no Spooler local ou no Servidor de Impressão, utilizando protocolos como SNMP (v1/v2c/v3) e portas RAW (9100).
 
@@ -34,3 +36,4 @@ Aprofundamento da integração com a API do Windows (`win32print`) e protocolos 
 *   **Interface Web Embutida (EWS View):** Utilização do `QWebEngineView` para abrir a interface web nativa da impressora diretamente dentro do painel lateral direito do aplicativo, eliminando a necessidade de abrir o navegador externo.
 *   **Ações de Hardware via SNMP:** Capacidade de reiniciar fisicamente o hardware da impressora remotamente (Reboot Command) e consultar níveis exatos de toner e papel diretamente do equipamento.
 *   **Deploy de Drivers Avançado:** Opção para injetar novos arquivos de driver `.inf` remotamente nos servidores de impressão via interface do aplicativo.
+*   **Adicionar método de verificação de modelos de impressora semelhante ao app BR Admin da Brother, além de métricas como nível/níveis de tinta.
