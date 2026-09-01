@@ -6,6 +6,9 @@ Separar e criar novos arquivos de configuração ex: ".json" e etc, a medida do 
 
 Adicionar método de verificação de modelos de impressora semelhante ao app BR Admin da Brother para a aba de impressoras detectadas via print servers, além de métricas como nível/níveis de tinta. Alterar o nome desta aba para um mais apropriado como "Impressoras em Servidor" por exemplo, já que no item 1 a seguir seria mais adequadopossuir o nome de "Network Printers".
 
+Implantar/Avaliar método de tradução para eliminação de hardcode:
+Método do Qt — .ts + .qm 
+
 ## 📡 1. Escaneamento Avançado de Rede (Network IP Scanner)
 Expansão das capacidades de descoberta de dispositivos (Discovery), permitindo mapear impressoras físicas não listadas no Spooler local ou no Servidor de Impressão, utilizando protocolos como SNMP (v1/v2c/v3) e portas RAW (9100). As impressoras detectadas nesta aba devem ficar salvas até o usuário remover, mas com atualizações periódicas pré-definidas de seus status. Criação de recurso de filtros inteligentes e personalizados pelo usuário.
 
@@ -20,7 +23,7 @@ Expansão das capacidades de descoberta de dispositivos (Discovery), permitindo 
 ## 🏗️ 2. Modularização da Arquitetura (Micro-Frontends / Módulos)
 Refatoração do código monolítico atual (onde todas as telas residem no arquivo principal) para uma arquitetura baseada em componentes acoplados via injeção de dependências ou *Signals/Slots* dinâmicos.
 
-*   **Separação por Contexto:** Cada aba do menu lateral (Dispositivos de Rede, Dispositivos Locais, Drivers, Tasks, etc.) será convertida em um pacote Python isolado (`/modules/network`, `/modules/drivers`).
+*   **Separação por Contexto:** Cada aba do menu lateral (Dispositivos de Rede, Dispositivos Locais, Drivers, Tasks, etc.) será convertida em um pacote Python isolado (`/modules/network`, `/modules/drivers`), ou utlizar outro método que seja melhor visando modularização.
 *   **Lazy Loading (Carregamento sob Demanda):** A interface principal instanciará as telas apenas quando o usuário clicar na aba pela primeira vez, reduzindo drasticamente o consumo de memória RAM e o tempo de inicialização (startup) do aplicativo.
 *   **Facilidade de Extensão (Plugins):** Arquitetura desenhada para permitir que novas funcionalidades (como um futuro módulo de Active Directory) sejam plugadas adicionando apenas um novo arquivo na pasta de módulos, sem alterar a lógica do `MainWindow`.
 
