@@ -1,0 +1,4 @@
+# .gitignore
+servers.json
+user_preferences_config.json
+ui_tabs_config.json
