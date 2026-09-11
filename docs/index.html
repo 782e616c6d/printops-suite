@@ -1,1 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrintOps Suite - Print Management</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        },
+                        brand: '#60CDFF' // Windows 11 Blue accent
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'soft-dark': '0 10px 40px -10px rgba(0,0,0,0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom soft transitions */
+        .smooth-trans {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 smooth-trans min-h-screen flex flex-col font-sans selection:bg-brand selection:text-slate-900">
 
+    <nav class="sticky top-0 z-50 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 smooth-trans">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <div class="bg-brand text-slate-900 p-2 rounded-xl">
+                        <i class="ph ph-printer-3d text-2xl"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900 dark:text-white">PrintOps</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#home" class="font-medium text-slate-600 hover:text-brand dark:text-slate-400 dark:hover:text-brand smooth-trans" data-i18n="nav_home">Home</a>
+                    <a href="#features" class="font-medium text-slate-600 hover:text-brand dark:text-slate-400 dark:hover:text-brand smooth-trans" data-i18n="nav_features">Features</a>
+                    
+                    <div class="flex items-center gap-4 ml-4 pl-4 border-l border-slate-200 dark:border-slate-700">
+                        <!-- Language Selector -->
+                        <select id="languageSelector" class="bg-transparent text-sm font-medium text-slate-600 dark:text-slate-400 focus:outline-none cursor-pointer">
+                            <option value="en">EN</option>
+                            <option value="pt">PT</option>
+                            <option value="es">ES</option>
+                        </select>
+
+                        <!-- Dark Mode Toggle -->
+                        <button id="themeToggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 smooth-trans" aria-label="Toggle Dark Mode">
+                            <i class="ph ph-moon text-xl dark:hidden"></i>
+                            <i class="ph ph-sun text-xl hidden dark:block"></i>
+                        </button>
+                        
+                        <a href="https://github.com/SEU_USUARIO/PrintOps" target="_blank" class="bg-slate-900 dark:bg-brand text-white dark:text-slate-900 px-5 py-2.5 rounded-full font-semibold hover:shadow-lg hover:-translate-y-0.5 smooth-trans text-sm flex items-center gap-2">
+                            <i class="ph ph-github-logo text-lg"></i>
+                            <span data-i18n="nav_download">Download</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow">
+        <section id="home" class="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 text-brand font-medium text-sm mb-8 border border-brand/20">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
+                    </span>
+                    <span data-i18n="hero_badge">PrintOps Suite 3.0 is out!</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight mb-6 max-w-4xl mx-auto" data-i18n="hero_title">
+                    Your one-stop solution for <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand to-primary-500">print management</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed" data-i18n="hero_subtitle">
+                    Centralize corporate printers, manage drivers, purge stuck queues instantly, and keep your infrastructure running smoothly with a native Windows app.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://github.com/SEU_USUARIO/PrintOps" target="_blank" class="w-full sm:w-auto bg-slate-900 dark:bg-brand text-white dark:text-slate-900 px-8 py-3.5 rounded-2xl font-bold hover:shadow-xl hover:-translate-y-1 smooth-trans flex items-center justify-center gap-2">
+                        <i class="ph ph-download-simple text-xl"></i>
+                        <span data-i18n="btn_download">Download for Windows</span>
+                    </a>
+                    <a href="https://github.com/SEU_USUARIO/PrintOps#readme" target="_blank" class="w-full sm:w-auto bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 px-8 py-3.5 rounded-2xl font-bold hover:bg-slate-50 dark:hover:bg-slate-700 smooth-trans flex items-center justify-center gap-2 shadow-sm">
+                        <i class="ph ph-book-open text-xl"></i>
+                        <span data-i18n="btn_docs">Read Documentation</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Organic decorative background shapes -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand/10 dark:bg-brand/5 blur-3xl rounded-full pointer-events-none -z-10"></div>
+        </section>
+
+        <section id="features" class="py-20 bg-white dark:bg-slate-800/50 smooth-trans">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4" data-i18n="section_features_title">Expert tools for IT Professionals</h2>
+                    <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto" data-i18n="section_features_desc">Built with PyQt6 and win32print, PrintOps delivers maximum performance and native integration directly into your Windows environment.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 p-8 rounded-3xl shadow-soft dark:shadow-soft-dark hover:-translate-y-2 smooth-trans group">
+                        <div class="w-14 h-14 bg-white dark:bg-slate-700 rounded-2xl flex items-center justify-center shadow-sm mb-6 group-hover:scale-110 smooth-trans">
+                            <i class="ph ph-magnifying-glass text-2xl text-primary-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3" data-i18n="feat_1_title">Smart Discovery</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="feat_1_desc">Automatically scan and map network print servers and locally installed devices in seconds, keeping everything categorized.</p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 p-8 rounded-3xl shadow-soft dark:shadow-soft-dark hover:-translate-y-2 smooth-trans group">
+                        <div class="w-14 h-14 bg-white dark:bg-slate-700 rounded-2xl flex items-center justify-center shadow-sm mb-6 group-hover:scale-110 smooth-trans">
+                            <i class="ph ph-stack text-2xl text-primary-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3" data-i18n="feat_2_title">Bulk Actions</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="feat_2_desc">Install, test, or remove multiple connections simultaneously. Export robust CSV reports of all your mapped hardware.</p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 p-8 rounded-3xl shadow-soft dark:shadow-soft-dark hover:-translate-y-2 smooth-trans group">
+                        <div class="w-14 h-14 bg-white dark:bg-slate-700 rounded-2xl flex items-center justify-center shadow-sm mb-6 group-hover:scale-110 smooth-trans">
+                            <i class="ph ph-wrench text-2xl text-primary-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3" data-i18n="feat_3_title">Spooler Repair</h3>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed" data-i18n="feat_3_desc">Stuck print queues? Instantly purge temp files and restart the spooler service with a single click, keeping downtime to zero.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 pt-16 pb-8 smooth-trans">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
+                <div class="flex items-center gap-2">
+                    <i class="ph ph-printer-3d text-2xl text-slate-900 dark:text-white"></i>
+                    <span class="font-bold text-lg text-slate-900 dark:text-white">PrintOps Suite</span>
+                </div>
+                
+                <div class="flex gap-6">
+                    <a href="https://github.com/SEU_USUARIO/PrintOps" target="_blank" class="text-slate-500 hover:text-brand dark:text-slate-400 dark:hover:text-brand smooth-trans font-medium flex items-center gap-2">
+                        <i class="ph ph-github-logo text-xl"></i>
+                        <span data-i18n="footer_repo">Repository</span>
+                    </a>
+                    <a href="https://github.com/SEU_USUARIO/PrintOps/issues" target="_blank" class="text-slate-500 hover:text-brand dark:text-slate-400 dark:hover:text-brand smooth-trans font-medium flex items-center gap-2">
+                        <i class="ph ph-bug text-xl"></i>
+                        <span data-i18n="footer_support">Support / Issues</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="text-center pt-8 border-t border-slate-100 dark:border-slate-800">
+                <p class="text-slate-500 dark:text-slate-500 text-sm">
+                    &copy; <script>document.write(new Date().getFullYear())</script> PrintOps Suite. <span data-i18n="footer_license">Open Source (GPL-3.0 License).</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. DARK MODE LOGIC ---
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        // Check local storage or system preference on load
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+
+        // Toggle functionality
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // --- 2. INTERNATIONALIZATION (i18n) LOGIC ---
+        const translations = {
+            en: {
+                nav_home: "Home",
+                nav_features: "Features",
+                nav_download: "Download",
+                hero_badge: "PrintOps Suite 3.0 is out!",
+                hero_title: "Your one-stop solution for <span class='text-transparent bg-clip-text bg-gradient-to-r from-brand to-primary-500'>print management</span>",
+                hero_subtitle: "Centralize corporate printers, manage drivers, purge stuck queues instantly, and keep your infrastructure running smoothly with a native Windows app.",
+                btn_download: "Download for Windows",
+                btn_docs: "Read Documentation",
+                section_features_title: "Expert tools for IT Professionals",
+                section_features_desc: "Built with PyQt6 and win32print, PrintOps delivers maximum performance and native integration directly into your Windows environment.",
+                feat_1_title: "Smart Discovery",
+                feat_1_desc: "Automatically scan and map network print servers and locally installed devices in seconds, keeping everything categorized.",
+                feat_2_title: "Bulk Actions",
+                feat_2_desc: "Install, test, or remove multiple connections simultaneously. Export robust CSV reports of all your mapped hardware.",
+                feat_3_title: "Spooler Repair",
+                feat_3_desc: "Stuck print queues? Instantly purge temp files and restart the spooler service with a single click, keeping downtime to zero.",
+                footer_repo: "Repository",
+                footer_support: "Support / Issues",
+                footer_license: "Open Source (GPL-3.0 License)."
+            },
+            pt: {
+                nav_home: "Início",
+                nav_features: "Recursos",
+                nav_download: "Baixar",
+                hero_badge: "PrintOps Suite 3.0 disponível!",
+                hero_title: "Sua solução definitiva para <span class='text-transparent bg-clip-text bg-gradient-to-r from-brand to-primary-500'>gestão de impressoras</span>",
+                hero_subtitle: "Centralize impressoras corporativas, gerencie drivers, limpe filas travadas e mantenha sua infraestrutura rodando perfeitamente com um app nativo para Windows.",
+                btn_download: "Baixar para Windows",
+                btn_docs: "Ler Documentação",
+                section_features_title: "Ferramentas para Profissionais de TI",
+                section_features_desc: "Construído com PyQt6 e win32print, o PrintOps entrega máximo desempenho e integração nativa direto no seu ambiente Windows.",
+                feat_1_title: "Descoberta Inteligente",
+                feat_1_desc: "Verifique e mapeie servidores de impressão e dispositivos locais em segundos, mantendo tudo perfeitamente categorizado.",
+                feat_2_title: "Ações em Massa",
+                feat_2_desc: "Instale, teste ou remova múltiplas conexões simultaneamente. Exporte relatórios CSV detalhados do seu hardware.",
+                feat_3_title: "Reparo de Spooler",
+                feat_3_desc: "Filas travadas? Limpe arquivos temporários e reinicie o serviço de spooler com um clique, zerando o tempo de inatividade.",
+                footer_repo: "Repositório",
+                footer_support: "Suporte / Bugs",
+                footer_license: "Código Aberto (Licença GPL-3.0)."
+            },
+            es: {
+                nav_home: "Inicio",
+                nav_features: "Características",
+                nav_download: "Descargar",
+                hero_badge: "¡PrintOps Suite 3.0 disponible!",
+                hero_title: "Tu solución definitiva para <span class='text-transparent bg-clip-text bg-gradient-to-r from-brand to-primary-500'>gestión de impresión</span>",
+                hero_subtitle: "Centraliza impresoras corporativas, gestiona controladores, limpia colas atascadas y mantén tu infraestructura funcionando sin problemas con una app nativa.",
+                btn_download: "Descargar para Windows",
+                btn_docs: "Leer Documentación",
+                section_features_title: "Herramientas para Profesionales de TI",
+                section_features_desc: "Construido con PyQt6 y win32print, PrintOps ofrece el máximo rendimiento e integración nativa directamente en tu entorno Windows.",
+                feat_1_title: "Descubrimiento Inteligente",
+                feat_1_desc: "Escanea y mapea servidores de impresión y dispositivos locales en segundos, manteniendo todo categorizado.",
+                feat_2_title: "Acciones en Lote",
+                feat_2_desc: "Instala, prueba o elimina múltiples conexiones a la vez. Exporta reportes CSV robustos de todo tu hardware mapeado.",
+                feat_3_title: "Reparación de Spooler",
+                feat_3_desc: "¿Colas atascadas? Limpie archivos temporales y reinicie el servicio de spooler con un clic, manteniendo el tiempo de inactividad en cero.",
+                footer_repo: "Repositorio",
+                footer_support: "Soporte / Problemas",
+                footer_license: "Código Abierto (Licencia GPL-3.0)."
+            }
+        };
+
+        const langSelector = document.getElementById('languageSelector');
+
+        function updateTexts(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+        }
+
+        // Auto-detect browser language
+        function getBrowserLang() {
+            const browserLang = navigator.language.slice(0, 2).toLowerCase();
+            if (['pt', 'es'].includes(browserLang)) {
+                return browserLang;
+            }
+            return 'en'; // default to english
+        }
+
+        // Initialize language
+        let currentLang = localStorage.getItem('app_lang') || getBrowserLang();
+        langSelector.value = currentLang;
+        updateTexts(currentLang);
+
+        // Change language event
+        langSelector.addEventListener('change', (e) => {
+            currentLang = e.target.value;
+            localStorage.setItem('app_lang', currentLang);
+            updateTexts(currentLang);
+        });
+    </script>
+</body>
+</html>
