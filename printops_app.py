@@ -289,7 +289,7 @@ TRANSLATIONS = {
         "about_desc": "Aplicativo profissional para gestão centralizada de impressoras locais e de rede. Construído com PyQt6 e win32print para oferecer máximo desempenho e integração nativa.",
         "about_modules": "Módulos utilizados:",
         "about_repo": "Repositório GitHub",
-        "about_docs": "Documentação",
+        "about_support": "Suporte e Bugs",
         "about_web": "Website Oficial",
         "about_check_updates": "Verificar Atualizações",
         "about_up_to_date": "Você já possui a versão mais recente.",
@@ -508,7 +508,7 @@ TRANSLATIONS = {
         "about_desc": "Professional application for centralized management of local and network printers. Built with PyQt6 and win32print to offer maximum performance and native integration.",
         "about_modules": "Modules used:",
         "about_repo": "GitHub Repository",
-        "about_docs": "Documentation",
+        "about_support": "Support & Bugs",
         "about_web": "Official Website",
         "about_check_updates": "Check for Updates",
         "about_up_to_date": "You already have the latest version.",
@@ -727,7 +727,7 @@ TRANSLATIONS = {
         "about_desc": "Aplicación profesional para la gestión centralizada de impresoras locales y de red. Construido con PyQt6 y win32print para ofrecer el máximo rendimiento e integración nativa.",
         "about_modules": "Módulos utilizados:",
         "about_repo": "Repositorio GitHub",
-        "about_docs": "Documentación",
+        "about_support": "Support & Bugs",
         "about_web": "Sitio Web Oficial",
         "about_check_updates": "Buscar Actualizaciones",
         "about_up_to_date": "Ya tienes la versión más reciente.",
@@ -946,7 +946,7 @@ TRANSLATIONS = {
         "about_desc": "Application professionnelle de gestion centralisée des imprimantes.",
         "about_modules": "Modules utilisés:",
         "about_repo": "Dépôt GitHub",
-        "about_docs": "Documentation",
+        "about_support": "Assistance et Bogues",
         "about_web": "Site Web Officiel",
         "about_check_updates": "Vérifier les Mises à jour",
         "about_up_to_date": "Vous avez déjà la dernière version.",
@@ -1165,7 +1165,7 @@ TRANSLATIONS = {
         "about_desc": "تطبيق احترافي لإدارة الطابعات.",
         "about_modules": "الوحدات المستخدمة:",
         "about_repo": "مستودع GitHub",
-        "about_docs": "الوثائق",
+        "about_support": "الدعم والأخطاء",
         "about_web": "الموقع الرسمي",
         "about_check_updates": "التحقق من التحديثات",
         "about_up_to_date": "لديك أحدث إصدار بالفعل.",
@@ -1991,6 +1991,7 @@ class PrinterManagerApp(QMainWindow):
             QLineEdit#SearchBar:focus {{ border: 1px solid {self.accent_color}; }}
             
             QLineEdit, QSpinBox, QComboBox, QFontComboBox {{ background-color: {input_bg}; border: 1px solid {border}; border-radius: 4px; padding: 6px; color: {self.text_main}; }}
+            QComboBox:disabled {{ color: {text_muted}; background-color: transparent; opacity: 0.6; }}
             QComboBox::drop-down, QSpinBox::up-button, QSpinBox::down-button {{ width: 25px; border: none; background: transparent; }}
             
             QComboBox QAbstractItemView, QListView, QListWidget {{ background-color: {input_bg}; color: {self.text_main}; border: 1px solid {border}; selection-background-color: {self.accent_color}; selection-color: #000; outline: none; }}
@@ -2034,7 +2035,8 @@ class PrinterManagerApp(QMainWindow):
         """
         self.setStyleSheet(stylesheet)
 
-        for c in [
+        # Adiciona as configurações padrão
+        combos_to_style = [
             self.cmb_status,
             self.cmb_server,
             self.cfg_lang,
@@ -2043,8 +2045,14 @@ class PrinterManagerApp(QMainWindow):
             self.cfg_refresh,
             getattr(self, "cfg_logo_icon", None),
             getattr(self, "cfg_font", None),
-        ]:
-            if hasattr(c, "view") and c.view():
+        ]
+
+        # Adiciona dinamicamente os comboboxes da aba "Visibilidade das Abas"
+        if hasattr(self, "tab_combos"):
+            combos_to_style.extend(self.tab_combos.values())
+
+        for c in combos_to_style:
+            if c and hasattr(c, "view") and c.view():
                 c.view().window().setWindowFlags(
                     Qt.WindowType.Popup
                     | Qt.WindowType.FramelessWindowHint
@@ -3052,9 +3060,9 @@ class PrinterManagerApp(QMainWindow):
 
         self.links_layout = QHBoxLayout()
         self.lbl_about_repo = QLabel()
-        self.lbl_about_docs = QLabel()
+        self.lbl_about_support = QLabel()
         self.lbl_about_web = QLabel()
-        for l in [self.lbl_about_repo, self.lbl_about_docs, self.lbl_about_web]:
+        for l in [self.lbl_about_repo, self.lbl_about_support, self.lbl_about_web]:
             l.setOpenExternalLinks(True)
             self.links_layout.addWidget(l)
             self.links_layout.addSpacing(20)
@@ -3396,12 +3404,16 @@ class PrinterManagerApp(QMainWindow):
 
         link_style = f"color: {self.config.get('primary_color', '#60CDFF')}; text-decoration: none; font-weight: bold;"
 
-        def format_link(text):
-            return f'<a href="https://github.com/782e616c6d/printops-suite" style="{link_style}"><span style="text-decoration: underline;">{text}</span></a>'
+        def format_link(text, url):
+            return f'<a href="{url}" style="{link_style}"><span style="text-decoration: underline;">{text}</span></a>'
 
-        self.lbl_about_repo.setText(format_link(tr("about_repo")))
-        self.lbl_about_docs.setText(format_link(tr("about_docs")))
-        self.lbl_about_web.setText(format_link(tr("about_web")))
+        link_repo = "https://github.com/782e616c6d/printops-suite" 
+        link_suporte = "https://github.com/782e616c6d/printops-suite/issues"
+        link_site = "https://github.com/782e616c6d/printops-suite"
+
+        self.lbl_about_repo.setText(format_link(tr("about_repo"), link_repo))
+        self.lbl_about_support.setText(format_link(tr("about_support"), link_suporte))
+        self.lbl_about_web.setText(format_link(tr("about_web"), link_site))
         self.btn_about_update.setText(tr("about_check_updates"))
 
         self.update_status(tr("msg_ready"))
