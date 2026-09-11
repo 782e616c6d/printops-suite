@@ -12,6 +12,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 from datetime import datetime
 
+
 # ================= CONFIGURAÇÃO DE DIRETÓRIOS E LOGS =================
 def is_user_admin():
     try:
@@ -19,54 +20,106 @@ def is_user_admin():
     except:
         return False
 
+
 def get_appdata_dir():
-    app_data = os.path.join(os.environ.get("APPDATA", os.path.expanduser("~")), "PrinterApp")
+    app_data = os.path.join(
+        os.environ.get("APPDATA", os.path.expanduser("~")), "PrinterApp"
+    )
     os.makedirs(app_data, exist_ok=True)
     return app_data
 
+
 def get_executable_dir():
-    if getattr(sys, 'frozen', False):
+    if getattr(sys, "frozen", False):
         return os.path.dirname(sys.executable)
     return os.path.dirname(os.path.abspath(__file__))
+
 
 def get_docs_dir():
     docs_dir = os.path.join(get_executable_dir(), "Documents")
     os.makedirs(docs_dir, exist_ok=True)
     return docs_dir
 
+
 logger = logging.getLogger("PrinterAppLogger")
 logger.setLevel(logging.DEBUG)
 log_file = os.path.join(get_appdata_dir(), "printer_app.log")
-log_handler = RotatingFileHandler(log_file, maxBytes=5*1024*1024, backupCount=2, encoding="utf-8")
-log_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+log_handler = RotatingFileHandler(
+    log_file, maxBytes=5 * 1024 * 1024, backupCount=2, encoding="utf-8"
+)
+log_handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
 logger.addHandler(log_handler)
 
 try:
     import pywintypes
     from PyQt6.QtWidgets import (
-        QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
-        QLabel, QPushButton, QTableWidget, QTableWidgetItem, QHeaderView,
-        QLineEdit, QMenu, QMessageBox, QAbstractItemView, QFrame,
-        QInputDialog, QComboBox, QStackedWidget, QFormLayout, QScrollArea,
-        QFileDialog, QStyledItemDelegate, QProgressBar, QListView,
-        QCheckBox, QListWidget, QListWidgetItem, QTreeWidget,
-        QTreeWidgetItem, QTreeWidgetItemIterator, QDialog, QSpinBox,
+        QApplication,
+        QMainWindow,
+        QWidget,
+        QVBoxLayout,
+        QHBoxLayout,
+        QLabel,
+        QPushButton,
+        QTableWidget,
+        QTableWidgetItem,
+        QHeaderView,
+        QLineEdit,
+        QMenu,
+        QMessageBox,
+        QAbstractItemView,
+        QFrame,
+        QInputDialog,
+        QComboBox,
+        QStackedWidget,
+        QFormLayout,
+        QScrollArea,
+        QFileDialog,
+        QStyledItemDelegate,
+        QProgressBar,
+        QListView,
+        QCheckBox,
+        QListWidget,
+        QListWidgetItem,
+        QTreeWidget,
+        QTreeWidgetItem,
+        QTreeWidgetItemIterator,
+        QDialog,
+        QSpinBox,
     )
     from PyQt6.QtCore import (
-        Qt, QObject, pyqtSignal, QSize, QTimer, QLocale, QRunnable,
-        QThreadPool, QUrl, QStandardPaths,
+        Qt,
+        QObject,
+        pyqtSignal,
+        QSize,
+        QTimer,
+        QLocale,
+        QRunnable,
+        QThreadPool,
+        QUrl,
+        QStandardPaths,
     )
-    from PyQt6.QtGui import QFont, QAction, QIcon, QColor, QBrush, QFontDatabase, QDesktopServices
+    from PyQt6.QtGui import (
+        QFont,
+        QAction,
+        QIcon,
+        QColor,
+        QBrush,
+        QFontDatabase,
+        QDesktopServices,
+    )
     import win32print
     import pythoncom
     import qtawesome as qta
 except ImportError as e:
     import tkinter as tk
     from tkinter import messagebox
+
     logger.critical(f"Erro de importação: {e}")
     root = tk.Tk()
     root.withdraw()
-    messagebox.showerror("Dependências", "Instale as bibliotecas: pip install PyQt6 pywin32 qtawesome")
+    messagebox.showerror(
+        "Dependências", "Instale as bibliotecas: pip install PyQt6 pywin32 qtawesome"
+    )
     sys.exit()
 
 # ================= SISTEMA DE IDIOMAS (i18n) =================
@@ -288,7 +341,7 @@ TRANSLATIONS = {
         "lbl_server_host": "Servidor / Host:",
         "lbl_port_ip": "Porta / IP:",
         "lbl_status_code": "Código de Status:",
-        "msg_status_error": "Erro ao obter status."
+        "msg_status_error": "Erro ao obter status.",
     },
     "en": {
         "app_title": "PrintOps Suite",
@@ -507,7 +560,7 @@ TRANSLATIONS = {
         "lbl_server_host": "Server / Host:",
         "lbl_port_ip": "Port / IP:",
         "lbl_status_code": "Status Code:",
-        "msg_status_error": "Error getting status."
+        "msg_status_error": "Error getting status.",
     },
     "es": {
         "app_title": "PrintOps Suite",
@@ -726,7 +779,7 @@ TRANSLATIONS = {
         "lbl_server_host": "Servidor / Host:",
         "lbl_port_ip": "Puerto / IP:",
         "lbl_status_code": "Código de Estado:",
-        "msg_status_error": "Error al obtener estado."
+        "msg_status_error": "Error al obtener estado.",
     },
     "fr": {
         "app_title": "PrintOps Suite",
@@ -945,7 +998,7 @@ TRANSLATIONS = {
         "lbl_server_host": "Serveur / Hôte :",
         "lbl_port_ip": "Port / IP :",
         "lbl_status_code": "Code de Statut :",
-        "msg_status_error": "Erreur d'obtention de statut."
+        "msg_status_error": "Erreur d'obtention de statut.",
     },
     "ar": {
         "app_title": "تطبيق الطابعات",
@@ -1164,39 +1217,76 @@ TRANSLATIONS = {
         "lbl_server_host": "الخادم / المضيف:",
         "lbl_port_ip": "المنفذ / IP:",
         "lbl_status_code": "رمز الحالة:",
-        "msg_status_error": "خطأ في الحصول على الحالة."
-    }
+        "msg_status_error": "خطأ في الحصول على الحالة.",
+    },
 }
+
 
 def get_os_language():
     try:
         os_lang = QLocale.system().name().lower()
-        if "pt" in os_lang: return "pt"
-        if "es" in os_lang: return "es"
-        if "fr" in os_lang: return "fr"
-        if "ar" in os_lang: return "ar"
+        if "pt" in os_lang:
+            return "pt"
+        if "es" in os_lang:
+            return "es"
+        if "fr" in os_lang:
+            return "fr"
+        if "ar" in os_lang:
+            return "ar"
         return "en"
     except Exception as e:
         logger.error(f"Failed to get OS language: {e}")
         return "en"
 
+
 CURRENT_LANG = "en"
+
 
 def tr(key):
     return TRANSLATIONS.get(CURRENT_LANG, TRANSLATIONS["en"]).get(key, key)
 
+
 def get_manufacturer(driver_name):
-    if not driver_name or driver_name == "Desconhecido" or driver_name == tr("sys_unknown"):
+    if (
+        not driver_name
+        or driver_name == "Desconhecido"
+        or driver_name == tr("sys_unknown")
+    ):
         return tr("sys_unknown")
 
     name_upper = driver_name.upper()
     manufacturer_map = {
-        "Kyocera": ["KYOCERA", "KX ", "KX(", "KX DRIVER", "FS-", "ECOSYS", "TASKALFA", " CS "],
+        "Kyocera": [
+            "KYOCERA",
+            "KX ",
+            "KX(",
+            "KX DRIVER",
+            "FS-",
+            "ECOSYS",
+            "TASKALFA",
+            " CS ",
+        ],
         "Fuji Xerox": ["FUJI XEROX", "FF", "FX ", "APEOSPORT", "DOCUPRINT"],
-        "Konica Minolta": ["KONICA", "BIZHUB", "MINOLTA", "ACCURIOPRINT", "C308", "C368", "C258"],
+        "Konica Minolta": [
+            "KONICA",
+            "BIZHUB",
+            "MINOLTA",
+            "ACCURIOPRINT",
+            "C308",
+            "C368",
+            "C258",
+        ],
         "Ricoh": ["RICOH", "AFICIO", "IM C", "MP C"],
         "Xerox": ["XEROX", "PHASER", "VERSALINK", "ALTALINK", "WORKCENTRE"],
-        "HP": ["HP ", "HEWLETT-PACKARD", "DESKJET", "LASERJET", "OFFICEJET", "DESIGNJET", "HP UNIVERSAL"],
+        "HP": [
+            "HP ",
+            "HEWLETT-PACKARD",
+            "DESKJET",
+            "LASERJET",
+            "OFFICEJET",
+            "DESIGNJET",
+            "HP UNIVERSAL",
+        ],
         "Brother": ["BROTHER", "HL-", "MFC-", "DCP-"],
         "Epson": ["EPSON", "STYLUS", "ECOTANK", "WORKFORCE"],
         "Canon": ["CANON", "PIXMA", "IMAGECLASS", "IMAGERUNNER", "IMAGEPROGRAF"],
@@ -1207,7 +1297,7 @@ def get_manufacturer(driver_name):
         "TSC": ["TSC "],
         "Nitro": ["NITRO"],
         "Foxit": ["FOXIT"],
-        "Adobe": ["ADOBE"]
+        "Adobe": ["ADOBE"],
     }
 
     for manufacturer, keywords in manufacturer_map.items():
@@ -1217,10 +1307,13 @@ def get_manufacturer(driver_name):
     parts = str(driver_name).split()
     if parts:
         first_word = parts[0].upper()
-        if first_word == "KX": return "Kyocera"
-        if first_word == "FX": return "Fuji Xerox"
+        if first_word == "KX":
+            return "Kyocera"
+        if first_word == "FX":
+            return "Fuji Xerox"
         return parts[0]
     return tr("sys_unknown")
+
 
 def get_os_theme():
     try:
@@ -1233,8 +1326,10 @@ def get_os_theme():
     except Exception:
         return "theme_light"
 
+
 def get_ram_info():
     try:
+
         class MEMORYSTATUSEX(ctypes.Structure):
             _fields_ = [
                 ("dwLength", ctypes.c_ulong),
@@ -1247,6 +1342,7 @@ def get_ram_info():
                 ("ullAvailVirtual", ctypes.c_ulonglong),
                 ("sullAvailExtendedVirtual", ctypes.c_ulonglong),
             ]
+
         stat = MEMORYSTATUSEX()
         stat.dwLength = ctypes.sizeof(MEMORYSTATUSEX)
         ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(stat))
@@ -1256,6 +1352,7 @@ def get_ram_info():
     except Exception as e:
         logger.error(f"RAM Info error: {e}")
         return tr("sys_unknown")
+
 
 class TaskLogger:
     logs = []
@@ -1268,7 +1365,7 @@ class TaskLogger:
         if not end_time:
             end_time = start_time
         cls.logs.insert(0, (tipo_tarefa, status, start_time, end_time, alvo))
-        
+
         # Log to physical file
         log_msg = f"Task: {tipo_tarefa} | Status: {status} | Target: {alvo} | Time: {start_time} - {end_time}"
         if status == "status_err":
@@ -1284,8 +1381,10 @@ class TaskLogger:
             except Exception as e:
                 logger.debug(f"TaskLogger callback failed: {e}")
 
+
 class ConfigManager:
-    """ User preferences stored in AppData (Editable by any user) """
+    """User preferences stored in AppData (Editable by any user)"""
+
     FILE_NAME = "user_preferences_config.json"
 
     @classmethod
@@ -1322,8 +1421,10 @@ class ConfigManager:
         except Exception as e:
             logger.error(f"Failed to save user config: {e}")
 
+
 class ServerConfigManager:
-    """ Global server preferences stored next to executable (Admin restricted) """
+    """Global server preferences stored next to executable (Admin restricted)"""
+
     FILE_NAME = "servers.json"
 
     @classmethod
@@ -1333,7 +1434,13 @@ class ServerConfigManager:
     @classmethod
     def load(cls):
         default_servers = [
-            {"name": "Local", "enabled": True, "ip": "127.0.0.1", "status": "?", "qty": 0}
+            {
+                "name": "Local",
+                "enabled": True,
+                "ip": "127.0.0.1",
+                "status": "?",
+                "qty": 0,
+            }
         ]
         file_path = cls.get_config_path()
         if os.path.exists(file_path):
@@ -1352,12 +1459,16 @@ class ServerConfigManager:
             with open(cls.get_config_path(), "w", encoding="utf-8") as f:
                 json.dump(servers_data, f, indent=4)
         except PermissionError:
-            logger.warning("Permission denied writing servers.json. User may not be Admin.")
+            logger.warning(
+                "Permission denied writing servers.json. User may not be Admin."
+            )
         except Exception as e:
             logger.error(f"Failed to save server config: {e}")
 
+
 class UIConfigManager:
-    """ Tab visibility preferences stored next to executable (Admin restricted) """
+    """Tab visibility preferences stored next to executable (Admin restricted)"""
+
     FILE_NAME = "ui_tabs_config.json"
 
     @classmethod
@@ -1374,7 +1485,7 @@ class UIConfigManager:
             "nav_sysinfo": "visible",
             "nav_guides": "visible",
             "nav_settings": "visible",
-            "nav_about": "visible"
+            "nav_about": "visible",
         }
         file_path = cls.get_config_path()
         if os.path.exists(file_path):
@@ -1391,9 +1502,12 @@ class UIConfigManager:
             with open(cls.get_config_path(), "w", encoding="utf-8") as f:
                 json.dump(config_data, f, indent=4)
         except PermissionError:
-            logger.warning("Permission denied writing ui_tabs_config.json. User may not be Admin.")
+            logger.warning(
+                "Permission denied writing ui_tabs_config.json. User may not be Admin."
+            )
         except Exception as e:
             logger.error(f"Failed to save UI config: {e}")
+
 
 class PrinterStatusWorker(QRunnable):
     class Signals(QObject):
@@ -1414,6 +1528,7 @@ class PrinterStatusWorker(QRunnable):
         except Exception as e:
             self.signals.error.emit(str(e))
 
+
 class PrinterPropertiesDialog(QDialog):
     def __init__(self, p_data, parent=None):
         super().__init__(parent)
@@ -1425,7 +1540,9 @@ class PrinterPropertiesDialog(QDialog):
         icon_lbl = QLabel()
         icon_lbl.setStyleSheet("background-color: transparent;")
         icon_lbl.setPixmap(
-            qta.icon("mdi6.printer", color=parent.accent_color if parent else "#60CDFF").pixmap(48, 48)
+            qta.icon(
+                "mdi6.printer", color=parent.accent_color if parent else "#60CDFF"
+            ).pixmap(48, 48)
         )
         h_header.addWidget(icon_lbl, alignment=Qt.AlignmentFlag.AlignCenter)
         layout.addLayout(h_header)
@@ -1434,7 +1551,9 @@ class PrinterPropertiesDialog(QDialog):
         title.setAlignment(Qt.AlignmentFlag.AlignCenter)
         title.setStyleSheet("font-size: 18px; background-color: transparent;")
         layout.addWidget(title)
-        layout.addWidget(QFrame(frameShape=QFrame.Shape.HLine, frameShadow=QFrame.Shadow.Sunken))
+        layout.addWidget(
+            QFrame(frameShape=QFrame.Shape.HLine, frameShadow=QFrame.Shadow.Sunken)
+        )
 
         form = QFormLayout()
         form.setSpacing(15)
@@ -1445,7 +1564,10 @@ class PrinterPropertiesDialog(QDialog):
             return l
 
         form.addRow(L(f"<b>{tr('lbl_real_node')}</b>"), L(p_data.get("raw_name", "")))
-        form.addRow(L(f"<b>{tr('lbl_manufacturer')}</b>"), L(get_manufacturer(p_data.get("driver", ""))))
+        form.addRow(
+            L(f"<b>{tr('lbl_manufacturer')}</b>"),
+            L(get_manufacturer(p_data.get("driver", ""))),
+        )
         form.addRow(L(f"<b>{tr('lbl_driver_use')}</b>"), L(p_data.get("driver", "")))
         form.addRow(L(f"<b>{tr('lbl_server_host')}</b>"), L(p_data.get("server", "")))
         form.addRow(L(f"<b>{tr('lbl_port_ip')}</b>"), L(p_data.get("port", "")))
@@ -1482,8 +1604,10 @@ class PrinterPropertiesDialog(QDialog):
         logger.error(f"Status error: {err}")
         self.lbl_status.setText(tr("msg_status_error"))
 
+
 class ActionCard(QFrame):
     clicked = pyqtSignal()
+
     def __init__(self, icon_name, title, subtitle, color):
         super().__init__()
         self.setProperty("class", "ActionCard")
@@ -1499,14 +1623,20 @@ class ActionCard(QFrame):
         self.icon_lbl.setPixmap(qta.icon(icon_name, color=color).pixmap(26, 26))
         self.icon_lbl.setFixedWidth(40)
         self.title_lbl = QLabel(title)
-        self.title_lbl.setStyleSheet("font-weight: bold; background-color: transparent;")
+        self.title_lbl.setStyleSheet(
+            "font-weight: bold; background-color: transparent;"
+        )
         top_layout.addWidget(self.icon_lbl)
         top_layout.addWidget(self.title_lbl)
         top_layout.addStretch()
         self.sub_lbl = QLabel(subtitle)
         self.sub_lbl.setWordWrap(True)
-        self.sub_lbl.setStyleSheet("color: #888888; background-color: transparent; line-height: 1.2;")
-        self.sub_lbl.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft)
+        self.sub_lbl.setStyleSheet(
+            "color: #888888; background-color: transparent; line-height: 1.2;"
+        )
+        self.sub_lbl.setAlignment(
+            Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft
+        )
         layout.addLayout(top_layout)
         layout.addWidget(self.sub_lbl)
         layout.addStretch()
@@ -1517,6 +1647,7 @@ class ActionCard(QFrame):
 
     def mouseReleaseEvent(self, event):
         self.clicked.emit()
+
 
 class NavButton(QPushButton):
     def __init__(self, icon_name, text):
@@ -1535,6 +1666,7 @@ class NavButton(QPushButton):
     def update_text(self, text):
         self.setText(f"  {text}")
 
+
 class DefaultPrinterWorker(QRunnable):
     class Signals(QObject):
         result = pyqtSignal(str)
@@ -1552,9 +1684,11 @@ class DefaultPrinterWorker(QRunnable):
         self.signals.result.emit(dp)
         pythoncom.CoUninitialize()
 
+
 class ServerWorkerSignals(QObject):
     result = pyqtSignal(list, dict, str)
     finished = pyqtSignal()
+
 
 class ServerWorker(QRunnable):
     def __init__(self, server_obj):
@@ -1572,21 +1706,26 @@ class ServerWorker(QRunnable):
             return
 
         try:
-            self.server_obj["ip"] = socket.gethostbyname(name) if name.lower() != "local" else "127.0.0.1"
+            self.server_obj["ip"] = (
+                socket.gethostbyname(name) if name.lower() != "local" else "127.0.0.1"
+            )
         except Exception:
             self.server_obj["ip"] = tr("sys_unknown")
 
         pythoncom.CoInitialize()
         try:
             if name.lower() == "local":
-                flags = win32print.PRINTER_ENUM_LOCAL | win32print.PRINTER_ENUM_CONNECTIONS
+                flags = (
+                    win32print.PRINTER_ENUM_LOCAL | win32print.PRINTER_ENUM_CONNECTIONS
+                )
                 printers_raw = win32print.EnumPrinters(flags, None, 2)
             else:
                 flags = win32print.PRINTER_ENUM_NAME
                 printers_raw = win32print.EnumPrinters(flags, f"\\\\{name}", 2)
 
             for p in printers_raw:
-                if not p: continue
+                if not p:
+                    continue
                 if isinstance(p, dict):
                     p_name = p.get("pPrinterName", "N/A")
                     port = p.get("pPortName", "N/A")
@@ -1596,7 +1735,7 @@ class ServerWorker(QRunnable):
                     p_name = str(p[1])
                     port = str(p[3])
                     driver = str(p[4])
-                    status_code = (p[18] if len(p) > 18 else 0)
+                    status_code = p[18] if len(p) > 18 else 0
 
                 clean_name = p_name
                 if clean_name.startswith(f"\\\\{name}\\"):
@@ -1604,15 +1743,19 @@ class ServerWorker(QRunnable):
                 elif clean_name.startswith("\\\\"):
                     clean_name = clean_name.split("\\")[-1]
 
-                parsed.append({
-                    "server": name,
-                    "name": clean_name,
-                    "driver": driver,
-                    "port": port,
-                    "status_code": status_code,
-                    "raw_name": p_name,
-                    "is_network": (name.lower() != "local" or p_name.startswith("\\\\")),
-                })
+                parsed.append(
+                    {
+                        "server": name,
+                        "name": clean_name,
+                        "driver": driver,
+                        "port": port,
+                        "status_code": status_code,
+                        "raw_name": p_name,
+                        "is_network": (
+                            name.lower() != "local" or p_name.startswith("\\\\")
+                        ),
+                    }
+                )
 
             self.server_obj["qty"] = len(parsed)
             self.server_obj["status"] = "Online"
@@ -1620,10 +1763,13 @@ class ServerWorker(QRunnable):
         except Exception as e:
             self.server_obj["qty"] = 0
             self.server_obj["status"] = "Offline"
-            self.signals.result.emit([], self.server_obj, f"{tr('msg_error')}: {str(e)}")
+            self.signals.result.emit(
+                [], self.server_obj, f"{tr('msg_error')}: {str(e)}"
+            )
         finally:
             pythoncom.CoUninitialize()
             self.signals.finished.emit()
+
 
 class DriverWorker(QRunnable):
     class Signals(QObject):
@@ -1640,15 +1786,20 @@ class DriverWorker(QRunnable):
             parsed = []
             if drivers_raw:
                 for d in drivers_raw:
-                    if not d: continue
+                    if not d:
+                        continue
                     if isinstance(d, dict):
-                        parsed.append({
-                            "name": d.get("Name", ""),
-                            "env": d.get("Environment", ""),
-                            "path": d.get("DriverPath", "")
-                        })
+                        parsed.append(
+                            {
+                                "name": d.get("Name", ""),
+                                "env": d.get("Environment", ""),
+                                "path": d.get("DriverPath", ""),
+                            }
+                        )
                     else:
-                        parsed.append({"name": str(d[0]), "env": str(d[1]), "path": str(d[2])})
+                        parsed.append(
+                            {"name": str(d[0]), "env": str(d[1]), "path": str(d[2])}
+                        )
             self.signals.result.emit(parsed, "")
         except Exception as e:
             self.signals.result.emit([], str(e))
@@ -1662,12 +1813,12 @@ class PrinterManagerApp(QMainWindow):
         self.config = ConfigManager.load()
         self.servers_config = ServerConfigManager.load()
         self.ui_config = UIConfigManager.load()
-        
+
         # Sincronização segura da pasta Icons (Exe -> AppData)
         src_icons = os.path.join(get_executable_dir(), "icons")
         dst_icons = os.path.join(get_appdata_dir(), "icons")
         self.default_icon_path = None
-        
+
         if os.path.exists(src_icons):
             os.makedirs(dst_icons, exist_ok=True)
             try:
@@ -1677,7 +1828,9 @@ class PrinterManagerApp(QMainWindow):
                     if os.path.isfile(s):
                         shutil.copy2(s, d)
                         # Define o primeiro ícone encontrado como default se for válido
-                        if self.default_icon_path is None and s.lower().endswith(('.png', '.ico', '.svg', '.jpg')):
+                        if self.default_icon_path is None and s.lower().endswith(
+                            (".png", ".ico", ".svg", ".jpg")
+                        ):
                             self.default_icon_path = s
             except Exception as e:
                 logger.error(f"Icon sync failed: {e}")
@@ -1685,7 +1838,7 @@ class PrinterManagerApp(QMainWindow):
         # Força o ícone default caso não haja configuração salva e um ícone local exista
         if self.default_icon_path and self.config.get("app_icon_val") == "mdi6.flash":
             self.config["app_icon_val"] = self.default_icon_path
-        
+
         self.setup_language()
         self.setWindowTitle(tr("app_title"))
         self.resize(1300, 850)
@@ -1722,7 +1875,7 @@ class PrinterManagerApp(QMainWindow):
             CURRENT_LANG = get_os_language()
         if CURRENT_LANG not in TRANSLATIONS:
             CURRENT_LANG = "en"
-            
+
         # Garante que a UI fique da esquerda para a direita, mesmo em Árabe
         QApplication.instance().setLayoutDirection(Qt.LayoutDirection.LeftToRight)
 
@@ -1760,7 +1913,8 @@ class PrinterManagerApp(QMainWindow):
             font_size = int(self.config.get("font_size", 10))
         except:
             font_size = 10
-        if font_size < 8: font_size = 10
+        if font_size < 8:
+            font_size = 10
 
         font_str = f"'{font_family}', Arial, sans-serif"
         font = QFont(font_family, font_size)
@@ -1773,14 +1927,44 @@ class PrinterManagerApp(QMainWindow):
         self.accent_color = self.config["primary_color"]
 
         if theme == "theme_dark":
-            self.bg_main, bg_card, bg_card_hover, border = "#202020", "#2d2d2d", "#323232", "#3a3a3a"
-            self.text_main, text_muted, nav_hover, nav_selected = "#ffffff", "#a0a0a0", "#333333", "#333333"
-            input_bg, header_bg, list_hover, progress_bg = "#2d2d2d", "#202020", "#3f3f46", "#3a3a3a"
+            self.bg_main, bg_card, bg_card_hover, border = (
+                "#202020",
+                "#2d2d2d",
+                "#323232",
+                "#3a3a3a",
+            )
+            self.text_main, text_muted, nav_hover, nav_selected = (
+                "#ffffff",
+                "#a0a0a0",
+                "#333333",
+                "#333333",
+            )
+            input_bg, header_bg, list_hover, progress_bg = (
+                "#2d2d2d",
+                "#202020",
+                "#3f3f46",
+                "#3a3a3a",
+            )
             self.panel_bg = "#252525"
         else:
-            self.bg_main, bg_card, bg_card_hover, border = "#f3f3f3", "#ffffff", "#f9f9f9", "#e5e5e5"
-            self.text_main, text_muted, nav_hover, nav_selected = "#1a1a1a", "#666666", "#e0e0e0", "#eaeaea"
-            input_bg, header_bg, list_hover, progress_bg = "#ffffff", "#f3f3f3", "#e5e5e5", "#e5e5e5"
+            self.bg_main, bg_card, bg_card_hover, border = (
+                "#f3f3f3",
+                "#ffffff",
+                "#f9f9f9",
+                "#e5e5e5",
+            )
+            self.text_main, text_muted, nav_hover, nav_selected = (
+                "#1a1a1a",
+                "#666666",
+                "#e0e0e0",
+                "#eaeaea",
+            )
+            input_bg, header_bg, list_hover, progress_bg = (
+                "#ffffff",
+                "#f3f3f3",
+                "#e5e5e5",
+                "#e5e5e5",
+            )
             self.panel_bg = "#fafafa"
 
         for btn in getattr(self, "nav_buttons", []):
@@ -1850,33 +2034,54 @@ class PrinterManagerApp(QMainWindow):
         """
         self.setStyleSheet(stylesheet)
 
-        for c in [self.cmb_status, self.cmb_server, self.cfg_lang, self.cfg_theme, self.cfg_color, self.cfg_refresh, getattr(self, "cfg_logo_icon", None), getattr(self, "cfg_font", None)]:
+        for c in [
+            self.cmb_status,
+            self.cmb_server,
+            self.cfg_lang,
+            self.cfg_theme,
+            self.cfg_color,
+            self.cfg_refresh,
+            getattr(self, "cfg_logo_icon", None),
+            getattr(self, "cfg_font", None),
+        ]:
             if hasattr(c, "view") and c.view():
-                c.view().window().setWindowFlags(Qt.WindowType.Popup | Qt.WindowType.FramelessWindowHint | Qt.WindowType.NoDropShadowWindowHint)
-                c.view().setStyleSheet(f"background-color: {input_bg}; color: {self.text_main}; border: 1px solid {border}; outline: none;")
-                
+                c.view().window().setWindowFlags(
+                    Qt.WindowType.Popup
+                    | Qt.WindowType.FramelessWindowHint
+                    | Qt.WindowType.NoDropShadowWindowHint
+                )
+                c.view().setStyleSheet(
+                    f"background-color: {input_bg}; color: {self.text_main}; border: 1px solid {border}; outline: none;"
+                )
+
         self.retranslate_ui()
         self.update_sidebar_logo()
 
     def update_sidebar_logo(self):
         icon_val = self.config.get("app_icon_val", "mdi6.flash")
-        
+
         # Verifica se o ícone atualizado é um caminho de arquivo e se ele existe na pasta local (prioridade)
         if not icon_val.startswith("mdi6."):
-            local_icon_path = os.path.join(get_executable_dir(), "icons", os.path.basename(icon_val))
+            local_icon_path = os.path.join(
+                get_executable_dir(), "icons", os.path.basename(icon_val)
+            )
             if os.path.exists(local_icon_path):
                 icon_val = local_icon_path
             elif not os.path.exists(icon_val):
-                 icon_val = "mdi6.flash"
+                icon_val = "mdi6.flash"
 
         if "mdi6." in icon_val:
-            self.lbl_app_logo.setPixmap(qta.icon(icon_val, color=self.accent_color).pixmap(24, 24))
+            self.lbl_app_logo.setPixmap(
+                qta.icon(icon_val, color=self.accent_color).pixmap(24, 24)
+            )
         else:
             self.lbl_app_logo.setPixmap(QIcon(icon_val).pixmap(24, 24))
 
     def create_centered_item(self, text, tooltip=None, user_data=None):
         item = QTableWidgetItem(str(text))
-        item.setTextAlignment(Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignVCenter)
+        item.setTextAlignment(
+            Qt.AlignmentFlag.AlignCenter | Qt.AlignmentFlag.AlignVCenter
+        )
         item.setToolTip(str(tooltip) if tooltip else str(text))
         if user_data is not None:
             item.setData(Qt.ItemDataRole.UserRole, user_data)
@@ -1961,7 +2166,9 @@ class PrinterManagerApp(QMainWindow):
         self.lbl_app_logo.setStyleSheet("background-color: transparent;")
         self.lbl_app_logo.setFixedSize(24, 24)
         self.lbl_app_title = QLabel()
-        self.lbl_app_title.setStyleSheet("font-weight: bold; font-size: 16px; background-color: transparent;")
+        self.lbl_app_title.setStyleSheet(
+            "font-weight: bold; font-size: 16px; background-color: transparent;"
+        )
         self.logo_layout.addWidget(self.lbl_app_logo)
         self.logo_layout.addWidget(self.lbl_app_title)
         self.logo_layout.addStretch()
@@ -1983,16 +2190,24 @@ class PrinterManagerApp(QMainWindow):
         self.tree_nav_devices.setObjectName("SidebarTree")
         self.tree_nav_devices.setHeaderHidden(True)
         self.tree_nav_devices.itemClicked.connect(self.on_disp_tree_clicked)
-        self.tree_nav_devices.itemExpanded.connect(lambda _: self.adjust_tree_height(self.tree_nav_devices))
-        self.tree_nav_devices.itemCollapsed.connect(lambda _: self.adjust_tree_height(self.tree_nav_devices))
+        self.tree_nav_devices.itemExpanded.connect(
+            lambda _: self.adjust_tree_height(self.tree_nav_devices)
+        )
+        self.tree_nav_devices.itemCollapsed.connect(
+            lambda _: self.adjust_tree_height(self.tree_nav_devices)
+        )
 
         self.btn_nav_local = NavButton("mdi6.printer-pos", "")
         self.tree_nav_local = QTreeWidget()
         self.tree_nav_local.setObjectName("SidebarTree")
         self.tree_nav_local.setHeaderHidden(True)
         self.tree_nav_local.itemClicked.connect(self.on_inst_tree_clicked)
-        self.tree_nav_local.itemExpanded.connect(lambda _: self.adjust_tree_height(self.tree_nav_local))
-        self.tree_nav_local.itemCollapsed.connect(lambda _: self.adjust_tree_height(self.tree_nav_local))
+        self.tree_nav_local.itemExpanded.connect(
+            lambda _: self.adjust_tree_height(self.tree_nav_local)
+        )
+        self.tree_nav_local.itemCollapsed.connect(
+            lambda _: self.adjust_tree_height(self.tree_nav_local)
+        )
 
         self.btn_nav_drivers = NavButton("mdi6.folder-zip-outline", "")
         self.btn_nav_tasks = NavButton("mdi6.text-box-outline", "")
@@ -2000,8 +2215,12 @@ class PrinterManagerApp(QMainWindow):
         self.btn_nav_guides = NavButton("mdi6.book-open-page-variant", "")
 
         self.nav_buttons = [
-            self.btn_nav_devices, self.btn_nav_local, self.btn_nav_drivers,
-            self.btn_nav_tasks, self.btn_nav_sysinfo, self.btn_nav_guides
+            self.btn_nav_devices,
+            self.btn_nav_local,
+            self.btn_nav_drivers,
+            self.btn_nav_tasks,
+            self.btn_nav_sysinfo,
+            self.btn_nav_guides,
         ]
 
         self.nav_layout.addWidget(self.btn_nav_devices)
@@ -2026,15 +2245,28 @@ class PrinterManagerApp(QMainWindow):
         bottom_side_layout.setSpacing(5)
 
         self.btn_settings = NavButton("mdi6.cog-outline", "")
-        self.btn_settings.clicked.connect(lambda: self.switch_tab(len(self.nav_buttons)-2))
+        self.btn_settings.clicked.connect(
+            lambda: self.switch_tab(len(self.nav_buttons) - 2)
+        )
         self.btn_about = NavButton("mdi6.help-circle-outline", "")
-        self.btn_about.clicked.connect(lambda: self.switch_tab(len(self.nav_buttons)-1))
+        self.btn_about.clicked.connect(
+            lambda: self.switch_tab(len(self.nav_buttons) - 1)
+        )
 
         bottom_side_layout.addWidget(self.btn_settings)
         bottom_side_layout.addWidget(self.btn_about)
         self.nav_buttons.extend([self.btn_settings, self.btn_about])
 
-        tab_keys = ["nav_devices", "nav_local", "nav_drivers", "nav_tasks", "nav_sysinfo", "nav_guides", "nav_settings", "nav_about"]
+        tab_keys = [
+            "nav_devices",
+            "nav_local",
+            "nav_drivers",
+            "nav_tasks",
+            "nav_sysinfo",
+            "nav_guides",
+            "nav_settings",
+            "nav_about",
+        ]
         for i, btn in enumerate(self.nav_buttons):
             key = tab_keys[i]
             state = self.ui_config.get(key, "visible")
@@ -2042,7 +2274,9 @@ class PrinterManagerApp(QMainWindow):
                 btn.hide()
             elif state == "disabled":
                 btn.setEnabled(False)
-                btn.setStyleSheet(btn.styleSheet() + " color: #888888; text-decoration: line-through;")
+                btn.setStyleSheet(
+                    btn.styleSheet() + " color: #888888; text-decoration: line-through;"
+                )
 
         side_layout.addWidget(bottom_side_widget)
         main_layout.addWidget(self.sidebar)
@@ -2061,18 +2295,38 @@ class PrinterManagerApp(QMainWindow):
         self.search_box.setObjectName("SearchBar")
         self.search_box.setFixedWidth(400)
         self.search_box.textChanged.connect(self.global_search)
-        self.search_box.addAction(qta.icon("mdi6.magnify", color="#a0a0a0"), QLineEdit.ActionPosition.LeadingPosition)
+        self.search_box.addAction(
+            qta.icon("mdi6.magnify", color="#a0a0a0"),
+            QLineEdit.ActionPosition.LeadingPosition,
+        )
         top_layout.addWidget(self.search_box)
         top_layout.addStretch()
         content_layout.addWidget(top_bar)
 
-        (self.cmb_status, self.cmb_server, self.cfg_lang, self.cfg_theme, self.cfg_color, self.cfg_refresh, self.cfg_logo_icon) = [QComboBox() for _ in range(7)]
+        (
+            self.cmb_status,
+            self.cmb_server,
+            self.cfg_lang,
+            self.cfg_theme,
+            self.cfg_color,
+            self.cfg_refresh,
+            self.cfg_logo_icon,
+        ) = [QComboBox() for _ in range(7)]
         self.cfg_font = QComboBox()
         self.cfg_font_size = QSpinBox()
         self.cfg_font_size.setButtonSymbols(QSpinBox.ButtonSymbols.NoButtons)
         self.cfg_font_size.setRange(8, 72)
 
-        for c in [self.cmb_status, self.cmb_server, self.cfg_lang, self.cfg_theme, self.cfg_color, self.cfg_refresh, self.cfg_logo_icon, self.cfg_font]:
+        for c in [
+            self.cmb_status,
+            self.cmb_server,
+            self.cfg_lang,
+            self.cfg_theme,
+            self.cfg_color,
+            self.cfg_refresh,
+            self.cfg_logo_icon,
+            self.cfg_font,
+        ]:
             c.setView(QListView())
             c.setItemDelegate(QStyledItemDelegate())
             c.setFixedWidth(250)
@@ -2092,7 +2346,7 @@ class PrinterManagerApp(QMainWindow):
 
         main_layout.addWidget(content_wrapper, stretch=1)
         main_layout.addWidget(self.right_panel)
-        
+
         first_visible = 0
         for i, btn in enumerate(self.nav_buttons):
             if btn.isVisible() and btn.isEnabled():
@@ -2113,18 +2367,28 @@ class PrinterManagerApp(QMainWindow):
         self.search_box.clear()
 
         placeholders = [
-            tr("search_ph_devices"), tr("search_ph_local"), tr("search_ph_drivers"),
-            tr("search_ph_tasks"), tr("search_ph_sysinfo"), tr("search_ph_guides"),
-            tr("search_ph_settings"), tr("search_ph_about")
+            tr("search_ph_devices"),
+            tr("search_ph_local"),
+            tr("search_ph_drivers"),
+            tr("search_ph_tasks"),
+            tr("search_ph_sysinfo"),
+            tr("search_ph_guides"),
+            tr("search_ph_settings"),
+            tr("search_ph_about"),
         ]
         if index < len(placeholders):
             self.search_box.setPlaceholderText(placeholders[index])
 
-        if index == 0: self.filter_table_view()
-        elif index == 1: self.refresh_local_only()
-        elif index == 2: self.refresh_drivers()
-        elif index == 5: self.refresh_guides()
-        elif index == 6: self.refresh_settings_servers_table()
+        if index == 0:
+            self.filter_table_view()
+        elif index == 1:
+            self.refresh_local_only()
+        elif index == 2:
+            self.refresh_drivers()
+        elif index == 5:
+            self.refresh_guides()
+        elif index == 6:
+            self.refresh_settings_servers_table()
 
         self.update_global_right_panel()
 
@@ -2140,13 +2404,19 @@ class PrinterManagerApp(QMainWindow):
 
         grupos = QTreeWidgetItem([tr("tree_groups")])
         grupos.setIcon(0, qta.icon("mdi6.server-network", color=self.text_main))
-        servers = set(p["server"] for p in self.all_printers_data if p["server"] != "Local")
+        servers = set(
+            p["server"] for p in self.all_printers_data if p["server"] != "Local"
+        )
         for s in sorted(list(servers)):
             grupos.addChild(QTreeWidgetItem([s]))
 
         fabricantes = QTreeWidgetItem([tr("tree_manufacturers")])
         fabricantes.setIcon(0, qta.icon("mdi6.factory", color=self.text_main))
-        mans = set(get_manufacturer(p["driver"]) for p in self.all_printers_data if p["server"] != "Local")
+        mans = set(
+            get_manufacturer(p["driver"])
+            for p in self.all_printers_data
+            if p["server"] != "Local"
+        )
         for m in sorted(list(mans)):
             fabricantes.addChild(QTreeWidgetItem([m]))
 
@@ -2165,7 +2435,11 @@ class PrinterManagerApp(QMainWindow):
 
         fabricantes = QTreeWidgetItem([tr("tree_manufacturers")])
         fabricantes.setIcon(0, qta.icon("mdi6.factory", color=self.text_main))
-        mans = set(get_manufacturer(p["driver"]) for p in self.all_printers_data if p["server"] == "Local" or not p["is_network"])
+        mans = set(
+            get_manufacturer(p["driver"])
+            for p in self.all_printers_data
+            if p["server"] == "Local" or not p["is_network"]
+        )
         for m in sorted(list(mans)):
             fabricantes.addChild(QTreeWidgetItem([m]))
 
@@ -2176,24 +2450,33 @@ class PrinterManagerApp(QMainWindow):
     def on_disp_tree_clicked(self, item, column):
         parent = item.parent()
         if parent is None:
-            if item.text(0) == tr("tree_all"): self.current_disp_filter = None
-            else: return
+            if item.text(0) == tr("tree_all"):
+                self.current_disp_filter = None
+            else:
+                return
         else:
             p_text = parent.text(0)
-            if p_text == tr("tree_smart"): self.current_disp_filter = {"type": "status", "val": item.text(0)}
-            elif p_text == tr("tree_groups"): self.current_disp_filter = {"type": "server", "val": item.text(0)}
-            elif p_text == tr("tree_manufacturers"): self.current_disp_filter = {"type": "manufacturer", "val": item.text(0)}
+            if p_text == tr("tree_smart"):
+                self.current_disp_filter = {"type": "status", "val": item.text(0)}
+            elif p_text == tr("tree_groups"):
+                self.current_disp_filter = {"type": "server", "val": item.text(0)}
+            elif p_text == tr("tree_manufacturers"):
+                self.current_disp_filter = {"type": "manufacturer", "val": item.text(0)}
         self.filter_table_view()
 
     def on_inst_tree_clicked(self, item, column):
         parent = item.parent()
         if parent is None:
-            if item.text(0) == tr("tree_all"): self.current_inst_filter = None
-            else: return
+            if item.text(0) == tr("tree_all"):
+                self.current_inst_filter = None
+            else:
+                return
         else:
             p_text = parent.text(0)
-            if p_text == tr("tree_conn_types"): self.current_inst_filter = {"type": "conn", "val": item.text(0)}
-            elif p_text == tr("tree_manufacturers"): self.current_inst_filter = {"type": "manufacturer", "val": item.text(0)}
+            if p_text == tr("tree_conn_types"):
+                self.current_inst_filter = {"type": "conn", "val": item.text(0)}
+            elif p_text == tr("tree_manufacturers"):
+                self.current_inst_filter = {"type": "manufacturer", "val": item.text(0)}
         self.refresh_local_only()
 
     def create_global_right_panel(self):
@@ -2223,7 +2506,9 @@ class PrinterManagerApp(QMainWindow):
         self.btn_rp_props.setProperty("class", "StandardBtn")
         layout.addWidget(self.btn_rp_props)
         layout.addSpacing(10)
-        layout.addWidget(QFrame(frameShape=QFrame.Shape.HLine, frameShadow=QFrame.Shadow.Sunken))
+        layout.addWidget(
+            QFrame(frameShape=QFrame.Shape.HLine, frameShadow=QFrame.Shadow.Sunken)
+        )
         layout.addSpacing(10)
 
         self.chk_rp_install_machine = QCheckBox()
@@ -2242,7 +2527,9 @@ class PrinterManagerApp(QMainWindow):
         chk_layout = QHBoxLayout(self.chk_rp_cont)
         chk_layout.setContentsMargins(0, 0, 0, 0)
         chk_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.chk_rp_install_machine.setStyleSheet("background: transparent; font-size: 11px;")
+        self.chk_rp_install_machine.setStyleSheet(
+            "background: transparent; font-size: 11px;"
+        )
         chk_layout.addWidget(self.chk_rp_install_machine)
         layout.addWidget(self.chk_rp_cont)
 
@@ -2283,21 +2570,33 @@ class PrinterManagerApp(QMainWindow):
         return panel
 
     def action_web_interface(self):
-        table = self.table_disp if self.stacked.currentIndex() == 0 else self.table_instaladas
+        table = (
+            self.table_disp
+            if self.stacked.currentIndex() == 0
+            else self.table_instaladas
+        )
         for row in range(table.rowCount()):
             chk_widget = table.cellWidget(row, 0)
             if chk_widget and chk_widget.layout().itemAt(0).widget().isChecked():
                 raw_name = table.item(row, 1).data(Qt.ItemDataRole.UserRole)
-                p_data = next((p for p in self.all_printers_data if p["raw_name"] == raw_name), None)
+                p_data = next(
+                    (p for p in self.all_printers_data if p["raw_name"] == raw_name),
+                    None,
+                )
                 if p_data:
                     ip = p_data.get("port", "")
                     if ip and any(char.isdigit() for char in ip):
                         import webbrowser
+
                         clean_ip = ip.replace("IP_", "")
                         webbrowser.open(f"http://{clean_ip}")
 
     def action_properties_printers(self):
-        table = self.table_disp if self.stacked.currentIndex() == 0 else self.table_instaladas
+        table = (
+            self.table_disp
+            if self.stacked.currentIndex() == 0
+            else self.table_instaladas
+        )
         for row in range(table.rowCount()):
             chk_widget = table.cellWidget(row, 0)
             if chk_widget and chk_widget.layout().itemAt(0).widget().isChecked():
@@ -2343,15 +2642,23 @@ class PrinterManagerApp(QMainWindow):
 
         self.table_disp = QTableWidget(0, 8)
         self.table_disp.verticalHeader().setVisible(False)
-        self.table_disp.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.table_disp.setSelectionBehavior(
+            QAbstractItemView.SelectionBehavior.SelectRows
+        )
         self.table_disp.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.table_disp.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
-        self.table_disp.customContextMenuRequested.connect(lambda pos: self.show_context_menu(pos, self.table_disp))
+        self.table_disp.customContextMenuRequested.connect(
+            lambda pos: self.show_context_menu(pos, self.table_disp)
+        )
         self.table_disp.itemDoubleClicked.connect(self.handle_table_double_click)
-        self.table_disp.itemSelectionChanged.connect(lambda: self.sync_table_selection(self.table_disp, "disp"))
+        self.table_disp.itemSelectionChanged.connect(
+            lambda: self.sync_table_selection(self.table_disp, "disp")
+        )
         self.table_disp.setShowGrid(False)
 
-        self.table_disp.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
+        self.table_disp.horizontalHeader().setSectionResizeMode(
+            QHeaderView.ResizeMode.Interactive
+        )
         self.table_disp.horizontalHeader().setStretchLastSection(True)
         self.table_disp.setColumnWidth(0, 40)
         self.table_disp.setColumnWidth(1, 250)
@@ -2380,15 +2687,27 @@ class PrinterManagerApp(QMainWindow):
 
         self.table_instaladas = QTableWidget(0, 6)
         self.table_instaladas.verticalHeader().setVisible(False)
-        self.table_instaladas.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
-        self.table_instaladas.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
-        self.table_instaladas.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
-        self.table_instaladas.customContextMenuRequested.connect(lambda pos: self.show_context_menu(pos, self.table_instaladas))
+        self.table_instaladas.setSelectionBehavior(
+            QAbstractItemView.SelectionBehavior.SelectRows
+        )
+        self.table_instaladas.setEditTriggers(
+            QAbstractItemView.EditTrigger.NoEditTriggers
+        )
+        self.table_instaladas.setContextMenuPolicy(
+            Qt.ContextMenuPolicy.CustomContextMenu
+        )
+        self.table_instaladas.customContextMenuRequested.connect(
+            lambda pos: self.show_context_menu(pos, self.table_instaladas)
+        )
         self.table_instaladas.itemDoubleClicked.connect(self.handle_table_double_click)
-        self.table_instaladas.itemSelectionChanged.connect(lambda: self.sync_table_selection(self.table_instaladas, "inst"))
+        self.table_instaladas.itemSelectionChanged.connect(
+            lambda: self.sync_table_selection(self.table_instaladas, "inst")
+        )
         self.table_instaladas.setShowGrid(False)
 
-        self.table_instaladas.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Interactive)
+        self.table_instaladas.horizontalHeader().setSectionResizeMode(
+            QHeaderView.ResizeMode.Interactive
+        )
         self.table_instaladas.horizontalHeader().setStretchLastSection(True)
         self.table_instaladas.setColumnWidth(0, 40)
         self.table_instaladas.setColumnWidth(1, 280)
@@ -2410,12 +2729,18 @@ class PrinterManagerApp(QMainWindow):
 
         self.table_drivers = QTableWidget(0, 3)
         self.table_drivers.verticalHeader().setVisible(False)
-        self.table_drivers.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.table_drivers.setSelectionBehavior(
+            QAbstractItemView.SelectionBehavior.SelectRows
+        )
         self.table_drivers.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.table_drivers.setContextMenuPolicy(Qt.ContextMenuPolicy.CustomContextMenu)
-        self.table_drivers.customContextMenuRequested.connect(lambda pos: self.show_context_menu(pos, self.table_drivers))
+        self.table_drivers.customContextMenuRequested.connect(
+            lambda pos: self.show_context_menu(pos, self.table_drivers)
+        )
         self.table_drivers.setShowGrid(False)
-        self.table_drivers.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
+        self.table_drivers.horizontalHeader().setSectionResizeMode(
+            2, QHeaderView.ResizeMode.Stretch
+        )
         self.table_drivers.setColumnWidth(0, 350)
         self.table_drivers.setColumnWidth(1, 200)
         self.configure_table_headers(self.table_drivers)
@@ -2442,10 +2767,14 @@ class PrinterManagerApp(QMainWindow):
 
         self.table_tarefas = QTableWidget(0, 5)
         self.table_tarefas.verticalHeader().setVisible(False)
-        self.table_tarefas.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.table_tarefas.setSelectionBehavior(
+            QAbstractItemView.SelectionBehavior.SelectRows
+        )
         self.table_tarefas.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
         self.table_tarefas.setShowGrid(False)
-        self.table_tarefas.horizontalHeader().setSectionResizeMode(4, QHeaderView.ResizeMode.Stretch)
+        self.table_tarefas.horizontalHeader().setSectionResizeMode(
+            4, QHeaderView.ResizeMode.Stretch
+        )
         self.table_tarefas.setColumnWidth(0, 180)
         self.table_tarefas.setColumnWidth(1, 120)
         self.table_tarefas.setColumnWidth(2, 140)
@@ -2462,7 +2791,7 @@ class PrinterManagerApp(QMainWindow):
 
         self.info_layout = QFormLayout()
         self.info_layout.setSpacing(20)
-        
+
         self.lbl_key_os = QLabel()
         self.lbl_val_os = QLabel()
         self.lbl_key_pc_name = QLabel()
@@ -2473,7 +2802,7 @@ class PrinterManagerApp(QMainWindow):
         self.lbl_val_ip = QLabel()
         self.lbl_key_ram = QLabel()
         self.lbl_val_ram = QLabel()
-        
+
         self.info_layout.addRow(self.lbl_key_os, self.lbl_val_os)
         self.info_layout.addRow(self.lbl_key_pc_name, self.lbl_val_pc_name)
         self.info_layout.addRow(self.lbl_key_user, self.lbl_val_user)
@@ -2501,15 +2830,15 @@ class PrinterManagerApp(QMainWindow):
         self.btn_rem_pdf = QPushButton()
         self.btn_rem_pdf.setProperty("class", "StandardBtn")
         self.btn_rem_pdf.clicked.connect(self.remove_custom_pdf)
-        
+
         admin_status = is_user_admin()
         self.btn_add_pdf.setEnabled(admin_status)
         self.btn_rem_pdf.setEnabled(admin_status)
-        
+
         self.btn_open_pdf = QPushButton()
         self.btn_open_pdf.setProperty("class", "PrimaryBtn")
         self.btn_open_pdf.clicked.connect(self.open_selected_pdf)
-        
+
         actions_layout.addWidget(self.btn_add_pdf)
         actions_layout.addWidget(self.btn_rem_pdf)
         actions_layout.addStretch()
@@ -2540,7 +2869,9 @@ class PrinterManagerApp(QMainWindow):
 
         grp_aparencia = QFrame()
         grp_aparencia.setProperty("class", "ActionCard")
-        grp_aparencia.setStyleSheet("QFrame.ActionCard { padding: 20px; height: auto; }")
+        grp_aparencia.setStyleSheet(
+            "QFrame.ActionCard { padding: 20px; height: auto; }"
+        )
         form_ap = QFormLayout(grp_aparencia)
         self.lbl_cfg_app = QLabel()
         self.lbl_cfg_app.setStyleSheet("font-weight: bold; margin-bottom: 10px;")
@@ -2577,11 +2908,20 @@ class PrinterManagerApp(QMainWindow):
         self.lbl_cfg_tabs = QLabel()
         self.lbl_cfg_tabs.setStyleSheet("font-weight: bold; margin-bottom: 10px;")
         form_tabs.addRow(self.lbl_cfg_tabs)
-        
+
         self.tab_combos = {}
-        tab_keys = ["nav_devices", "nav_local", "nav_drivers", "nav_tasks", "nav_sysinfo", "nav_guides", "nav_settings", "nav_about"]
+        tab_keys = [
+            "nav_devices",
+            "nav_local",
+            "nav_drivers",
+            "nav_tasks",
+            "nav_sysinfo",
+            "nav_guides",
+            "nav_settings",
+            "nav_about",
+        ]
         admin_status = is_user_admin()
-        
+
         for key in tab_keys:
             cmb = QComboBox()
             cmb.setView(QListView())
@@ -2590,18 +2930,19 @@ class PrinterManagerApp(QMainWindow):
             cmb.addItem("Visível", "visible")
             cmb.addItem("Desabilitado", "disabled")
             cmb.addItem("Oculto", "hidden")
-            
+
             current_state = self.ui_config.get(key, "visible")
             idx = cmb.findData(current_state)
-            if idx >= 0: cmb.setCurrentIndex(idx)
-            
+            if idx >= 0:
+                cmb.setCurrentIndex(idx)
+
             cmb.setEnabled(admin_status)
             self.tab_combos[key] = cmb
-            
+
             lbl = QLabel()
             setattr(self, f"lbl_tab_{key}", lbl)
             form_tabs.addRow(lbl, cmb)
-            
+
         scroll_layout.addWidget(grp_tabs)
 
         grp_behavior = QFrame()
@@ -2617,7 +2958,9 @@ class PrinterManagerApp(QMainWindow):
 
         grp_servidores = QFrame()
         grp_servidores.setProperty("class", "ActionCard")
-        grp_servidores.setStyleSheet("QFrame.ActionCard { padding: 20px; height: auto; }")
+        grp_servidores.setStyleSheet(
+            "QFrame.ActionCard { padding: 20px; height: auto; }"
+        )
         srv_layout = QVBoxLayout(grp_servidores)
         self.lbl_cfg_srv = QLabel()
         self.lbl_cfg_srv.setStyleSheet("font-weight: bold; margin-bottom: 10px;")
@@ -2625,12 +2968,20 @@ class PrinterManagerApp(QMainWindow):
 
         self.table_cfg_servers = QTableWidget(0, 6)
         self.table_cfg_servers.verticalHeader().setVisible(False)
-        self.table_cfg_servers.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
-        self.table_cfg_servers.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
+        self.table_cfg_servers.setSelectionBehavior(
+            QAbstractItemView.SelectionBehavior.SelectRows
+        )
+        self.table_cfg_servers.setEditTriggers(
+            QAbstractItemView.EditTrigger.NoEditTriggers
+        )
         self.table_cfg_servers.setShowGrid(False)
         self.table_cfg_servers.setFixedHeight(220)
-        self.table_cfg_servers.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
-        self.table_cfg_servers.horizontalHeader().setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
+        self.table_cfg_servers.horizontalHeader().setSectionResizeMode(
+            1, QHeaderView.ResizeMode.Stretch
+        )
+        self.table_cfg_servers.horizontalHeader().setSectionResizeMode(
+            2, QHeaderView.ResizeMode.Stretch
+        )
         self.table_cfg_servers.setColumnWidth(0, 60)
         self.table_cfg_servers.setColumnWidth(3, 120)
         self.table_cfg_servers.setColumnWidth(4, 60)
@@ -2681,7 +3032,11 @@ class PrinterManagerApp(QMainWindow):
         h_header = QHBoxLayout()
         icon_lbl = QLabel()
         icon_lbl.setStyleSheet("background-color: transparent;")
-        icon_lbl.setPixmap(qta.icon("mdi6.printer-3d", color=self.config.get("primary_color", "#60CDFF")).pixmap(64, 64))
+        icon_lbl.setPixmap(
+            qta.icon(
+                "mdi6.printer-3d", color=self.config.get("primary_color", "#60CDFF")
+            ).pixmap(64, 64)
+        )
         titles_vbox = QVBoxLayout()
         self.lbl_about_title = QLabel()
         self.lbl_about_version = QLabel()
@@ -2694,7 +3049,7 @@ class PrinterManagerApp(QMainWindow):
 
         self.lbl_about_desc = QLabel()
         self.lbl_about_desc.setWordWrap(True)
-        
+
         self.links_layout = QHBoxLayout()
         self.lbl_about_repo = QLabel()
         self.lbl_about_docs = QLabel()
@@ -2707,8 +3062,11 @@ class PrinterManagerApp(QMainWindow):
 
         self.btn_about_update = QPushButton()
         self.btn_about_update.setProperty("class", "StandardBtn")
-        self.btn_about_update.clicked.connect(lambda: QMessageBox.information(self, tr("about_check_updates"), tr("about_up_to_date")))
-        
+        url_releases = "https://github.com/782e616c6d/printops-suite/releases"
+        self.btn_about_update.clicked.connect(
+            lambda: QDesktopServices.openUrl(QUrl(url_releases))
+        )
+
         self.lbl_about_modules = QLabel()
 
         v_layout.addLayout(h_header)
@@ -2730,14 +3088,32 @@ class PrinterManagerApp(QMainWindow):
         self.lbl_app_title.setText(f" {tr('app_title')}")
         self.search_box.setPlaceholderText(tr("search_ph"))
 
-        for idx, key in enumerate(["nav_devices", "nav_local", "nav_drivers", "nav_tasks", "nav_sysinfo", "nav_guides"]):
+        for idx, key in enumerate(
+            [
+                "nav_devices",
+                "nav_local",
+                "nav_drivers",
+                "nav_tasks",
+                "nav_sysinfo",
+                "nav_guides",
+            ]
+        ):
             if idx < len(self.nav_buttons) - 2:
                 self.nav_buttons[idx].update_text(tr(key))
-                
+
         self.btn_settings.update_text(tr("nav_settings"))
         self.btn_about.update_text(tr("nav_about"))
 
-        for view in ["devices", "local", "drivers", "tasks", "sysinfo", "guides", "settings", "about"]:
+        for view in [
+            "devices",
+            "local",
+            "drivers",
+            "tasks",
+            "sysinfo",
+            "guides",
+            "settings",
+            "about",
+        ]:
             getattr(self, f"hdr_title_title_{view}").setText(tr(f"title_{view}"))
             getattr(self, f"hdr_sub_sub_{view}").setText(tr(f"sub_{view}"))
 
@@ -2746,18 +3122,62 @@ class PrinterManagerApp(QMainWindow):
         self.card3.set_texts(tr("card_repair"), tr("card_repair_sub"))
         self.card4.set_texts(tr("card_export"), tr("card_export_sub"))
 
-        self.table_disp.setHorizontalHeaderLabels(["", tr("col_name"), tr("col_manufacturer"), tr("col_driver"), tr("col_port"), tr("col_server"), tr("col_status"), tr("col_installed")])
-        self.table_instaladas.setHorizontalHeaderLabels(["", tr("col_name"), tr("col_manufacturer"), tr("col_type"), tr("col_driver"), tr("col_port")])
-        self.table_drivers.setHorizontalHeaderLabels([tr("col_name"), tr("col_env"), tr("col_path")])
-        self.table_tarefas.setHorizontalHeaderLabels([tr("col_task_type"), tr("col_status"), tr("col_started"), tr("col_finished"), tr("col_target")])
-        self.table_cfg_servers.setHorizontalHeaderLabels([tr("col_active"), tr("col_name"), tr("col_ip"), tr("col_status"), tr("col_qty"), tr("col_test")])
+        self.table_disp.setHorizontalHeaderLabels(
+            [
+                "",
+                tr("col_name"),
+                tr("col_manufacturer"),
+                tr("col_driver"),
+                tr("col_port"),
+                tr("col_server"),
+                tr("col_status"),
+                tr("col_installed"),
+            ]
+        )
+        self.table_instaladas.setHorizontalHeaderLabels(
+            [
+                "",
+                tr("col_name"),
+                tr("col_manufacturer"),
+                tr("col_type"),
+                tr("col_driver"),
+                tr("col_port"),
+            ]
+        )
+        self.table_drivers.setHorizontalHeaderLabels(
+            [tr("col_name"), tr("col_env"), tr("col_path")]
+        )
+        self.table_tarefas.setHorizontalHeaderLabels(
+            [
+                tr("col_task_type"),
+                tr("col_status"),
+                tr("col_started"),
+                tr("col_finished"),
+                tr("col_target"),
+            ]
+        )
+        self.table_cfg_servers.setHorizontalHeaderLabels(
+            [
+                tr("col_active"),
+                tr("col_name"),
+                tr("col_ip"),
+                tr("col_status"),
+                tr("col_qty"),
+                tr("col_test"),
+            ]
+        )
 
         self.txt_new_srv.setPlaceholderText(tr("input_ip_ph"))
 
         def repopulate_combo(combo, items_dict, current_val):
             combo.blockSignals(True)
             combo.clear()
-            if current_val and isinstance(current_val, str) and current_val not in items_dict and os.path.exists(current_val):
+            if (
+                current_val
+                and isinstance(current_val, str)
+                and current_val not in items_dict
+                and os.path.exists(current_val)
+            ):
                 items_dict[current_val] = (os.path.basename(current_val), None, None)
             for key, (text, icon_name, color) in items_dict.items():
                 if icon_name:
@@ -2770,48 +3190,70 @@ class PrinterManagerApp(QMainWindow):
                     combo.setCurrentIndex(combo.count() - 1)
             combo.blockSignals(False)
 
-        repopulate_combo(self.cmb_status, {
-            "all": (tr("status_all"), "mdi6.format-list-bulleted", self.text_main),
-            "ok": (tr("status_ok"), "mdi6.check-circle", "#10b981"),
-            "warn": (tr("status_warn"), "mdi6.alert", "#d97706"),
-            "off": (tr("status_off"), "mdi6.close-circle", "#999999"),
-        }, self.cmb_status.currentData() or "all")
-        
+        repopulate_combo(
+            self.cmb_status,
+            {
+                "all": (tr("status_all"), "mdi6.format-list-bulleted", self.text_main),
+                "ok": (tr("status_ok"), "mdi6.check-circle", "#10b981"),
+                "warn": (tr("status_warn"), "mdi6.alert", "#d97706"),
+                "off": (tr("status_off"), "mdi6.close-circle", "#999999"),
+            },
+            self.cmb_status.currentData() or "all",
+        )
+
         srv_dict = {"all": (tr("server_all"), "mdi6.server-network", self.text_main)}
         for p in self.all_printers_data:
             if p["server"] != "Local":
                 srv_dict[p["server"]] = (p["server"], "mdi6.server", self.text_main)
-        repopulate_combo(self.cmb_server, srv_dict, self.cmb_server.currentData() or "all")
+        repopulate_combo(
+            self.cmb_server, srv_dict, self.cmb_server.currentData() or "all"
+        )
 
-        repopulate_combo(self.cfg_lang, {
-            "lang_sys": (tr("lang_sys"), None, None),
-            "pt": ("Português", None, None),
-            "en": ("English", None, None),
-            "es": ("Español", None, None),
-            "fr": ("Français", None, None),
-            "ar": ("العربية", None, None),
-        }, self.config.get("language", "lang_sys"))
-        
-        repopulate_combo(self.cfg_theme, {
-            "theme_system": (tr("theme_system"), None, None),
-            "theme_light": (tr("theme_light"), None, None),
-            "theme_dark": (tr("theme_dark"), None, None),
-        }, self.config.get("theme", "theme_system"))
-        
-        repopulate_combo(self.cfg_color, {
-            "#60CDFF": (tr("color_blue"), None, None),
-            "#10b981": (tr("color_green"), None, None),
-            "#8b5cf6": (tr("color_purple"), None, None),
-            "#94a3b8": (tr("color_gray"), None, None),
-        }, self.config.get("primary_color", "#60CDFF"))
-        
-        repopulate_combo(self.cfg_refresh, {
-            0: (tr("ref_off"), None, None),
-            30: (tr("ref_30s"), None, None),
-            60: (tr("ref_60s"), None, None),
-            300: (tr("ref_300s"), None, None),
-        }, self.config.get("auto_refresh", 0))
-        
+        repopulate_combo(
+            self.cfg_lang,
+            {
+                "lang_sys": (tr("lang_sys"), None, None),
+                "pt": ("Português", None, None),
+                "en": ("English", None, None),
+                "es": ("Español", None, None),
+                "fr": ("Français", None, None),
+                "ar": ("العربية", None, None),
+            },
+            self.config.get("language", "lang_sys"),
+        )
+
+        repopulate_combo(
+            self.cfg_theme,
+            {
+                "theme_system": (tr("theme_system"), None, None),
+                "theme_light": (tr("theme_light"), None, None),
+                "theme_dark": (tr("theme_dark"), None, None),
+            },
+            self.config.get("theme", "theme_system"),
+        )
+
+        repopulate_combo(
+            self.cfg_color,
+            {
+                "#60CDFF": (tr("color_blue"), None, None),
+                "#10b981": (tr("color_green"), None, None),
+                "#8b5cf6": (tr("color_purple"), None, None),
+                "#94a3b8": (tr("color_gray"), None, None),
+            },
+            self.config.get("primary_color", "#60CDFF"),
+        )
+
+        repopulate_combo(
+            self.cfg_refresh,
+            {
+                0: (tr("ref_off"), None, None),
+                30: (tr("ref_30s"), None, None),
+                60: (tr("ref_60s"), None, None),
+                300: (tr("ref_300s"), None, None),
+            },
+            self.config.get("auto_refresh", 0),
+        )
+
         # --- NOVO: Varredura dinâmica de ícones na pasta ---
         logo_dict = {
             "mdi6.flash": ("Lightning (⚡)", "mdi6.flash", self.text_main),
@@ -2820,31 +3262,45 @@ class PrinterManagerApp(QMainWindow):
             "mdi6.lan": ("Network (🌐)", "mdi6.lan", self.text_main),
             "mdi6.shield-check": ("Shield (🛡️)", "mdi6.shield-check", self.text_main),
         }
-        
+
         # Tenta carregar ícones da pasta local primeiro, depois do AppData
         local_icons_dir = os.path.join(get_executable_dir(), "icons")
         appdata_icons_dir = os.path.join(get_appdata_dir(), "icons")
-        
+
         for d in [local_icons_dir, appdata_icons_dir]:
             if os.path.exists(d):
                 for img_file in os.listdir(d):
-                    if img_file.lower().endswith(('.png', '.jpg', '.jpeg', '.ico', '.svg')):
+                    if img_file.lower().endswith(
+                        (".png", ".jpg", ".jpeg", ".ico", ".svg")
+                    ):
                         full_path = os.path.join(d, img_file)
                         logo_dict[full_path] = (img_file, None, None)
 
-        repopulate_combo(self.cfg_logo_icon, logo_dict, self.config.get("app_icon_val", "mdi6.flash"))
+        repopulate_combo(
+            self.cfg_logo_icon, logo_dict, self.config.get("app_icon_val", "mdi6.flash")
+        )
 
         self.cfg_font.blockSignals(True)
         self.cfg_font.clear()
-        font_families = QFontDatabase.families() or ["Segoe UI", "Arial", "Verdana", "Sans Serif", "Tahoma"]
+        font_families = QFontDatabase.families() or [
+            "Segoe UI",
+            "Arial",
+            "Verdana",
+            "Sans Serif",
+            "Tahoma",
+        ]
         self.cfg_font.addItems(font_families)
         pref_font = self.config.get("font_family", "Segoe UI")
-        if pref_font in font_families: self.cfg_font.setCurrentText(pref_font)
-        elif font_families: self.cfg_font.setCurrentIndex(0)
+        if pref_font in font_families:
+            self.cfg_font.setCurrentText(pref_font)
+        elif font_families:
+            self.cfg_font.setCurrentIndex(0)
         self.cfg_font.blockSignals(False)
 
-        try: fs = int(self.config.get("font_size", 10))
-        except: fs = 10
+        try:
+            fs = int(self.config.get("font_size", 10))
+        except:
+            fs = 10
         self.cfg_font_size.blockSignals(True)
         self.cfg_font_size.setRange(8, 72)
         self.cfg_font_size.setValue(max(fs, 8))
@@ -2861,18 +3317,28 @@ class PrinterManagerApp(QMainWindow):
         self.lbl_size.setText(tr("cfg_size"))
         self.lbl_logo_sel.setText(tr("cfg_icon_sidebar"))
         self.btn_custom_icon.setText(tr("cfg_icon_custom"))
-        
+
         self.lbl_cfg_tabs.setText(tr("cfg_ui_tabs"))
-        tab_keys = ["nav_devices", "nav_local", "nav_drivers", "nav_tasks", "nav_sysinfo", "nav_guides", "nav_settings", "nav_about"]
+        tab_keys = [
+            "nav_devices",
+            "nav_local",
+            "nav_drivers",
+            "nav_tasks",
+            "nav_sysinfo",
+            "nav_guides",
+            "nav_settings",
+            "nav_about",
+        ]
         for key in tab_keys:
             lbl = getattr(self, f"lbl_tab_{key}", None)
-            if lbl: lbl.setText(tr(key))
+            if lbl:
+                lbl.setText(tr(key))
             cmb = self.tab_combos.get(key)
             if cmb:
                 cmb.setItemText(0, tr("tab_visible"))
                 cmb.setItemText(1, tr("tab_disabled"))
                 cmb.setItemText(2, tr("tab_hidden"))
-                
+
         self.btn_add_srv.setText(tr("cfg_btn_add"))
         self.btn_rem_srv.setText(tr("cfg_btn_rem"))
         self.btn_save.setText(tr("cfg_save"))
@@ -2891,15 +3357,23 @@ class PrinterManagerApp(QMainWindow):
         self.btn_rp_csv.setText(f"  {tr('btn_export_csv')}")
         self.chk_rp_install_machine.setText(tr("chk_per_machine"))
 
-        try: os_info = f"{platform.system()} {platform.release()} ({platform.architecture()[0]})"
-        except: os_info = tr("sys_unknown")
-        try: pc_name = platform.node()
-        except: pc_name = tr("sys_unknown")
-        try: current_user = os.getlogin()
-        except: current_user = tr("sys_unknown")
-        try: ip_addr = socket.gethostbyname(socket.gethostname())
-        except: ip_addr = tr("sys_unknown")
-            
+        try:
+            os_info = f"{platform.system()} {platform.release()} ({platform.architecture()[0]})"
+        except:
+            os_info = tr("sys_unknown")
+        try:
+            pc_name = platform.node()
+        except:
+            pc_name = tr("sys_unknown")
+        try:
+            current_user = os.getlogin()
+        except:
+            current_user = tr("sys_unknown")
+        try:
+            ip_addr = socket.gethostbyname(socket.gethostname())
+        except:
+            ip_addr = tr("sys_unknown")
+
         self.lbl_key_os.setText(f"<b>{tr('sysinfo_os')}</b>")
         self.lbl_val_os.setText(os_info)
         self.lbl_key_pc_name.setText(f"<b>{tr('sysinfo_pc_name')}</b>")
@@ -2910,16 +3384,21 @@ class PrinterManagerApp(QMainWindow):
         self.lbl_val_ip.setText(ip_addr)
         self.lbl_key_ram.setText(f"<b>{tr('sysinfo_ram')}</b>")
         self.lbl_val_ram.setText(get_ram_info())
-        
+
         self.lbl_about_title.setText(f"<b>{tr('app_title')}</b>")
-        self.lbl_about_version.setText(f"{tr('about_version')} 3.0.0 • WinUI Global Edition")
+        self.lbl_about_version.setText(
+            f"{tr('about_version')} 3.0.0 • WinUI Global Edition"
+        )
         self.lbl_about_desc.setText(tr("about_desc"))
-        self.lbl_about_modules.setText(f"<b>{tr('about_modules')}</b> PyQt6, pywin32, qtawesome, ctypes.")
-        
+        self.lbl_about_modules.setText(
+            f"<b>{tr('about_modules')}</b> PyQt6, pywin32, qtawesome, ctypes."
+        )
+
         link_style = f"color: {self.config.get('primary_color', '#60CDFF')}; text-decoration: none; font-weight: bold;"
+
         def format_link(text):
-            return f'<a href="https://github.com/" style="{link_style}"><span style="text-decoration: underline;">{text}</span></a>'
-            
+            return f'<a href="https://github.com/782e616c6d/printops-suite" style="{link_style}"><span style="text-decoration: underline;">{text}</span></a>'
+
         self.lbl_about_repo.setText(format_link(tr("about_repo")))
         self.lbl_about_docs.setText(format_link(tr("about_docs")))
         self.lbl_about_web.setText(format_link(tr("about_web")))
@@ -2965,14 +3444,22 @@ class PrinterManagerApp(QMainWindow):
         self.right_panel.show()
         if len(checked_rows) == 1:
             name = table.item(checked_rows[0], 1).text().replace("⭐ ", "")
-            ip = table.item(checked_rows[0], 4).text() if not is_local else table.item(checked_rows[0], 5).text()
-            self.rp_icon.setPixmap(qta.icon("mdi6.printer", color=self.text_main).pixmap(50, 50))
+            ip = (
+                table.item(checked_rows[0], 4).text()
+                if not is_local
+                else table.item(checked_rows[0], 5).text()
+            )
+            self.rp_icon.setPixmap(
+                qta.icon("mdi6.printer", color=self.text_main).pixmap(50, 50)
+            )
             self.rp_title.setText(name)
             self.rp_sub.setText(ip)
             self.btn_rp_web.show()
             self.btn_rp_props.show()
         else:
-            self.rp_icon.setPixmap(qta.icon("mdi6.printer-3d", color=self.accent_color).pixmap(50, 50))
+            self.rp_icon.setPixmap(
+                qta.icon("mdi6.printer-3d", color=self.accent_color).pixmap(50, 50)
+            )
             self.rp_title.setText(f"{len(checked_rows)} {tr('target_devices')}")
             self.rp_sub.setText(tr("batch_actions"))
             self.btn_rp_web.hide()
@@ -3009,14 +3496,14 @@ class PrinterManagerApp(QMainWindow):
         self.table_disp.setRowCount(0)
         self.table_instaladas.setSortingEnabled(False)
         self.table_instaladas.setRowCount(0)
-        
+
         self.dp_worker = DefaultPrinterWorker()
         self.dp_worker.signals.result.connect(self.on_default_printer_fetched)
         self.threadpool.start(self.dp_worker)
-        
+
         self.workers_completed = 0
         self.workers_total = len(self.servers_config)
-        
+
         if self.workers_total == 0:
             self.update_progress(1, 1, tr("msg_success"))
             return
@@ -3050,16 +3537,25 @@ class PrinterManagerApp(QMainWindow):
         self.update_progress(
             self.workers_completed,
             self.workers_total,
-            tr("msg_processing").format(completed=self.workers_completed, total=self.workers_total),
+            tr("msg_processing").format(
+                completed=self.workers_completed, total=self.workers_total
+            ),
         )
         if self.workers_completed >= self.workers_total:
-            TaskLogger.log(tr("task_sync"), "status_ok", tr("target_all"), end_time=datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+            TaskLogger.log(
+                tr("task_sync"),
+                "status_ok",
+                tr("target_all"),
+                end_time=datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+            )
             self.populate_disp_tree()
             self.populate_inst_tree()
             self.filter_table_view()
             if self.stacked.currentIndex() == 1:
                 self.refresh_local_only()
-            self.update_progress(self.workers_total, self.workers_total, tr("msg_ready"))
+            self.update_progress(
+                self.workers_total, self.workers_total, tr("msg_ready")
+            )
 
     def update_server_filter(self):
         current = self.cmb_server.currentData() or "all"
@@ -3079,9 +3575,16 @@ class PrinterManagerApp(QMainWindow):
         if isinstance(status_code_or_str, int):
             if status_code_or_str == 0:
                 text, color, st = tr("status_ok"), "#6ccb5f", "ok"
-            elif (status_code_or_str & win32print.PRINTER_STATUS_OFFLINE or status_code_or_str & win32print.PRINTER_STATUS_NOT_AVAILABLE):
+            elif (
+                status_code_or_str & win32print.PRINTER_STATUS_OFFLINE
+                or status_code_or_str & win32print.PRINTER_STATUS_NOT_AVAILABLE
+            ):
                 text, color, st = tr("status_off"), "#999999", "off"
-            elif (status_code_or_str & win32print.PRINTER_STATUS_ERROR or status_code_or_str & win32print.PRINTER_STATUS_PAPER_JAM or status_code_or_str & win32print.PRINTER_STATUS_PAPER_OUT):
+            elif (
+                status_code_or_str & win32print.PRINTER_STATUS_ERROR
+                or status_code_or_str & win32print.PRINTER_STATUS_PAPER_JAM
+                or status_code_or_str & win32print.PRINTER_STATUS_PAPER_OUT
+            ):
                 text, color, st = tr("msg_error"), "#ef4444", "err"
             else:
                 text, color, st = tr("status_warn"), "#d97706", "warn"
@@ -3093,14 +3596,18 @@ class PrinterManagerApp(QMainWindow):
             else:
                 text, color, st = str(status_code_or_str), "#d97706", "warn"
         lbl = QLabel(f"● {text}")
-        lbl.setStyleSheet(f"color: {color}; font-weight: bold; background: transparent;")
+        lbl.setStyleSheet(
+            f"color: {color}; font-weight: bold; background: transparent;"
+        )
         lbl.setAlignment(Qt.AlignmentFlag.AlignCenter)
         return lbl, st
 
     def global_search(self):
         self.filter_table_view()
-        if self.stacked.currentIndex() == 1: self.refresh_local_only()
-        elif self.stacked.currentIndex() == 2: self.refresh_drivers()
+        if self.stacked.currentIndex() == 1:
+            self.refresh_local_only()
+        elif self.stacked.currentIndex() == 2:
+            self.refresh_drivers()
 
     def filter_table_view(self):
         self.table_disp.setSortingEnabled(False)
@@ -3110,29 +3617,51 @@ class PrinterManagerApp(QMainWindow):
         self.table_disp.setRowCount(0)
 
         for p in self.all_printers_data:
-            if p["server"] == "Local": continue
+            if p["server"] == "Local":
+                continue
             status_lbl, st_type = self.create_status_badge(p["status_code"])
 
-            if f_status and f_status != "all" and f_status != st_type: continue
-            if f_server and f_server != "all" and p["server"] != f_server: continue
+            if f_status and f_status != "all" and f_status != st_type:
+                continue
+            if f_server and f_server != "all" and p["server"] != f_server:
+                continue
 
             if self.current_disp_filter:
-                ftype, fval = self.current_disp_filter["type"], self.current_disp_filter["val"]
+                ftype, fval = (
+                    self.current_disp_filter["type"],
+                    self.current_disp_filter["val"],
+                )
                 if ftype == "status":
-                    if fval == tr("filter_online") and st_type != "ok": continue
-                    if fval == tr("filter_offline") and st_type != "off": continue
-                    if fval == tr("filter_warn") and st_type != "warn": continue
-                elif ftype == "server" and p["server"] != fval: continue
-                elif ftype == "manufacturer" and get_manufacturer(p["driver"]) != fval: continue
+                    if fval == tr("filter_online") and st_type != "ok":
+                        continue
+                    if fval == tr("filter_offline") and st_type != "off":
+                        continue
+                    if fval == tr("filter_warn") and st_type != "warn":
+                        continue
+                elif ftype == "server" and p["server"] != fval:
+                    continue
+                elif ftype == "manufacturer" and get_manufacturer(p["driver"]) != fval:
+                    continue
 
-            if query and not any(query in str(v).lower() for v in [p["name"], p["port"], p["driver"], p["server"]]):
+            if query and not any(
+                query in str(v).lower()
+                for v in [p["name"], p["port"], p["driver"], p["server"]]
+            ):
                 continue
 
             row = self.table_disp.rowCount()
             self.table_disp.insertRow(row)
             self.table_disp.setRowHeight(row, 45)
-            name_formatted = f"⭐ {p['name']}" if p["raw_name"] == self.default_printer else p["name"]
-            is_installed = any(lp["name"] == p["name"] or lp["name"] == p["raw_name"].split("\\")[-1] for lp in self.all_printers_data if lp["server"] == "Local")
+            name_formatted = (
+                f"⭐ {p['name']}"
+                if p["raw_name"] == self.default_printer
+                else p["name"]
+            )
+            is_installed = any(
+                lp["name"] == p["name"] or lp["name"] == p["raw_name"].split("\\")[-1]
+                for lp in self.all_printers_data
+                if lp["server"] == "Local"
+            )
 
             chk_container = QWidget()
             chk_layout = QHBoxLayout(chk_container)
@@ -3143,13 +3672,23 @@ class PrinterManagerApp(QMainWindow):
             chk_layout.addWidget(chk)
             self.table_disp.setCellWidget(row, 0, chk_container)
 
-            self.table_disp.setItem(row, 1, self.create_centered_item(name_formatted, user_data=p["raw_name"]))
-            self.table_disp.setItem(row, 2, self.create_centered_item(get_manufacturer(p["driver"])))
+            self.table_disp.setItem(
+                row,
+                1,
+                self.create_centered_item(name_formatted, user_data=p["raw_name"]),
+            )
+            self.table_disp.setItem(
+                row, 2, self.create_centered_item(get_manufacturer(p["driver"]))
+            )
             self.table_disp.setItem(row, 3, self.create_centered_item(str(p["driver"])))
             self.table_disp.setItem(row, 4, self.create_centered_item(str(p["port"])))
             self.table_disp.setItem(row, 5, self.create_centered_item(str(p["server"])))
             self.table_disp.setCellWidget(row, 6, status_lbl)
-            self.table_disp.setItem(row, 7, self.create_centered_item(tr("yes") if is_installed else tr("no")))
+            self.table_disp.setItem(
+                row,
+                7,
+                self.create_centered_item(tr("yes") if is_installed else tr("no")),
+            )
 
         self.table_disp.setSortingEnabled(True)
         self.update_global_right_panel()
@@ -3158,15 +3697,35 @@ class PrinterManagerApp(QMainWindow):
         if not self.all_printers_data:
             QMessageBox.warning(self, tr("msg_error"), tr("msg_no_data_export"))
             return
-        path, _ = QFileDialog.getSaveFileName(self, tr("card_export"), "", "CSV Files (*.csv)")
+        path, _ = QFileDialog.getSaveFileName(
+            self, tr("card_export"), "", "CSV Files (*.csv)"
+        )
         if path:
             try:
                 with open(path, mode="w", newline="", encoding="utf-8") as f:
                     writer = csv.writer(f, delimiter=";")
-                    writer.writerow([tr("col_name"), tr("col_driver"), tr("col_port"), tr("col_server"), "Status ID"])
+                    writer.writerow(
+                        [
+                            tr("col_name"),
+                            tr("col_driver"),
+                            tr("col_port"),
+                            tr("col_server"),
+                            "Status ID",
+                        ]
+                    )
                     for p in self.all_printers_data:
-                        writer.writerow([p["name"], p["driver"], p["port"], p["server"], p["status_code"]])
-                TaskLogger.log(tr("task_export_csv"), "status_ok", tr("target_dev_data"))
+                        writer.writerow(
+                            [
+                                p["name"],
+                                p["driver"],
+                                p["port"],
+                                p["server"],
+                                p["status_code"],
+                            ]
+                        )
+                TaskLogger.log(
+                    tr("task_export_csv"), "status_ok", tr("target_dev_data")
+                )
                 QMessageBox.information(self, tr("msg_success"), tr("msg_success"))
             except Exception as e:
                 TaskLogger.log(tr("task_export_csv"), "status_err", str(e))
@@ -3175,12 +3734,22 @@ class PrinterManagerApp(QMainWindow):
         if not TaskLogger.logs:
             QMessageBox.warning(self, tr("msg_error"), tr("msg_error"))
             return
-        path, _ = QFileDialog.getSaveFileName(self, tr("btn_export_logs"), "", "CSV Files (*.csv)")
+        path, _ = QFileDialog.getSaveFileName(
+            self, tr("btn_export_logs"), "", "CSV Files (*.csv)"
+        )
         if path:
             try:
                 with open(path, mode="w", newline="", encoding="utf-8") as f:
                     writer = csv.writer(f, delimiter=";")
-                    writer.writerow([tr("col_task_type"), tr("col_status"), tr("col_started"), tr("col_finished"), tr("col_target")])
+                    writer.writerow(
+                        [
+                            tr("col_task_type"),
+                            tr("col_status"),
+                            tr("col_started"),
+                            tr("col_finished"),
+                            tr("col_target"),
+                        ]
+                    )
                     for log in TaskLogger.logs:
                         writer.writerow([log[0], tr(log[1]), log[2], log[3], log[4]])
                 QMessageBox.information(self, tr("msg_success"), tr("msg_success"))
@@ -3197,15 +3766,26 @@ class PrinterManagerApp(QMainWindow):
             if p["server"] == "Local" or not p["is_network"]:
                 t_conn = tr("conn_network") if p["is_network"] else tr("conn_local")
                 if self.current_inst_filter:
-                    ftype, fval = self.current_inst_filter["type"], self.current_inst_filter["val"]
-                    if ftype == "conn" and fval != t_conn: continue
-                    if ftype == "manufacturer" and get_manufacturer(p["driver"]) != fval: continue
+                    ftype, fval = (
+                        self.current_inst_filter["type"],
+                        self.current_inst_filter["val"],
+                    )
+                    if ftype == "conn" and fval != t_conn:
+                        continue
+                    if (
+                        ftype == "manufacturer"
+                        and get_manufacturer(p["driver"]) != fval
+                    ):
+                        continue
 
-                if query and not any(query in str(v).lower() for v in [p["name"], p["port"], p["driver"]]):
+                if query and not any(
+                    query in str(v).lower() for v in [p["name"], p["port"], p["driver"]]
+                ):
                     continue
-                if p["name"] in added_names: continue
+                if p["name"] in added_names:
+                    continue
                 added_names.add(p["name"])
-                
+
                 row = self.table_instaladas.rowCount()
                 self.table_instaladas.insertRow(row)
                 self.table_instaladas.setRowHeight(row, 45)
@@ -3219,13 +3799,27 @@ class PrinterManagerApp(QMainWindow):
                 chk_layout.addWidget(chk)
                 self.table_instaladas.setCellWidget(row, 0, chk_container)
 
-                name_formatted = f"⭐ {p['name']}" if p["raw_name"] == self.default_printer else p["name"]
-                self.table_instaladas.setItem(row, 1, self.create_centered_item(name_formatted, user_data=p["raw_name"]))
-                self.table_instaladas.setItem(row, 2, self.create_centered_item(get_manufacturer(p["driver"])))
+                name_formatted = (
+                    f"⭐ {p['name']}"
+                    if p["raw_name"] == self.default_printer
+                    else p["name"]
+                )
+                self.table_instaladas.setItem(
+                    row,
+                    1,
+                    self.create_centered_item(name_formatted, user_data=p["raw_name"]),
+                )
+                self.table_instaladas.setItem(
+                    row, 2, self.create_centered_item(get_manufacturer(p["driver"]))
+                )
                 self.table_instaladas.setItem(row, 3, self.create_centered_item(t_conn))
-                self.table_instaladas.setItem(row, 4, self.create_centered_item(str(p["driver"])))
-                self.table_instaladas.setItem(row, 5, self.create_centered_item(str(p["port"])))
-                
+                self.table_instaladas.setItem(
+                    row, 4, self.create_centered_item(str(p["driver"]))
+                )
+                self.table_instaladas.setItem(
+                    row, 5, self.create_centered_item(str(p["port"]))
+                )
+
         self.table_instaladas.setSortingEnabled(True)
         self.update_global_right_panel()
 
@@ -3243,13 +3837,18 @@ class PrinterManagerApp(QMainWindow):
         self.update_status(tr("msg_ready"))
         query = self.search_box.text().lower()
         for d in parsed_drivers:
-            if query and not any(query in str(v).lower() for v in d.values()): continue
+            if query and not any(query in str(v).lower() for v in d.values()):
+                continue
             row = self.table_drivers.rowCount()
             self.table_drivers.insertRow(row)
             self.table_drivers.setRowHeight(row, 45)
-            self.table_drivers.setItem(row, 0, self.create_centered_item(str(d["name"])))
+            self.table_drivers.setItem(
+                row, 0, self.create_centered_item(str(d["name"]))
+            )
             self.table_drivers.setItem(row, 1, self.create_centered_item(str(d["env"])))
-            self.table_drivers.setItem(row, 2, self.create_centered_item(str(d["path"])))
+            self.table_drivers.setItem(
+                row, 2, self.create_centered_item(str(d["path"]))
+            )
         self.table_drivers.setSortingEnabled(True)
 
     def refresh_tarefas_table(self):
@@ -3261,7 +3860,15 @@ class PrinterManagerApp(QMainWindow):
             self.table_tarefas.setRowHeight(row, 45)
             self.table_tarefas.setItem(row, 0, self.create_centered_item(t[0]))
 
-            color = "#10b981" if t[1] == "status_ok" else "#d97706" if t[1] == "status_warn" else "#ef4444" if t[1] == "status_err" else self.accent_color
+            color = (
+                "#10b981"
+                if t[1] == "status_ok"
+                else (
+                    "#d97706"
+                    if t[1] == "status_warn"
+                    else "#ef4444" if t[1] == "status_err" else self.accent_color
+                )
+            )
             status_item = self.create_centered_item(tr(t[1]))
             status_item.setForeground(QBrush(QColor(color)))
             font = status_item.font()
@@ -3280,26 +3887,34 @@ class PrinterManagerApp(QMainWindow):
 
     def refresh_guides(self):
         self.list_pdfs.clear()
-        item_default = QListWidgetItem(qta.icon("mdi6.book-open-variant", color=self.accent_color), tr("default_guide_name"))
+        item_default = QListWidgetItem(
+            qta.icon("mdi6.book-open-variant", color=self.accent_color),
+            tr("default_guide_name"),
+        )
         item_default.setToolTip(tr("default_guide_desc"))
         item_default.setData(Qt.ItemDataRole.UserRole, "DEFAULT_GUIDE")
         self.list_pdfs.addItem(item_default)
-        
+
         docs_dir = get_docs_dir()
         try:
             for file in os.listdir(docs_dir):
                 if file.lower().endswith(".pdf"):
                     pdf_path = os.path.join(docs_dir, file)
-                    item = QListWidgetItem(qta.icon("mdi6.file-pdf-box", color="#ef4444"), file)
+                    item = QListWidgetItem(
+                        qta.icon("mdi6.file-pdf-box", color="#ef4444"), file
+                    )
                     item.setToolTip(pdf_path)
                     item.setData(Qt.ItemDataRole.UserRole, pdf_path)
                     self.list_pdfs.addItem(item)
         except Exception as e:
             logger.error(f"Error loading PDFs: {e}")
-                
+
     def add_custom_pdf(self):
-        if not is_user_admin(): return
-        file_path, _ = QFileDialog.getOpenFileName(self, tr("btn_add_pdf"), "", "PDF Files (*.pdf)")
+        if not is_user_admin():
+            return
+        file_path, _ = QFileDialog.getOpenFileName(
+            self, tr("btn_add_pdf"), "", "PDF Files (*.pdf)"
+        )
         if file_path:
             docs_dir = get_docs_dir()
             dest_path = os.path.join(docs_dir, os.path.basename(file_path))
@@ -3308,29 +3923,32 @@ class PrinterManagerApp(QMainWindow):
                 self.refresh_guides()
             except Exception as e:
                 QMessageBox.warning(self, tr("msg_error"), f"Erro: {e}")
-                
+
     def remove_custom_pdf(self):
-        if not is_user_admin(): return
+        if not is_user_admin():
+            return
         selected = self.list_pdfs.selectedItems()
-        if not selected: return
+        if not selected:
+            return
         path = selected[0].data(Qt.ItemDataRole.UserRole)
         if path == "DEFAULT_GUIDE":
             QMessageBox.warning(self, tr("msg_warning"), tr("msg_guide_no_rem"))
             return
-            
+
         try:
             if os.path.exists(path):
                 os.remove(path)
             self.refresh_guides()
         except Exception as e:
             QMessageBox.warning(self, tr("msg_error"), f"Erro: {e}")
-            
+
     def open_selected_pdf(self, item=None):
         if item is None or isinstance(item, bool):
             selected = self.list_pdfs.selectedItems()
-            if not selected: return
+            if not selected:
+                return
             item = selected[0]
-            
+
         path = item.data(Qt.ItemDataRole.UserRole)
         if path == "DEFAULT_GUIDE":
             msg = QMessageBox(self)
@@ -3340,7 +3958,7 @@ class PrinterManagerApp(QMainWindow):
             msg.setIcon(QMessageBox.Icon.Information)
             msg.exec()
             return
-            
+
         if os.path.exists(path):
             QDesktopServices.openUrl(QUrl.fromLocalFile(path))
         else:
@@ -3354,29 +3972,37 @@ class PrinterManagerApp(QMainWindow):
             row = self.table_cfg_servers.rowCount()
             self.table_cfg_servers.insertRow(row)
             self.table_cfg_servers.setRowHeight(row, 50)
-            
+
             chk_container = QWidget()
             chk_layout = QHBoxLayout(chk_container)
             chk_layout.setContentsMargins(0, 0, 0, 0)
             chk_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
             chk = QCheckBox()
             chk.setChecked(srv.get("enabled", True))
-            chk.stateChanged.connect(lambda state, idx=i: self.toggle_server_enabled(idx, state))
+            chk.stateChanged.connect(
+                lambda state, idx=i: self.toggle_server_enabled(idx, state)
+            )
             chk_layout.addWidget(chk)
-            
+
             self.table_cfg_servers.setCellWidget(row, 0, chk_container)
-            self.table_cfg_servers.setItem(row, 1, self.create_centered_item(srv.get("name", "")))
-            self.table_cfg_servers.setItem(row, 2, self.create_centered_item(srv.get("ip", "")))
+            self.table_cfg_servers.setItem(
+                row, 1, self.create_centered_item(srv.get("name", ""))
+            )
+            self.table_cfg_servers.setItem(
+                row, 2, self.create_centered_item(srv.get("ip", ""))
+            )
             status_lbl, _ = self.create_status_badge(srv.get("status", "?"))
             self.table_cfg_servers.setCellWidget(row, 3, status_lbl)
-            
+
             qty_item = self.create_centered_item("")
             qty_item.setData(Qt.ItemDataRole.DisplayRole, int(srv.get("qty", 0)))
             self.table_cfg_servers.setItem(row, 4, qty_item)
-            
+
             btn_test = QPushButton(tr("btn_test"))
             btn_test.setProperty("class", "StandardBtn")
-            btn_test.clicked.connect(lambda checked, name=srv.get("name", ""): self.test_single_server(name))
+            btn_test.clicked.connect(
+                lambda checked, name=srv.get("name", ""): self.test_single_server(name)
+            )
             btn_container = QWidget()
             btn_layout = QHBoxLayout(btn_container)
             btn_layout.setContentsMargins(4, 4, 4, 4)
@@ -3394,7 +4020,9 @@ class PrinterManagerApp(QMainWindow):
         srv_name = self.txt_new_srv.text().strip()
         if srv_name:
             if not any(s.get("name") == srv_name for s in self.servers_config):
-                self.servers_config.append({"name": srv_name, "enabled": True, "status": "?", "qty": 0})
+                self.servers_config.append(
+                    {"name": srv_name, "enabled": True, "status": "?", "qty": 0}
+                )
                 ServerConfigManager.save(self.servers_config)
                 self.refresh_settings_servers_table()
             self.txt_new_srv.clear()
@@ -3405,7 +4033,9 @@ class PrinterManagerApp(QMainWindow):
             row = selected[0].row()
             name = self.table_cfg_servers.item(row, 1).text()
             if name != "Local":
-                self.servers_config = [s for s in self.servers_config if s.get("name") != name]
+                self.servers_config = [
+                    s for s in self.servers_config if s.get("name") != name
+                ]
                 ServerConfigManager.save(self.servers_config)
                 self.refresh_settings_servers_table()
 
@@ -3414,7 +4044,8 @@ class PrinterManagerApp(QMainWindow):
         self.show_progress(True)
         self.update_progress(0, 1, f"{tr('msg_testing')} {host}")
         servers_temp = [s for s in self.servers_config if s["name"] == host]
-        if not servers_temp: return
+        if not servers_temp:
+            return
         self.test_worker = ServerWorker(servers_temp[0])
         self.test_worker.signals.result.connect(self.on_test_complete)
         self.threadpool.start(self.test_worker)
@@ -3428,12 +4059,18 @@ class PrinterManagerApp(QMainWindow):
                 break
         ServerConfigManager.save(self.servers_config)
         self.refresh_settings_servers_table()
-        
-        if tr("status_off") in server_obj.get("status", "") or "Offline" in server_obj.get("status", "") or err:
+
+        if (
+            tr("status_off") in server_obj.get("status", "")
+            or "Offline" in server_obj.get("status", "")
+            or err
+        ):
             self.update_status(tr("msg_conn_failed").format(host=host))
             TaskLogger.log(tr("task_conn_test"), "status_err", host)
         else:
-            self.update_status(tr("msg_conn_success").format(host=host, count=len(printers)))
+            self.update_status(
+                tr("msg_conn_success").format(host=host, count=len(printers))
+            )
             TaskLogger.log(tr("task_conn_test"), "status_ok", host)
 
     def save_settings(self):
@@ -3448,14 +4085,18 @@ class PrinterManagerApp(QMainWindow):
             self.config["app_icon_val"] = val
 
         global CURRENT_LANG
-        CURRENT_LANG = get_os_language() if self.config["language"] == "lang_sys" else self.config["language"]
+        CURRENT_LANG = (
+            get_os_language()
+            if self.config["language"] == "lang_sys"
+            else self.config["language"]
+        )
         QApplication.instance().setLayoutDirection(Qt.LayoutDirection.LeftToRight)
-            
+
         if is_user_admin():
             for key, cmb in self.tab_combos.items():
                 self.ui_config[key] = cmb.currentData()
             UIConfigManager.save(self.ui_config)
-            
+
         ConfigManager.save(self.config)
         TaskLogger.log(tr("task_settings"), "status_ok", tr("target_sys"))
         self.update_timer_settings()
@@ -3465,7 +4106,11 @@ class PrinterManagerApp(QMainWindow):
         QMessageBox.information(self, tr("msg_success"), tr("msg_success"))
 
     def action_install_printers(self):
-        table_ref = self.table_disp if self.stacked.currentIndex() == 0 else self.table_instaladas
+        table_ref = (
+            self.table_disp
+            if self.stacked.currentIndex() == 0
+            else self.table_instaladas
+        )
         per_machine = self.chk_rp_install_machine.isChecked()
         mode_str = tr("msg_install_machine") if per_machine else tr("msg_install_user")
 
@@ -3476,11 +4121,20 @@ class PrinterManagerApp(QMainWindow):
                 raw_name = table_ref.item(row, 1).data(Qt.ItemDataRole.UserRole)
                 printers_to_install.append(raw_name)
 
-        if not printers_to_install: return
+        if not printers_to_install:
+            return
 
-        confirm_msg = tr("msg_install_confirm").replace("{count}", str(len(printers_to_install)))
-        reply = QMessageBox.question(self, tr("conf_title"), f"{tr('msg_install_mode')}: {mode_str}\n\n{confirm_msg}", QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
-        if reply != QMessageBox.StandardButton.Yes: return
+        confirm_msg = tr("msg_install_confirm").replace(
+            "{count}", str(len(printers_to_install))
+        )
+        reply = QMessageBox.question(
+            self,
+            tr("conf_title"),
+            f"{tr('msg_install_mode')}: {mode_str}\n\n{confirm_msg}",
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+        )
+        if reply != QMessageBox.StandardButton.Yes:
+            return
 
         start_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
         successes, errors = [], []
@@ -3494,7 +4148,12 @@ class PrinterManagerApp(QMainWindow):
                     except pywintypes.error as e:
                         raise Exception(f"{tr('msg_acc_err')}: {e.strerror}")
 
-                    res = subprocess.run(f'rundll32 printui.dll,PrintUIEntry /ga /n "{raw_name}"', shell=True, capture_output=True, text=True)
+                    res = subprocess.run(
+                        f'rundll32 printui.dll,PrintUIEntry /ga /n "{raw_name}"',
+                        shell=True,
+                        capture_output=True,
+                        text=True,
+                    )
                     if res.returncode != 0:
                         raise Exception(f"{tr('msg_cmd_fail')} (Cod: {res.returncode})")
                 else:
@@ -3505,33 +4164,78 @@ class PrinterManagerApp(QMainWindow):
             except Exception as e:
                 errors.append(f"{raw_name} ({str(e)})")
 
-        if successes: TaskLogger.log(tr("task_install"), "status_ok", f"{len(successes)} {tr('target_devices')}", start_time=start_time)
-        if errors: TaskLogger.log(tr("task_install"), "status_err", f"{len(errors)} {tr('target_devices')}", start_time=start_time)
+        if successes:
+            TaskLogger.log(
+                tr("task_install"),
+                "status_ok",
+                f"{len(successes)} {tr('target_devices')}",
+                start_time=start_time,
+            )
+        if errors:
+            TaskLogger.log(
+                tr("task_install"),
+                "status_err",
+                f"{len(errors)} {tr('target_devices')}",
+                start_time=start_time,
+            )
 
         if successes and not errors:
-            QMessageBox.information(self, tr("msg_success"), tr("msg_install_batch_success") + "\n\n" + "\n".join(successes))
+            QMessageBox.information(
+                self,
+                tr("msg_success"),
+                tr("msg_install_batch_success") + "\n\n" + "\n".join(successes),
+            )
         elif errors and not successes:
-            QMessageBox.warning(self, tr("msg_error"), tr("msg_install_fail").format(errors="\n".join(errors)))
+            QMessageBox.warning(
+                self,
+                tr("msg_error"),
+                tr("msg_install_fail").format(errors="\n".join(errors)),
+            )
         elif successes and errors:
-            QMessageBox.warning(self, tr("msg_warning"), tr("msg_install_partial").format(successes="\n".join(successes), errors="\n".join(errors)))
+            QMessageBox.warning(
+                self,
+                tr("msg_warning"),
+                tr("msg_install_partial").format(
+                    successes="\n".join(successes), errors="\n".join(errors)
+                ),
+            )
         self.refresh_all_data()
 
     def action_test_printers(self):
-        table_ref = self.table_disp if self.stacked.currentIndex() == 0 else self.table_instaladas
+        table_ref = (
+            self.table_disp
+            if self.stacked.currentIndex() == 0
+            else self.table_instaladas
+        )
         count = 0
         for row in range(table_ref.rowCount()):
             chk_widget = table_ref.cellWidget(row, 0)
             if chk_widget and chk_widget.layout().itemAt(0).widget().isChecked():
                 raw_name = table_ref.item(row, 1).data(Qt.ItemDataRole.UserRole)
-                try: subprocess.Popen(f'rundll32 printui.dll,PrintUIEntry /k /n "{raw_name}"', shell=True)
-                except Exception as e: logger.error(f"Test print failed: {e}")
+                try:
+                    subprocess.Popen(
+                        f'rundll32 printui.dll,PrintUIEntry /k /n "{raw_name}"',
+                        shell=True,
+                    )
+                except Exception as e:
+                    logger.error(f"Test print failed: {e}")
                 count += 1
         if count > 0:
-            TaskLogger.log(tr("task_print_test"), "status_ok", f"{count} {tr('target_devices')}")
-            QMessageBox.information(self, tr("msg_success"), tr("msg_test_batch_success").replace("{count}", str(count)))
+            TaskLogger.log(
+                tr("task_print_test"), "status_ok", f"{count} {tr('target_devices')}"
+            )
+            QMessageBox.information(
+                self,
+                tr("msg_success"),
+                tr("msg_test_batch_success").replace("{count}", str(count)),
+            )
 
     def action_purge_printers(self):
-        table_ref = self.table_disp if self.stacked.currentIndex() == 0 else self.table_instaladas
+        table_ref = (
+            self.table_disp
+            if self.stacked.currentIndex() == 0
+            else self.table_instaladas
+        )
         count = 0
         for row in range(table_ref.rowCount()):
             chk_widget = table_ref.cellWidget(row, 0)
@@ -3540,27 +4244,55 @@ class PrinterManagerApp(QMainWindow):
                 self.purge_printer_silent(raw_name)
                 count += 1
         if count > 0:
-            TaskLogger.log(tr("task_purge_queues"), "status_ok", f"{count} {tr('target_devices')}")
-            QMessageBox.information(self, tr("msg_success"), tr("msg_purge_batch_success").replace("{count}", str(count)))
+            TaskLogger.log(
+                tr("task_purge_queues"), "status_ok", f"{count} {tr('target_devices')}"
+            )
+            QMessageBox.information(
+                self,
+                tr("msg_success"),
+                tr("msg_purge_batch_success").replace("{count}", str(count)),
+            )
             self.refresh_all_data()
 
     def action_remove_printers(self):
-        table_ref = self.table_disp if self.stacked.currentIndex() == 0 else self.table_instaladas
-        count = sum(1 for row in range(table_ref.rowCount()) if table_ref.cellWidget(row, 0) and table_ref.cellWidget(row, 0).layout().itemAt(0).widget().isChecked())
-                
-        reply = QMessageBox.question(self, tr("msg_warning"), tr("msg_remove_batch_confirm").replace("{count}", str(count)), QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
-        if reply != QMessageBox.StandardButton.Yes: return
-            
+        table_ref = (
+            self.table_disp
+            if self.stacked.currentIndex() == 0
+            else self.table_instaladas
+        )
+        count = sum(
+            1
+            for row in range(table_ref.rowCount())
+            if table_ref.cellWidget(row, 0)
+            and table_ref.cellWidget(row, 0).layout().itemAt(0).widget().isChecked()
+        )
+
+        reply = QMessageBox.question(
+            self,
+            tr("msg_warning"),
+            tr("msg_remove_batch_confirm").replace("{count}", str(count)),
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+        )
+        if reply != QMessageBox.StandardButton.Yes:
+            return
+
         start_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
         for row in range(table_ref.rowCount()):
             chk_widget = table_ref.cellWidget(row, 0)
             if chk_widget and chk_widget.layout().itemAt(0).widget().isChecked():
                 raw_name = table_ref.item(row, 1).data(Qt.ItemDataRole.UserRole)
                 self.remove_printer_silent(raw_name)
-                
+
         if count > 0:
-            TaskLogger.log(tr("task_remove"), "status_ok", f"{count} {tr('target_devices')}", start_time=start_time)
-            QMessageBox.information(self, tr("msg_success"), tr("msg_remove_batch_success"))
+            TaskLogger.log(
+                tr("task_remove"),
+                "status_ok",
+                f"{count} {tr('target_devices')}",
+                start_time=start_time,
+            )
+            QMessageBox.information(
+                self, tr("msg_success"), tr("msg_remove_batch_success")
+            )
             self.refresh_all_data()
 
     def purge_printer_silent(self, printer_name):
@@ -3569,33 +4301,42 @@ class PrinterManagerApp(QMainWindow):
             handle = win32print.OpenPrinter(printer_name, defaults)
             win32print.SetPrinter(handle, 0, None, win32print.PRINTER_CONTROL_PURGE)
             win32print.ClosePrinter(handle)
-        except Exception as e: logger.debug(f"Silent purge error: {e}")
+        except Exception as e:
+            logger.debug(f"Silent purge error: {e}")
 
     def remove_printer_silent(self, printer_name):
-        try: win32print.DeletePrinterConnection(printer_name)
-        except Exception as e: logger.debug(f"Silent connection removal error: {e}")
+        try:
+            win32print.DeletePrinterConnection(printer_name)
+        except Exception as e:
+            logger.debug(f"Silent connection removal error: {e}")
         try:
             defaults = {"DesiredAccess": win32print.PRINTER_ALL_ACCESS}
             handle = win32print.OpenPrinter(printer_name, defaults)
             win32print.DeletePrinter(handle)
             win32print.ClosePrinter(handle)
-        except Exception as e: logger.debug(f"Silent local removal error: {e}")
+        except Exception as e:
+            logger.debug(f"Silent local removal error: {e}")
 
     def choose_custom_icon(self):
-        if not is_user_admin(): 
+        if not is_user_admin():
             QMessageBox.warning(self, tr("msg_warning"), tr("msg_admin_req"))
             return
-            
-        file_path, _ = QFileDialog.getOpenFileName(self, tr("cfg_icon_custom"), "", "Image Files (*.png *.jpg *.jpeg *.ico *.svg)")
+
+        file_path, _ = QFileDialog.getOpenFileName(
+            self,
+            tr("cfg_icon_custom"),
+            "",
+            "Image Files (*.png *.jpg *.jpeg *.ico *.svg)",
+        )
         if file_path:
             local_icons_dir = os.path.join(get_executable_dir(), "icons")
             appdata_icons_dir = os.path.join(get_appdata_dir(), "icons")
             os.makedirs(local_icons_dir, exist_ok=True)
             os.makedirs(appdata_icons_dir, exist_ok=True)
-            
+
             dest_local = os.path.join(local_icons_dir, os.path.basename(file_path))
             dest_appdata = os.path.join(appdata_icons_dir, os.path.basename(file_path))
-            
+
             try:
                 shutil.copy2(file_path, dest_local)
                 shutil.copy2(file_path, dest_appdata)
@@ -3613,11 +4354,13 @@ class PrinterManagerApp(QMainWindow):
             raw_name_item = table.item(row, 1)
             if raw_name_item:
                 raw_name = raw_name_item.data(Qt.ItemDataRole.UserRole)
-                if raw_name: self.open_properties(raw_name)
+                if raw_name:
+                    self.open_properties(raw_name)
 
     def show_context_menu(self, pos, table_widget):
         item = table_widget.itemAt(pos)
-        if not item: return
+        if not item:
+            return
         row = item.row()
         table_widget.selectRow(row)
 
@@ -3625,7 +4368,9 @@ class PrinterManagerApp(QMainWindow):
         menu.setProperty("class", "WinUIContextMenu")
 
         cell_text = item.toolTip() if item.toolTip() else item.text()
-        act_copy = QAction(qta.icon("mdi6.content-copy", color=self.text_main), tr("ctx_copy"), self)
+        act_copy = QAction(
+            qta.icon("mdi6.content-copy", color=self.text_main), tr("ctx_copy"), self
+        )
         act_copy.triggered.connect(lambda: QApplication.clipboard().setText(cell_text))
         menu.addAction(act_copy)
 
@@ -3633,51 +4378,92 @@ class PrinterManagerApp(QMainWindow):
             raw_name = table_widget.item(row, 1).data(Qt.ItemDataRole.UserRole)
             if raw_name:
                 menu.addSeparator()
-                act_props = QAction(qta.icon("mdi6.cogs", color=self.text_main), tr("ctx_props"), self)
+                act_props = QAction(
+                    qta.icon("mdi6.cogs", color=self.text_main), tr("ctx_props"), self
+                )
                 act_props.triggered.connect(lambda: self.open_properties(raw_name))
                 menu.addAction(act_props)
 
-                act_test = QAction(qta.icon("mdi6.file-document-outline", color=self.text_main), tr("ctx_test"), self)
-                act_test.triggered.connect(lambda: self.print_test_page_single(raw_name))
+                act_test = QAction(
+                    qta.icon("mdi6.file-document-outline", color=self.text_main),
+                    tr("ctx_test"),
+                    self,
+                )
+                act_test.triggered.connect(
+                    lambda: self.print_test_page_single(raw_name)
+                )
                 menu.addAction(act_test)
                 menu.addSeparator()
 
-                act_reinstall = QAction(qta.icon("mdi6.refresh", color=self.text_main), tr("ctx_reinstall"), self)
-                act_reinstall.triggered.connect(lambda: self.reinstall_printer(raw_name))
+                act_reinstall = QAction(
+                    qta.icon("mdi6.refresh", color=self.text_main),
+                    tr("ctx_reinstall"),
+                    self,
+                )
+                act_reinstall.triggered.connect(
+                    lambda: self.reinstall_printer(raw_name)
+                )
                 menu.addAction(act_reinstall)
 
-                act_purge = QAction(qta.icon("mdi6.broom", color=self.text_main), tr("ctx_purge"), self)
+                act_purge = QAction(
+                    qta.icon("mdi6.broom", color=self.text_main), tr("ctx_purge"), self
+                )
                 act_purge.triggered.connect(lambda: self.purge_printer_single(raw_name))
                 menu.addAction(act_purge)
 
-                act_default = QAction(qta.icon("mdi6.star-outline", color=self.text_main), tr("ctx_default"), self)
-                act_default.triggered.connect(lambda: self.set_default_printer(raw_name))
+                act_default = QAction(
+                    qta.icon("mdi6.star-outline", color=self.text_main),
+                    tr("ctx_default"),
+                    self,
+                )
+                act_default.triggered.connect(
+                    lambda: self.set_default_printer(raw_name)
+                )
                 menu.addAction(act_default)
 
-                act_remove = QAction(qta.icon("mdi6.trash-can-outline", color=self.text_main), tr("ctx_remove"), self)
-                act_remove.triggered.connect(lambda: self.remove_printer_single(raw_name))
+                act_remove = QAction(
+                    qta.icon("mdi6.trash-can-outline", color=self.text_main),
+                    tr("ctx_remove"),
+                    self,
+                )
+                act_remove.triggered.connect(
+                    lambda: self.remove_printer_single(raw_name)
+                )
                 menu.addAction(act_remove)
 
         menu.exec(table_widget.viewport().mapToGlobal(pos))
 
     def open_properties(self, printer_name):
-        p_data = next((p for p in self.all_printers_data if p["raw_name"] == printer_name), None)
+        p_data = next(
+            (p for p in self.all_printers_data if p["raw_name"] == printer_name), None
+        )
         if p_data:
             dlg = PrinterPropertiesDialog(p_data, self)
             dlg.setStyleSheet(self.styleSheet())
             dlg.exec()
         else:
-            try: subprocess.Popen(f'rundll32 printui.dll,PrintUIEntry /p /n "{printer_name}"', shell=True)
-            except Exception as e: TaskLogger.log(tr("ctx_props"), "status_err", str(e))
+            try:
+                subprocess.Popen(
+                    f'rundll32 printui.dll,PrintUIEntry /p /n "{printer_name}"',
+                    shell=True,
+                )
+            except Exception as e:
+                TaskLogger.log(tr("ctx_props"), "status_err", str(e))
 
     def print_test_page_single(self, printer_name):
         start_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
         try:
-            subprocess.Popen(f'rundll32 printui.dll,PrintUIEntry /k /n "{printer_name}"', shell=True)
-            TaskLogger.log(tr("task_test"), "status_ok", printer_name, start_time=start_time)
+            subprocess.Popen(
+                f'rundll32 printui.dll,PrintUIEntry /k /n "{printer_name}"', shell=True
+            )
+            TaskLogger.log(
+                tr("task_test"), "status_ok", printer_name, start_time=start_time
+            )
         except Exception as e:
             logger.error(e)
-            TaskLogger.log(tr("task_test"), "status_err", printer_name, start_time=start_time)
+            TaskLogger.log(
+                tr("task_test"), "status_err", printer_name, start_time=start_time
+            )
 
     def purge_printer_single(self, printer_name):
         start_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
@@ -3686,10 +4472,21 @@ class PrinterManagerApp(QMainWindow):
             handle = win32print.OpenPrinter(printer_name, defaults)
             win32print.SetPrinter(handle, 0, None, win32print.PRINTER_CONTROL_PURGE)
             win32print.ClosePrinter(handle)
-            TaskLogger.log(tr("task_purge_queue"), "status_ok", printer_name, start_time=start_time)
-            QMessageBox.information(self, tr("msg_success"), tr("msg_queue_purged_single").format(printer=printer_name))
+            TaskLogger.log(
+                tr("task_purge_queue"), "status_ok", printer_name, start_time=start_time
+            )
+            QMessageBox.information(
+                self,
+                tr("msg_success"),
+                tr("msg_queue_purged_single").format(printer=printer_name),
+            )
         except Exception as e:
-            TaskLogger.log(tr("task_purge_queue"), "status_err", printer_name, start_time=start_time)
+            TaskLogger.log(
+                tr("task_purge_queue"),
+                "status_err",
+                printer_name,
+                start_time=start_time,
+            )
             QMessageBox.warning(self, tr("msg_error"), f"Erro: {e}")
 
     def set_default_printer(self, printer_name):
@@ -3697,7 +4494,8 @@ class PrinterManagerApp(QMainWindow):
             win32print.SetDefaultPrinter(printer_name)
             self.default_printer = printer_name
             self.refresh_all_data_silent()
-        except Exception as e: logger.warning(f"Error setting default printer: {e}")
+        except Exception as e:
+            logger.warning(f"Error setting default printer: {e}")
 
     def map_printer(self):
         text, ok = QInputDialog.getText(self, tr("card_map"), tr("input_ip_ph"))
@@ -3705,21 +4503,32 @@ class PrinterManagerApp(QMainWindow):
             start_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
             try:
                 win32print.AddPrinterConnection(text)
-                TaskLogger.log(tr("task_install"), "status_ok", text, start_time=start_time)
+                TaskLogger.log(
+                    tr("task_install"), "status_ok", text, start_time=start_time
+                )
                 self.refresh_all_data()
             except Exception as e:
-                TaskLogger.log(tr("task_install"), "status_err", text, start_time=start_time)
+                TaskLogger.log(
+                    tr("task_install"), "status_err", text, start_time=start_time
+                )
 
     def remove_printer_single(self, printer_name):
         reply = QMessageBox.question(
-            self, tr("msg_warning"), tr("msg_remove_single_confirm"),
+            self,
+            tr("msg_warning"),
+            tr("msg_remove_single_confirm"),
             QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
         )
         if reply == QMessageBox.StandardButton.Yes:
             start_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
             try:
                 win32print.DeletePrinterConnection(printer_name)
-                TaskLogger.log(tr("task_remove_single"), "status_ok", printer_name, start_time=start_time)
+                TaskLogger.log(
+                    tr("task_remove_single"),
+                    "status_ok",
+                    printer_name,
+                    start_time=start_time,
+                )
                 self.refresh_all_data()
             except Exception as e:
                 logger.debug(f"Failed deleting connection, trying local drop: {e}")
@@ -3728,10 +4537,20 @@ class PrinterManagerApp(QMainWindow):
                     handle = win32print.OpenPrinter(printer_name, defaults)
                     win32print.DeletePrinter(handle)
                     win32print.ClosePrinter(handle)
-                    TaskLogger.log(tr("task_remove_single"), "status_ok", printer_name, start_time=start_time)
+                    TaskLogger.log(
+                        tr("task_remove_single"),
+                        "status_ok",
+                        printer_name,
+                        start_time=start_time,
+                    )
                     self.refresh_all_data()
                 except Exception as e2:
-                    TaskLogger.log(tr("task_remove_single"), "status_err", printer_name, start_time=start_time)
+                    TaskLogger.log(
+                        tr("task_remove_single"),
+                        "status_err",
+                        printer_name,
+                        start_time=start_time,
+                    )
                     QMessageBox.warning(self, tr("msg_error"), f"Erro: {e2}")
 
     def reinstall_printer(self, printer_name):
@@ -3739,37 +4558,72 @@ class PrinterManagerApp(QMainWindow):
         try:
             win32print.DeletePrinterConnection(printer_name)
             win32print.AddPrinterConnection(printer_name)
-            TaskLogger.log(tr("ctx_reinstall"), "status_ok", printer_name, start_time=start_time)
-            QMessageBox.information(self, tr("msg_success"), tr("msg_reinstall_success").format(printer=printer_name))
+            TaskLogger.log(
+                tr("ctx_reinstall"), "status_ok", printer_name, start_time=start_time
+            )
+            QMessageBox.information(
+                self,
+                tr("msg_success"),
+                tr("msg_reinstall_success").format(printer=printer_name),
+            )
             self.refresh_all_data()
         except Exception as e:
-            TaskLogger.log(tr("ctx_reinstall"), "status_err", printer_name, start_time=start_time)
+            TaskLogger.log(
+                tr("ctx_reinstall"), "status_err", printer_name, start_time=start_time
+            )
             QMessageBox.warning(self, tr("msg_error"), f"{tr('msg_reinstall_err')} {e}")
 
     def repair_spooler(self):
-        try: is_admin = ctypes.windll.shell32.IsUserAnAdmin()
-        except: is_admin = False
-        
+        try:
+            is_admin = ctypes.windll.shell32.IsUserAnAdmin()
+        except:
+            is_admin = False
+
         if not is_admin:
             QMessageBox.warning(self, tr("msg_warning"), tr("msg_admin_req"))
             return
-            
-        reply = QMessageBox.question(self, tr("msg_warning"), tr("msg_spooler_warn"), QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+
+        reply = QMessageBox.question(
+            self,
+            tr("msg_warning"),
+            tr("msg_spooler_warn"),
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
+        )
         if reply == QMessageBox.StandardButton.Yes:
             start_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-            TaskLogger.log(tr("task_repair_spooler"), "status_run", tr("target_sys"), start_time=start_time)
+            TaskLogger.log(
+                tr("task_repair_spooler"),
+                "status_run",
+                tr("target_sys"),
+                start_time=start_time,
+            )
             cmds = [
                 "net stop spooler",
                 r"del /Q /F /S %systemroot%\System32\Spool\Printers\*.*",
                 "net start spooler",
             ]
             try:
-                subprocess.run(["cmd.exe", "/c", " & ".join(cmds)], capture_output=True, creationflags=subprocess.CREATE_NO_WINDOW)
-                TaskLogger.log(tr("task_repair_spooler"), "status_ok", tr("target_sys"), start_time=start_time)
+                subprocess.run(
+                    ["cmd.exe", "/c", " & ".join(cmds)],
+                    capture_output=True,
+                    creationflags=subprocess.CREATE_NO_WINDOW,
+                )
+                TaskLogger.log(
+                    tr("task_repair_spooler"),
+                    "status_ok",
+                    tr("target_sys"),
+                    start_time=start_time,
+                )
                 self.refresh_all_data()
             except Exception as e:
                 logger.error(e)
-                TaskLogger.log(tr("task_repair_spooler"), "status_err", tr("target_sys"), start_time=start_time)
+                TaskLogger.log(
+                    tr("task_repair_spooler"),
+                    "status_err",
+                    tr("target_sys"),
+                    start_time=start_time,
+                )
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
